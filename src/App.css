@@ -1,0 +1,96 @@
+/* .App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} */
+
+#game-container{
+  border: 5px solid black;
+  padding: 10px;
+  margin: 90px;
+  /* height: 800px; */
+  /* width: 1200px; */
+  height: 80%;
+  width: 90%;
+  min-height: 400px;
+  min-width: 600px;
+  overflow: scroll
+}
+
+#build-menu {
+  position: fixed;
+}
+
+#tower-container {
+  border: 2px solid black;
+  margin: 3px;
+  padding: 3px;
+  height: 100%;
+  width: 75%
+}
+
+#tower {
+  border: 2px solid blue;
+  margin: 3px;
+  padding: 3px;
+}
+
+#floor-container {
+  border: 2px solid red;
+  margin: 3px;
+  padding: 3px;
+}
+
+#floor {
+  border: 2px solid orange;
+  margin: 3px;
+  padding: 3px;
+}
+
+#shop-container {
+  border: 2px solid black;
+  margin: 3px;
+  padding: 3px;
+  background-color: yellow
+}
+
+#shop {
+  border: 2px solid black;
+  margin: 3px;
+  padding: 3px;
+  background-color: blue
+}
+
+#stats {
+  border: 1px solid grey;
+  margin: 5px;
+  padding: 5px;
+  position: fixed;
+}
