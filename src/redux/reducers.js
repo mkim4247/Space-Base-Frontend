@@ -25,15 +25,25 @@ const setFloorsReducer = (state=[], action) => {
       return action.floors
     case "ADD_FLOOR":
       return [...state, action.floor]
-    default:
-      return state
-  }
-}
-
-const setShopsReducer = (state=[], action) => {
-  switch(action.type){
-    case "SET_FLOOR_SHOPS":
-      return action.shops
+    case "ADD_SHOP":
+      let floors = state.map( f => {
+        if(f.id === action.shop.floor_id){
+          let shops = f.shops.map( s => {
+            if(s.id === action.shop.id){
+              return action.shop
+            }
+            else {
+              return s
+            }
+          })
+          f.shops = shops
+          return f
+        }
+        else {
+          return f
+        }
+      })
+      return floors
     default:
       return state
   }
@@ -42,8 +52,7 @@ const setShopsReducer = (state=[], action) => {
 const rootReducer = combineReducers({
   currentUser: setUserReducer,
   tower: setTowerReducer,
-  floors: setFloorsReducer,
-  // shops: setShopsReducer
+  floors: setFloorsReducer
 })
 
 

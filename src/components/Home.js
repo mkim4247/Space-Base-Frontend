@@ -15,7 +15,7 @@ class Home extends React.Component {
 
   render(){
     return(
-      <div>
+      <div id='home'>
         <Nav />
         <Header size='huge' align='center'> Welcome  </Header>
 

@@ -1,19 +1,28 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import {Header, Grid} from 'semantic-ui-react'
+import {Header} from 'semantic-ui-react'
 
 import FloorContainer from './FloorContainer'
-
+import ConstructionFloor from './ConstructionFloor'
 
 class Tower extends React.Component {
 
   render(){
     return(
       <div id='tower'>
-        <Header size='medium'>{this.props.tower.name}</Header>
-        {this.props.floors.map( floor => <FloorContainer key={floor.id} shops={floor.shops}/>)}
-        <FloorContainer level={this.props.floors.length + 1} shops={[]}/>
+        <Header size='medium'>
+          {this.props.tower.name}
+        </Header>
+        {this.props.floors.map( floor => (
+            <FloorContainer
+              key={floor.id}
+              shops={floor.shops}/>
+        ))
+        }
+        <ConstructionFloor
+          level={this.props.floors.length + 1}
+          />
       </div>
     )
   }

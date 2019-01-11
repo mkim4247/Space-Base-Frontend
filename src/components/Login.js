@@ -1,9 +1,8 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+// import {Link} from 'react-router-dom'
+import { Button, Form, Grid, Header, Segment } from 'semantic-ui-react'
 import {connect} from 'react-redux'
 import {settingCurrentUser} from '../redux/actions'
-import { withRouter } from 'react-router'
 
 class Login extends React.Component {
   constructor(){
@@ -43,7 +42,7 @@ class Login extends React.Component {
          <Segment stacked>
           <Form.Input fluid icon='user' iconPosition='left' label='Enter Username:' type='text' name='username' onChange={this.handleChange} placeholder="username"/>
           <Form.Input fluid icon='lock' iconPosition='left' label='Password:' type='password' name='password' onChange={this.handleChange} placeholder="password"/>
-          <Button fluid icon='lock' iconPosition='left'> Login </Button>
+          <Button fluid> Login </Button>
           </Segment>
         </Form>
 

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 import Login from './components/Login'
@@ -15,7 +14,7 @@ class App extends Component {
 
   componentDidMount(){
     let token = localStorage.getItem('token')
-    
+
     if(token){
       this.props.checkingToken(token)
     }

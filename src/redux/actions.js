@@ -54,6 +54,12 @@ const settingUserTower = () => {
       console.log(user.tower)
       dispatch(setUserTower(user.tower))
       dispatch(setTowerFloors(user.tower.floors))
+
+      // let shopSubArr = user.tower.floors.map( floor => {
+      //   return floor.shops
+      // })
+      // let shops = shopSubArr.flat()
+      // dispatch(setTowerShops(shops))
     })
   }
 }
@@ -63,9 +69,6 @@ const settingUserTower = () => {
 const setTowerFloors = (floors) => {
   return { type: "SET_TOWER_FLOORS", floors}
 }
-
-////////////
-
 
 const addFloor = (floor) => {
   return { type: "ADD_FLOOR", floor}
@@ -82,10 +85,32 @@ const addingFloor = (floor) => {
     })
     .then(res => res.json())
     .then(floor => {
+      console.log(floor)
       dispatch(addFloor(floor))
     })
   }
 }
 
+///////////////
 
-export { setCurrentUser, settingCurrentUser, checkingToken, settingUserTower, addingFloor }
+const addShop = (shop) => {
+  return { type: "ADD_SHOP", shop }
+}
+
+const addingShop = (shop) => {
+  return (dispatch, getStore) => {
+    fetch(`http://localhost:4247/api/v1/shops/${shop.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-type": "application/json"
+      },
+      body: JSON.stringify({ shop_type: shop.type, name: shop.name })
+    })
+    .then(res => res.json())
+    .then(shop => {
+      dispatch(addShop(shop))
+    })
+  }
+}
+
+export { setCurrentUser, settingCurrentUser, checkingToken, settingUserTower, addingFloor, addingShop}

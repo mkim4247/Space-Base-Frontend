@@ -1,5 +1,4 @@
 import React from 'react'
-import { Menu } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 
 class Stats extends React.Component {

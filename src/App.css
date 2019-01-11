@@ -31,17 +31,25 @@
   }
 } */
 
+#home {
+  height: 100vh;
+  border: 2px dotted black;
+
+}
+
 #game-container{
   border: 5px solid black;
   padding: 10px;
-  margin: 90px;
+  margin-top: 10px;
+  margin-right: 90px;
+  margin-left: 90px;
   /* height: 800px; */
   /* width: 1200px; */
-  height: 80%;
+  height: 70%;
   width: 90%;
   min-height: 400px;
   min-width: 600px;
-  overflow: scroll
+  overflow: scroll;
 }
 
 #build-menu {
@@ -53,39 +61,57 @@
   margin: 3px;
   padding: 3px;
   height: 100%;
-  width: 75%
+  width: 75%;
+  align-items: stretch;
 }
 
 #tower {
   border: 2px solid blue;
   margin: 3px;
   padding: 3px;
+  align-items: stretch;
 }
 
-#floor-container {
+.floor-container {
   border: 2px solid red;
-  margin: 3px;
-  padding: 3px;
+  min-height: 100%;
+  height: 100%;
+  align-items: stretch;
 }
 
-#floor {
+.floor {
   border: 2px solid orange;
-  margin: 3px;
-  padding: 3px;
+  min-height: 100%;
+  height: 100%;
+  align-items: stretch;
 }
 
-#shop-container {
+.shop-container {
   border: 2px solid black;
-  margin: 3px;
-  padding: 3px;
-  background-color: yellow
+  background-color: yellow;
+  min-height: 100%;
+  height: 100%;
+  align-items: stretch;
+
 }
 
-#shop {
+.filled-shop {
   border: 2px solid black;
-  margin: 3px;
-  padding: 3px;
-  background-color: blue
+  min-height: 100%;
+  height: 100%;
+  background-color: blue;
+  color: white;
+  align-items: stretch;
+}
+
+.empty-shop {
+  border: 2px solid black;
+  min-height: 100%;
+  height: 100%;
+  background-color: red;
+  color: white;
+  align-items: stretch;
+
 }
 
 #stats {
