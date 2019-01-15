@@ -17,7 +17,7 @@ class Tower extends React.Component {
         {this.props.floors.map( floor => (
             <FloorContainer
               key={floor.id}
-              shops={floor.shops}/>
+              floor={floor}/>
         ))
         }
         <ConstructionFloor

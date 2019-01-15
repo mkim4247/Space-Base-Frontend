@@ -1,16 +1,12 @@
 import React from 'react'
 import {connect} from 'react-redux'
-//
-import {addingShop} from '../redux/actions'
+
+import {setCurrentShop} from '../redux/actions'
 
 class EmptyShop extends React.Component {
 
   buildShop = () => {
-    console.log("BUILDING")
-    let shop = {
-      type: "Food", name: "Foooooood", id: this.props.id, floor_id: this.props.floor
-    }
-    this.props.addingShop(shop)
+    this.props.setCurrentShop(this.props.shopObj)
   }
 
   render(){
@@ -22,4 +18,5 @@ class EmptyShop extends React.Component {
   }
 }
 
-export default connect(null, {addingShop})(EmptyShop)
+
+export default connect(null, {setCurrentShop})(EmptyShop)

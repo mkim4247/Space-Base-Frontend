@@ -14,11 +14,13 @@ class Nav extends React.Component {
 
   render() {
     return (
+      <div id='nav'>
       <Menu pointing secondary>
       <Menu.Menu position='right'>
         <Menu.Item name="Logout" onClick={this.logout}/>
         </Menu.Menu>
       </Menu>
+      </div>
     )
   }
 

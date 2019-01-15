@@ -3,6 +3,7 @@ import './App.css';
 
 import Login from './components/Login'
 import Home from './components/Home'
+import CreateAccount from './components/CreateAccount'
 
 import {checkingToken} from './redux/actions'
 import {connect} from 'react-redux'
@@ -31,6 +32,10 @@ class App extends Component {
             <Route exact path='/login' render={ () => (
               this.props.currentUser ?
               <Redirect to="/" /> : <Login />
+              )} />
+            <Route exact path='/new' render={ () => (
+                this.props.currentUser ?
+                <Redirect to='/' /> : <CreateAccount />
               )} />
           </Switch>
       </div>

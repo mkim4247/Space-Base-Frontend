@@ -12,3 +12,113 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+#home {
+  height: 100vh;
+  border: 2px dotted black;
+  background-color: white;
+  text-align: center;
+}
+
+#nav {
+  background-color: white;
+}
+
+#game-container{
+  display: inline-block;
+  border: 5px solid black;
+  padding: 10px;
+  margin-top: 10px;
+  margin-right: 90px;
+  margin-left: 50px;
+  /* height: 800px; */
+  /* width: 1200px; */
+  height: 70vh;
+  width: 90%;
+  min-height: 400px;
+  min-width: 900px;
+  overflow: scroll;
+  background-color: white;
+  background-image: url('https://i.pinimg.com/474x/9d/76/49/9d7649649e8b7abb44d0d1629c2f20bf--pixel-art-videogames.jpg');
+}
+
+#build-menu {
+  position: fixed;
+  border: 1px solid black;
+  margin: 0 auto;
+  padding: 5px;
+  width: 20%;
+  background-color: white;
+}
+
+#show-info {
+  position: fixed;
+  border: 1px solid black;
+  margin: 5px;
+  padding: 5px;
+  background-color: white;
+}
+
+#tower-container {
+  border: 2px solid black;
+  margin: 275px auto 50px auto;
+  padding: 3px;
+  width: 70%;
+}
+
+#tower {
+  border: 2px solid blue;
+  margin: 3px;
+  padding: 3px;
+}
+
+.floor-container {
+  border: 2px solid red;
+  height: 100px;
+}
+
+.floor {
+  border: 2px solid orange;
+  height: 100%;
+}
+
+.shop-container {
+  border: 2px solid black;
+  background-color: yellow;
+  height: 100%;
+}
+
+.filled-shop {
+  border: 2px solid black;
+  height: 100%;
+  background-color: blue;
+  color: white;
+}
+
+.empty-shop {
+  border: 2px solid black;
+  height: 100%;
+  background-color: red;
+  color: white;
+  min-width: 100%;
+  width: 100%;
+}
+
+#stats {
+  font-size: 20px;
+  border: 1px solid grey;
+  margin: 0 auto;
+  padding: 20px;
+  position: fixed;
+  background-color: white;
+}
+
+.ui.grid {
+  margin: 0px !important;
+  height: 100% !important;
+}
+
+.ui.grid>.row {
+  padding: 0px !important;
+  height: 100% !important;
+}

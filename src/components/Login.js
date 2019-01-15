@@ -1,8 +1,8 @@
 import React from 'react'
-// import {Link} from 'react-router-dom'
-import { Button, Form, Grid, Header, Segment } from 'semantic-ui-react'
+import { Button, Form, Grid, Header, Segment, Message } from 'semantic-ui-react'
 import {connect} from 'react-redux'
 import {settingCurrentUser} from '../redux/actions'
+import {Link} from 'react-router-dom'
 
 class Login extends React.Component {
   constructor(){
@@ -45,7 +45,11 @@ class Login extends React.Component {
           <Button fluid> Login </Button>
           </Segment>
         </Form>
-
+        <Message>
+          <Link to='/new'>
+            Create an Account
+          </Link>
+        </Message>
       </Grid.Column>
       </Grid>
       </div>

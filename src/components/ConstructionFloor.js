@@ -14,7 +14,8 @@ class ConstructionFloor extends React.Component {
 
   render(){
     return(
-      <div id='construction-floor' className='floor-container' onClick={this.addFloorClick} >
+      <div id='construction-floor' className='floor-container' onClick={this.addFloorClick} style={{backgroundColor: 'white'
+        }}>
         CONSTRUCTION
       </div>
     )

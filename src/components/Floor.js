@@ -7,7 +7,7 @@ class Floor extends React.Component {
   render(){
     return(
       <div className='floor' >
-        <ShopContainer shops={this.props.shops}/>
+        <ShopContainer shopsArr={this.props.floor.shops}/>
       </div>
     )
   }

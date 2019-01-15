@@ -15,13 +15,12 @@ class Home extends React.Component {
 
   render(){
     return(
-      <div id='home'>
+      <div>
         <Nav />
+        <div id='home'>
         <Header size='huge' align='center'> Welcome  </Header>
-
         <GameContainer />
-
-
+        </div>
       </div>
     )
   }
