@@ -4,6 +4,8 @@ import {connect} from 'react-redux'
 import {creatingNewUser} from '../redux/actions'
 import {Grid, Header, Segment, Button, Message} from 'semantic-ui-react'
 
+import Nav from './Nav'
+
 class CreateAccount extends React.Component {
   constructor(){
     super()
@@ -35,6 +37,7 @@ class CreateAccount extends React.Component {
         height: 100%;
       }`}</style>
 
+    <Nav />
       <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
       <Grid.Column style={{ maxWidth: 500 }}>
         <Header id='login-header' color='black' textAlign='center' size='huge'>
@@ -44,14 +47,16 @@ class CreateAccount extends React.Component {
         <Segment stacked>
           <Form.Group widths='equal'>
             <Form.Input fluid icon='user' iconPosition='left' label='Enter Your Name' name='name' placeholder='Name' onChange={this.handleChange}/>
+          </Form.Group>
+          <Form.Group widths='equal'>
             <Form.Input fluid icon='user' iconPosition='left' label='Enter Your Username' name='username' placeholder='Username' onChange={this.handleChange}/>
+            <Form.Input fluid icon='lock' iconPosition='left' label='Enter Your Email' name='email' placeholder='Email' onChange={this.handleChange}/>
           </Form.Group>
           <Form.Group widths='equal'>
             <Form.Input fluid icon='lock' iconPosition='left' label='Enter Your Password' name='password' type='password' onChange={this.handleChange}/>
-            <Form.Input fluid icon='lock' iconPosition='left' label='Enter Your Email' name='email' placeholder='Email' onChange={this.handleChange}/>
           </Form.Group>
           <Button fluid> Create Account </Button>
-          </Segment>
+        </Segment>
         </Form>
         </Grid.Column>
         </Grid>

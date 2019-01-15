@@ -10,7 +10,7 @@ import { settingUserTower } from '../redux/actions'
 class Home extends React.Component {
 
   componentDidMount(){
-      this.props.settingUserTower()
+    this.props.settingUserTower()
   }
 
   render(){
@@ -18,7 +18,7 @@ class Home extends React.Component {
       <div>
         <Nav />
         <div id='home'>
-        <Header size='huge' align='center'> Welcome  </Header>
+        <Header inverted size='huge' align='center'> Welcome  </Header>
         <GameContainer />
         </div>
       </div>

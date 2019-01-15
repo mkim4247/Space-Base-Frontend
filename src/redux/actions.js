@@ -37,27 +37,15 @@ export const creatingNewUser = user => {
     .then(res => res.json())
     .then(data => {
       if(data.error){
-        console.log(data)
+        alert(data.error)
       } else {
         console.log(data)
-        this.props.setCurrentUser(data.user_info)
+        dispatch(setCurrentUser(data.user))
         localStorage.setItem('token', data.token)
       }
     })
   }
 }
-
-// const creatingNewTower = user => {
-//   return (dispatch) => {
-//     fetch(`http://localhost:4247/api/v1/towers`, {
-//         method: "POST",
-//         headers: {
-//           "Content-type": "application/json"
-//         },
-//         body: JSON.stringify( )
-//     }
-//
-// }
 
 export const checkingToken = (token) => {
     return dispatch => {
@@ -95,13 +83,13 @@ export const settingUserTower = () => {
 
 /////////////
 
-export const updateTowerShops = tower => {
+export const updateTower = tower => {
   return { type: "UPDATE_TOWER", tower}
 }
 
 export const updatingTowerShops = shop => {
   return (dispatch, getStore) => {
-    let value = getStore().tower.funds - shop.price
+    let value = getStore().tower.funds - parseInt(shop.price)
     fetch(`http://localhost:4247/api/v1/towers/${getStore().tower.id}`, {
       method: "PATCH",
       headers: {
@@ -111,7 +99,24 @@ export const updatingTowerShops = shop => {
     })
     .then(res => res.json())
     .then(tower => {
-      dispatch(updateTowerShops(tower))
+      dispatch(updateTower(tower))
+    })
+  }
+}
+
+export const updatingTowerFloors = floor => {
+  return (dispatch, getStore) => {
+    let value = getStore().tower.funds - parseInt(floor.price)
+    fetch(`http://localhost:4247/api/v1/towers/${getStore().tower.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-type": "application/json"
+      },
+      body: JSON.stringify({ funds: value })
+    })
+    .then(res => res.json())
+    .then(tower => {
+      dispatch(updateTower(tower))
     })
   }
 }

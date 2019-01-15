@@ -1,15 +1,19 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import {Segment, Header} from 'semantic-ui-react'
 
 class Stats extends React.Component {
 
   render(){
     return(
       <div id="stats">
-        <h2>Stats:</h2>
-        <div> Funds: {this.props.tower.funds} </div>
-        <div> Happiness: {this.props.tower.happiness} </div>
-        <div> Population: {this.props.tower.population} </div>
+        <Segment inverted>
+        <Header size='large'>Stats:</Header>
+        <Header size='medium'> Funds: {this.props.tower.funds}
+        </Header>
+        <Header size='medium'> Happiness: {this.props.tower.happiness} </Header>
+        <Header size='medium'> Population: {this.props.tower.population} </Header>
+        </Segment>
       </div>
     )
   }

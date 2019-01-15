@@ -5,21 +5,22 @@ import {Header} from 'semantic-ui-react'
 
 import FloorContainer from './FloorContainer'
 import ConstructionFloor from './ConstructionFloor'
+import Lobby from './Lobby'
 
 class Tower extends React.Component {
 
   render(){
     return(
       <div id='tower'>
-        <Header size='medium'>
-          {this.props.tower.name}
-        </Header>
+        <Lobby />
+
         {this.props.floors.map( floor => (
             <FloorContainer
               key={floor.id}
               floor={floor}/>
         ))
         }
+
         <ConstructionFloor
           level={this.props.floors.length + 1}
           />

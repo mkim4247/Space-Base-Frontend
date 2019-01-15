@@ -12,7 +12,14 @@ class GameContainer extends React.Component {
   render(){
     return(
       <div id='game-container'>
-        GameContainer
+
+
+
+        {this.props.tower.name}
+
+
+
+
         <Grid>
           <Grid.Row columns={3}>
             <Grid.Column width={4}>
@@ -34,7 +41,7 @@ class GameContainer extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return { shop: state.currentShop }
+  return { tower: state.tower, shop: state.currentShop }
 }
 
 export default connect(mapStateToProps)(GameContainer)

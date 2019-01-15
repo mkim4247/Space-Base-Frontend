@@ -16,7 +16,7 @@ code {
 #home {
   height: 100vh;
   border: 2px dotted black;
-  background-color: white;
+  background-color: black;
   text-align: center;
 }
 
@@ -38,8 +38,11 @@ code {
   min-height: 400px;
   min-width: 900px;
   overflow: scroll;
-  background-color: white;
+  background-color: black;
   background-image: url('https://i.pinimg.com/474x/9d/76/49/9d7649649e8b7abb44d0d1629c2f20bf--pixel-art-videogames.jpg');
+  background-position: fixed;
+  background-size: 1500px 400px;
+  background-repeat: no-repeat;
 }
 
 #build-menu {
@@ -62,14 +65,14 @@ code {
 #tower-container {
   border: 2px solid black;
   margin: 275px auto 50px auto;
-  padding: 3px;
+  /* padding: 3px; */
   width: 70%;
 }
 
 #tower {
   border: 2px solid blue;
-  margin: 3px;
-  padding: 3px;
+  /* margin: 3px; */
+  /* padding: 3px; */
 }
 
 .floor-container {
@@ -108,7 +111,6 @@ code {
   font-size: 20px;
   border: 1px solid grey;
   margin: 0 auto;
-  padding: 20px;
   position: fixed;
   background-color: white;
 }
