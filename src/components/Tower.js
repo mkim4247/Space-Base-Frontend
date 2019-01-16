@@ -12,18 +12,17 @@ class Tower extends React.Component {
   render(){
     return(
       <div id='tower'>
-        <Lobby />
 
-        {this.props.floors.map( floor => (
+          <ConstructionFloor
+            level={this.props.floors.length + 1}
+            />
+        {this.props.floors.reverse().map( floor => (
             <FloorContainer
               key={floor.id}
               floor={floor}/>
         ))
         }
-
-        <ConstructionFloor
-          level={this.props.floors.length + 1}
-          />
+        <Lobby />
       </div>
     )
   }

@@ -17,10 +17,10 @@ class Home extends React.Component {
     return(
       <div>
         <Nav />
-        <div id='home'>
-        <Header inverted size='huge' align='center'> Welcome  </Header>
-        <GameContainer />
-        </div>
+            <div id='home'>
+            <Header inverted size='huge' align='center'> Welcome  </Header>
+            <GameContainer />
+            </div>
       </div>
     )
   }
