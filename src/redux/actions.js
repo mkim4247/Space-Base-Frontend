@@ -1,9 +1,9 @@
-export const setCurrentUser = (user) => {
+export const setCurrentUser = user => {
   return { type: "SET_CURRENT_USER", user}
 }
 
-export const settingCurrentUser = (user) => {
-  return (dispatch) => {
+export const settingCurrentUser = user => {
+  return dispatch => {
     fetch(`http://localhost:4247/api/v1/login`, {
       method: "POST",
       headers: {
@@ -15,8 +15,9 @@ export const settingCurrentUser = (user) => {
     .then(data => {
       if(data.error){
         alert('Incorrect username and/or password')
-      }else{
-        console.log(data.user_info)
+      }
+      else{
+        console.log('Login Successful')
         dispatch(setCurrentUser(data.user_info))
         localStorage.setItem('token', data.token)
       }
@@ -25,12 +26,11 @@ export const settingCurrentUser = (user) => {
 }
 
 export const creatingNewUser = user => {
-  return (dispatch) => {
+  return dispatch => {
     fetch(`http://localhost:4247/api/v1/users`, {
       method:"POST",
       headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json"
+        "Content-Type": "application/json"
       },
       body: JSON.stringify({ user })
     })
@@ -38,7 +38,8 @@ export const creatingNewUser = user => {
     .then(data => {
       if(data.error){
         alert(data.error)
-      } else {
+      }
+      else {
         console.log(data)
         dispatch(setCurrentUser(data.user))
         localStorage.setItem('token', data.token)
@@ -47,7 +48,7 @@ export const creatingNewUser = user => {
   }
 }
 
-export const checkingToken = (token) => {
+export const checkingToken = token => {
     return dispatch => {
     fetch(`http://localhost:4247/api/v1/profile`, {
     method: "GET",
@@ -65,7 +66,7 @@ export const checkingToken = (token) => {
 
 //////////
 
-export const setUserTower = (tower) => {
+export const setUserTower = tower => {
   return { type: "SET_USER_TOWER", tower}
 }
 
@@ -89,13 +90,21 @@ export const updateTower = tower => {
 
 export const updatingTowerShops = shop => {
   return (dispatch, getStore) => {
-    let value = getStore().tower.funds - parseInt(shop.price)
+    let value = getStore().tower.resources + parseInt(shop.price)
+    let defense;
+    if (shop.shop_type === "Defense"){
+      defense = getStore().tower.defense - (parseInt(shop.price)/5)
+    }
+    else {
+      defense = getStore().tower.defense
+    }
+
     fetch(`http://localhost:4247/api/v1/towers/${getStore().tower.id}`, {
       method: "PATCH",
       headers: {
         "Content-type": "application/json"
       },
-      body: JSON.stringify({ funds: value })
+      body: JSON.stringify({ resources: value, defense: defense })
     })
     .then(res => res.json())
     .then(tower => {
@@ -106,13 +115,13 @@ export const updatingTowerShops = shop => {
 
 export const updatingTowerFloors = floor => {
   return (dispatch, getStore) => {
-    let value = getStore().tower.funds - parseInt(floor.price)
+    let value = getStore().tower.resources - parseInt(floor.price)
     fetch(`http://localhost:4247/api/v1/towers/${getStore().tower.id}`, {
       method: "PATCH",
       headers: {
         "Content-type": "application/json"
       },
-      body: JSON.stringify({ funds: value })
+      body: JSON.stringify({ resources: value })
     })
     .then(res => res.json())
     .then(tower => {
@@ -121,18 +130,33 @@ export const updatingTowerFloors = floor => {
   }
 }
 
+export const applyingRateTower = tower => {
+  return (dispatch, getStore) => {
+    fetch(`http://localhost:4247/api/v1/towers/${getStore().tower.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-type": "application/json"
+      },
+      body: JSON.stringify(tower)
+    })
+    .then(res => res.json())
+    .then(tower => {
+      dispatch(updateTower(tower))
+    })
+  }
+}
 
 ///////////
 
-export const setTowerFloors = (floors) => {
+export const setTowerFloors = floors => {
   return { type: "SET_TOWER_FLOORS", floors}
 }
 
-export const addFloor = (floor) => {
+export const addFloor = floor => {
   return { type: "ADD_FLOOR", floor}
 }
 
-export const addingFloor = (floor) => {
+export const addingFloor = floor => {
   return (dispatch, getStore) => {
     fetch(`http://localhost:4247/api/v1/floors/`, {
       method: "POST",
@@ -151,11 +175,11 @@ export const addingFloor = (floor) => {
 
 ///////////////
 
-export const addShop = (shop) => {
+export const addShop = shop => {
   return { type: "ADD_SHOP", shop }
 }
 
-export const addingShop = (shop) => {
+export const addingShop = shop => {
   return (dispatch, getStore) => {
     fetch(`http://localhost:4247/api/v1/shops/${shop.id}`, {
       method: "PATCH",
@@ -193,8 +217,29 @@ export const destroyingShop = shop => {
 
 ////////////
 
-export const setCurrentShop = (shop) => {
+export const setCurrentShop = shop => {
   return { type: "CHANGE_MENU", shop }
 }
 
+////////////
+
+export const setAllUsers = users => {
+  return { type: "SET_ALL_USERS", users}
+}
+
+export const settingAllUsers = () => {
+  return dispatch => {
+  fetch('http://localhost:4247/api/v1/users/')
+    .then(res => res.json())
+    .then(users => {
+      console.log(users)
+      dispatch(setAllUsers(users))
+    })
+  }
+}
+
 ////////////////
+
+export const switchGameMode = () => {
+  return { type: "SWITCH_MODE" }
+}

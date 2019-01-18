@@ -1,9 +1,7 @@
 import React from 'react'
-
+import { Grid } from 'semantic-ui-react'
 import Shop from './Shop'
 import EmptyShop from './EmptyShop'
-
-import {Grid} from 'semantic-ui-react'
 
 class ShopContainer extends React.Component {
 
@@ -12,18 +10,18 @@ class ShopContainer extends React.Component {
       <div className='shop-container'>
         <Grid>
           <Grid.Row>
-           {this.props.shopsArr.map( shop => (
-             shop.shop_type !== "Empty" ?
-              <Grid.Column
+            {this.props.shopsArr.map( shop => (
+              shop.shop_type !== "Empty" ?
+                <Grid.Column
                     width={8}
                     key={shop.id}
                     style={{height: "100%", padding: "0px"}}>
                   <Shop
                     shopObj={shop}
                     key={shop.id}/>
-              </Grid.Column>
-                :
-              <Grid.Column
+                </Grid.Column>
+              :
+                <Grid.Column
                     width={8}
                     key={shop.id}
                     style={{height: "100%", padding: "0px"}}>
@@ -34,7 +32,6 @@ class ShopContainer extends React.Component {
             ))}
           </Grid.Row>
         </Grid>
-
       </div>
     )
   }

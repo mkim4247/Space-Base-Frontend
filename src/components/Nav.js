@@ -1,8 +1,7 @@
 import React from 'react'
-
-import {connect} from 'react-redux'
-import { setCurrentUser } from '../redux/actions'
+import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
+import { setCurrentUser } from '../redux/actions'
 import { Menu } from 'semantic-ui-react'
 
 class Nav extends React.Component {
@@ -15,14 +14,28 @@ class Nav extends React.Component {
   render() {
     return (
       <div id='nav'>
-      <Menu size='huge'>
-      <Menu.Menu position='right'>
-        {this.props.currentUser ?
-          <Menu.Item name="Logout" onClick={this.logout}/> :
-          <Menu.Item as={NavLink} name="Login" to='/login' />
-        }
-      </Menu.Menu>
-      </Menu>
+        <Menu size='huge'>
+          <Menu.Menu position='right'>
+            <Menu.Item
+                name="Home"
+                as={NavLink}
+                to='/' />
+            <Menu.Item
+                name="About"
+                as={NavLink}
+                to='/about' />
+            {this.props.currentUser ?
+              <Menu.Item
+                name="Logout"
+                onClick={this.logout}/>
+              :
+                <Menu.Item
+                  as={NavLink}
+                  name="Login"
+                  to='/login' />
+            }
+          </Menu.Menu>
+        </Menu>
       </div>
     )
   }
@@ -33,4 +46,4 @@ const mapStateToProps = state => {
   return { currentUser: state.currentUser }
 }
 
-export default connect(mapStateToProps, {setCurrentUser})(Nav)
+export default connect(mapStateToProps, { setCurrentUser })(Nav)

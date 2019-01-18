@@ -1,7 +1,6 @@
 import React from 'react'
-import {connect} from 'react-redux'
-
-import {setCurrentShop} from '../redux/actions'
+import { connect } from 'react-redux'
+import { setCurrentShop } from '../redux/actions'
 
 class EmptyShop extends React.Component {
 
@@ -19,4 +18,4 @@ class EmptyShop extends React.Component {
 }
 
 
-export default connect(null, {setCurrentShop})(EmptyShop)
+export default connect(null, { setCurrentShop })(EmptyShop)

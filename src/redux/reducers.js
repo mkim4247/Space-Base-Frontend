@@ -95,11 +95,31 @@ const currentShopReducer = (state={shop_type: "Empty"}, action) => {
   }
 }
 
+const allUsersReducer = (state=[], action) => {
+  switch(action.type){
+    case "SET_ALL_USERS":
+      return action.users
+    default:
+      return state 
+  }
+}
+
+const gameModeReducer = (state=true, action) => {
+  switch(action.type){
+    case "SWITCH_MODE":
+      return !state
+    default:
+      return state
+  }
+}
+
 const rootReducer = combineReducers({
   currentUser: setUserReducer,
   tower: setTowerReducer,
   floors: setFloorsReducer,
-  currentShop: currentShopReducer
+  currentShop: currentShopReducer,
+  allUsers: allUsersReducer,
+  gameMode: gameModeReducer
 })
 
 

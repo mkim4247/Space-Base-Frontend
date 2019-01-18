@@ -1,19 +1,20 @@
 import React from 'react'
 
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import { addingFloor, updatingTowerFloors } from '../redux/actions'
 
 class ConstructionFloor extends React.Component {
 
   addFloorClick = () => {
-    if(this.props.tower.funds < 1000){
-      alert("Insufficient funds!")
-    } else {
+    if(this.props.tower.resources < 500){
+      alert("Insufficient resources!")
+    }
+    else {
       let floor = {
         level: this.props.level,
         tower_id: this.props.tower.id
       }
-      floor.price = 1000
+      floor.price = 500
       this.props.addingFloor(floor)
       this.props.updatingTowerFloors(floor)
     }
@@ -21,10 +22,14 @@ class ConstructionFloor extends React.Component {
 
   render(){
     return(
-      <div id='construction-floor' className='floor-container' onClick={this.addFloorClick} style={{backgroundColor: 'yellow'
-        }}>
-        <h3>Build New Floor</h3>
-        <h4>Price: 1000</h4>
+      <div
+        id='construction-floor'
+        className='floor-container'
+        onClick={this.addFloorClick}
+        style={{backgroundColor: 'yellow'}}
+        >
+        <h3> Build New Floor </h3>
+        <h4> Price: 500 </h4>
       </div>
     )
   }
@@ -35,4 +40,4 @@ const mapStateToProps = state => {
 }
 
 
-export default connect(mapStateToProps, {addingFloor, updatingTowerFloors})(ConstructionFloor)
+export default connect(mapStateToProps, { addingFloor, updatingTowerFloors })(ConstructionFloor)

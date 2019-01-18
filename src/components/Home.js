@@ -1,14 +1,14 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
-import {connect} from 'react-redux'
-import {withRouter} from 'react-router'
+import { connect } from 'react-redux'
+import { Route, Switch, Redirect, withRouter } from 'react-router'
+import { Link } from 'react-router-dom'
+import { settingUserTower, settingAllUsers } from '../redux/actions'
+import { Header } from 'semantic-ui-react'
 import Nav from './Nav'
 import GameContainer from './GameContainer'
-import { settingUserTower } from '../redux/actions'
+import ShowUser from './ShowUser'
 
 class Home extends React.Component {
-
   componentDidMount(){
     this.props.settingUserTower()
   }
@@ -17,15 +17,21 @@ class Home extends React.Component {
     return(
       <div>
         <Nav />
-            <div id='home'>
-            <Header inverted size='huge' align='center'> Welcome  </Header>
-            <GameContainer />
-            </div>
+                  <div id='home'>
+                    <Header inverted size='huge' align='center'>
+                      Space Base
+                    </Header>
+                    <GameContainer />
+                  </div>
       </div>
     )
   }
-
 }
 
 
-export default connect(null, {settingUserTower})(Home)
+const mapStateToProps = state => {
+  return { currentUser: state.currentUser}
+}
+
+
+export default connect(mapStateToProps, { settingUserTower, settingAllUsers })(Home)

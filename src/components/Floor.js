@@ -1,5 +1,4 @@
 import React from 'react'
-
 import ShopContainer from './ShopContainer'
 
 class Floor extends React.Component {

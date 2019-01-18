@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import './App.css';
+import { connect } from 'react-redux'
+import { NavLink, Route, Switch, Redirect, withRouter } from 'react-router'
+import { checkingToken } from './redux/actions'
 
+import './App.css';
+import 'semantic-ui-css/semantic.min.css'
 import Login from './components/Login'
 import Home from './components/Home'
 import CreateAccount from './components/CreateAccount'
+import About from './components/About'
 
-import {checkingToken} from './redux/actions'
-import {connect} from 'react-redux'
-import { NavLink, Route, Switch, Redirect, withRouter } from 'react-router'
-
-import 'semantic-ui-css/semantic.min.css'
 
 class App extends Component {
 
@@ -37,6 +37,11 @@ class App extends Component {
                 this.props.currentUser ?
                 <Redirect to='/' /> : <CreateAccount />
               )} />
+            <Route exact path='/about' render={ () => (
+                <About />
+              )} />
+
+            
           </Switch>
       </div>
     );

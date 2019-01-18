@@ -1,17 +1,19 @@
 import React from 'react'
-import { Segment, Grid, Button } from 'semantic-ui-react'
+import { connect } from 'react-redux'
+import { setCurrentShop, addingShop, updatingTowerShops } from '../redux/actions'
 
-import {connect} from 'react-redux'
-import {setCurrentShop, addingShop, updatingTowerShops} from '../redux/actions'
+import { Header, Segment, Grid, Button } from 'semantic-ui-react'
 
 class BuildMenu extends React.Component {
 
+
+//////////REFACTOR TO USE MODALS
   buildShop = event => {
-    if(this.props.tower.funds < parseInt(event.target.value)){
-      alert("Insufficient funds!")
+    if(this.props.tower.resources < parseInt(event.target.value)){
+      alert("Insufficient resources!")
     }
     else {
-      let shop = {...this.props.shop, shop_type: event.target.name, name: event.target.name, price: event.target.value}
+      let shop = {...this.props.shop, shop_type: event.target.name, price: event.target.value}
       this.props.addingShop(shop)
       this.props.updatingTowerShops(shop)
     }
@@ -21,35 +23,70 @@ class BuildMenu extends React.Component {
     return(
       <div id="build-menu">
         <Segment inverted>
-        <h2>Build a Shop</h2>
-        <Grid celled columns='equal'>
-          <Grid.Row>
-            <Grid.Column>
-              <Button size='large'inverted color='blue' onClick={this.buildShop} name='Food' value='25'>
-              Food</Button>
-            </Grid.Column>
-            <Grid.Column>
-              <Button onClick={this.buildShop} size='large'inverted color='blue' name='Housing' value='25'>
-              Housing</Button>
-            </Grid.Column>
-          </Grid.Row>
-          <Grid.Row>
-            <Grid.Column>
-              <Button onClick={this.buildShop} size='large'inverted color='blue' name='Recreation' value='25'>
-              Recreation</Button>
-            </Grid.Column>
-            <Grid.Column>
-              <Button onClick={this.buildShop} size='large'inverted color='blue' name='Service' value='30'>
-              Service</Button>
-            </Grid.Column>
-          </Grid.Row>
-          <Grid.Row>
-            <Grid.Column>
-              <Button onClick={this.buildShop} size='large'inverted color='blue' name='Defense' value='200'>
-              Defense</Button>
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
+          <Header size='huge'> Build Menu </Header>
+            <hr/>
+          <Grid columns='equal'>
+            <Grid.Row>
+              <Grid.Column>
+                <Button
+                  size='large'
+                  inverted
+                  color='green'
+                  onClick={this.buildShop}
+                  name='Food'
+                  value='-25'>
+                    Food
+                </Button>
+                <div>Price: 25</div>
+                <hr/>
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Column>
+                <Button
+                  onClick={this.buildShop}
+                  size='large'
+                  inverted
+                  color='blue'
+                  name='Housing'
+                  value='-25'>
+                    Housing
+                </Button>
+                <div>Price: 25</div>
+                <hr/>
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Column>
+                <Button
+                  onClick={this.buildShop}
+                  size='large'
+                  inverted
+                  color='yellow'
+                  name='Service'
+                  value='-30'>
+                    Service
+                </Button>
+                <div>Price: 30</div>
+                <hr/>
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Column>
+                <Button
+                  onClick={this.buildShop}
+                  size='large'
+                  inverted
+                  color='red'
+                  name='Defense'
+                  value='-50'>
+                    Defense
+                </Button>
+                <div>Price: 50</div>
+                <hr/>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
         </Segment>
       </div>
     )
@@ -60,4 +97,13 @@ const mapStateToProps = state => {
   return { shop: state.currentShop, tower: state.tower}
 }
 
-export default connect(mapStateToProps, {setCurrentShop, addingShop, updatingTowerShops})(BuildMenu)
+////////UNUSED RIGHT NOW; CONSIDER ADDING MORE SHOPS AS BASE EXPANDS
+// <Grid.Row>
+//   <Grid.Column>
+//     <Button onClick={this.buildShop} size='large'inverted color='blue' name='Recreation' value='-25'>
+//     Recreation</Button>
+//   </Grid.Column>
+// </Grid.Row>
+
+
+export default connect(mapStateToProps, { setCurrentShop, addingShop, updatingTowerShops })(BuildMenu)

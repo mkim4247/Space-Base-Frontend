@@ -12,10 +12,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-/*
-@keyframes aliens {
-  0% {transform: translateX(-100px); opacity: 1}
-  100% {transform: translateX(100px); opacity: 0}
+
+/* @keyframes aliens {
+  0% {transform: translateX(-100px)}
+  100% {transform: translateX(100px)}
 }
 
 .aliens {
@@ -59,11 +59,9 @@ code {
 
 #build-menu {
   position: fixed;
-  border: 1px solid black;
   margin: 0 auto;
-  padding: 5px;
   width: 20%;
-  background-color: white;
+  border: 5px solid white;
 }
 
 #show-info {
@@ -127,11 +125,30 @@ code {
 }
 
 #stats {
-  font-size: 20px;
-  border: 1px solid grey;
   margin: 0 auto;
   position: fixed;
   background-color: white;
+  border: 5px solid white;
+}
+
+#space-travel {
+  display: inline-block;
+  padding: 10px;
+  margin-top: 10px;
+  margin-right: 90px;
+  margin-left: 50px;
+  /* height: 800px; */
+  /* width: 1200px; */
+  height: 70vh;
+  width: 90%;
+  min-height: 400px;
+  min-width: 900px;
+  background-color: black;
+}
+
+#game-panel {
+  background-color: black;
+  margin: 0 auto;
 }
 
 .ui.grid {
