@@ -1,12 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Segment, Header, Statistic } from 'semantic-ui-react'
+import { Segment, Header, Statistic, Progress } from 'semantic-ui-react'
 
 class Stats extends React.Component {
   render(){
     return(
       <div id="stats">
-        <Segment inverted>
+        <Segment inverted align='center'>
           <Header size='huge'>Stats:</Header>
             <hr/>
           <Statistic.Group horizontal size='small'>
@@ -19,14 +19,15 @@ class Stats extends React.Component {
               <Statistic.Label> Population </Statistic.Label>
             </Statistic>
             <Statistic inverted>
-              <Statistic.Value>  {this.props.tower.happiness}  </Statistic.Value>
-              <Statistic.Label> Happiness </Statistic.Label>
-            </Statistic>
-            <Statistic inverted>
               <Statistic.Value>  {this.props.tower.defense}  </Statistic.Value>
               <Statistic.Label> Defense </Statistic.Label>
             </Statistic>
+            <Statistic inverted>
+              <Statistic.Value>  {this.props.tower.happiness}  </Statistic.Value>
+              <Statistic.Label> Happiness </Statistic.Label>
+            </Statistic>
           </Statistic.Group>
+          <Progress percent={this.props.tower.happiness} inverted progress color={ this.props.tower.happiness > 85 ? 'green' : this.props.tower.happiness < 50 ? 'red' : 'yellow'}/>
         </Segment>
       </div>
     )

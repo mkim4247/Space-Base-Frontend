@@ -6,7 +6,6 @@ import { settingUserTower, settingAllUsers } from '../redux/actions'
 import { Header } from 'semantic-ui-react'
 import Nav from './Nav'
 import GameContainer from './GameContainer'
-import ShowUser from './ShowUser'
 
 class Home extends React.Component {
   componentDidMount(){
@@ -17,12 +16,12 @@ class Home extends React.Component {
     return(
       <div>
         <Nav />
-                  <div id='home'>
-                    <Header inverted size='huge' align='center'>
-                      Space Base
-                    </Header>
-                    <GameContainer />
-                  </div>
+        <div id='home'>
+          <Header inverted size='huge' align='center'>
+            Space Base
+          </Header>
+          <GameContainer />
+        </div>
       </div>
     )
   }

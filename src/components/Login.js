@@ -38,12 +38,17 @@ class Login extends React.Component {
             textAlign='center'
             style={{ height: '100%' }}
             verticalAlign='middle'>
-          <Grid.Column style={{ maxWidth: 500 }}>
-            <Header id='login-header' color='black' textAlign='center' size='huge'>
-              Login Here
+          <Grid.Column style={{ maxWidth: 300 }}>
+            <Header
+              inverted
+              id='login-header'
+              color='black'
+              textAlign='center'
+              size='huge'>
+                Login Here
             </Header>
-            <Form size='large' onSubmit={this.handleLoginSubmit}>
-              <Segment stacked>
+            <Form inverted size='large' onSubmit={this.handleLoginSubmit}>
+              <Segment inverted stacked>
                 <Form.Input
                   fluid
                   icon='user'
@@ -62,14 +67,16 @@ class Login extends React.Component {
                   name='password'
                   onChange={this.handleChange}
                   placeholder="password"/>
-                <Button fluid> Login </Button>
+                <Button> Login </Button>
               </Segment>
             </Form>
+            <Segment inverted>
             <Message>
               <Link to='/new'>
-                Create an Account
+                CREATE AN ACCOUNT
               </Link>
             </Message>
+            </Segment>
           </Grid.Column>
         </Grid>
       </div>

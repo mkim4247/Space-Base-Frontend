@@ -2,24 +2,47 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { setCurrentShop, addingShop, updatingTowerShops } from '../redux/actions'
 
-import { Header, Segment, Grid, Button } from 'semantic-ui-react'
+import { Header, Segment, Grid, Button, Modal, Icon, Popup } from 'semantic-ui-react'
 
 class BuildMenu extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      showModal: false,
+      type: '',
+      price: 0,
+      color: ''
+    }
+  }
 
-
-//////////REFACTOR TO USE MODALS
   buildShop = event => {
-    if(this.props.tower.resources < parseInt(event.target.value)){
+    if(this.props.tower.resources < parseInt(-1 * event.target.value)){
       alert("Insufficient resources!")
     }
     else {
       let shop = {...this.props.shop, shop_type: event.target.name, price: event.target.value}
       this.props.addingShop(shop)
       this.props.updatingTowerShops(shop)
+      this.setState({ showModal: false })
     }
   }
 
+  openModal = (event, type, price, color) => {
+    if(this.props.shop === null){
+      alert("You must select an empty shop first")
+    }
+    else {
+      this.setState({ showModal: true, type: type, price: price, color: color })
+    }
+  }
+
+  closeModal = () => {
+    this.setState({ showModal: false })
+  }
+
   render(){
+    const { showModal } = this.state
+
     return(
       <div id="build-menu">
         <Segment inverted>
@@ -29,65 +52,91 @@ class BuildMenu extends React.Component {
             <Grid.Row>
               <Grid.Column>
                 <Button
+                  onClick={(e) => this.openModal(e, "Housing", 25, 'blue')}
                   size='large'
                   inverted
-                  color='green'
-                  onClick={this.buildShop}
-                  name='Food'
-                  value='-25'>
-                    Food
-                </Button>
-                <div>Price: 25</div>
-                <hr/>
-              </Grid.Column>
-            </Grid.Row>
-            <Grid.Row>
-              <Grid.Column>
-                <Button
-                  onClick={this.buildShop}
-                  size='large'
-                  inverted
-                  color='blue'
-                  name='Housing'
-                  value='-25'>
+                  color='blue'>
                     Housing
                 </Button>
-                <div>Price: 25</div>
                 <hr/>
               </Grid.Column>
             </Grid.Row>
             <Grid.Row>
               <Grid.Column>
                 <Button
-                  onClick={this.buildShop}
+                  onClick={(e) => this.openModal(e, "Food", 25, 'green')}
                   size='large'
                   inverted
-                  color='yellow'
-                  name='Service'
-                  value='-30'>
+                  color='green'>
+                    Food
+                </Button>
+                <hr/>
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Column>
+                <Button
+                  onClick={(e) => this.openModal(e, "Service", 30, 'yellow')}
+                  size='large'
+                  inverted
+                  color='yellow'>
                     Service
                 </Button>
-                <div>Price: 30</div>
                 <hr/>
               </Grid.Column>
             </Grid.Row>
             <Grid.Row>
               <Grid.Column>
                 <Button
-                  onClick={this.buildShop}
+                  onClick={(e) => this.openModal(e, "Defense", 50, 'red')}
                   size='large'
                   inverted
-                  color='red'
-                  name='Defense'
-                  value='-50'>
+                  color='red'>
                     Defense
                 </Button>
-                <div>Price: 50</div>
                 <hr/>
               </Grid.Column>
             </Grid.Row>
           </Grid>
         </Segment>
+
+        <Modal
+            basic
+            size='large'
+            onClose={this.closeModal}
+            open={showModal}
+            dimmer='blurring'
+            >
+            <Modal.Content>
+              <Header inverted content={`Build a ${this.state.type} unit`} size='large'/>
+              <Header inverted size='large' content={`This will cost ${this.state.price} resources. Build?`}/>
+            </Modal.Content>
+
+            <Modal.Actions>
+              <Button
+                basic
+                size='large'
+                inverted
+                onClick={this.closeModal}
+                color='red'>
+                <Icon name='remove' />
+                  No
+              </Button>
+              <Button
+                basic
+                size='large'
+                inverted
+                color='green'
+                onClick={this.buildShop}
+                name={this.state.type}
+                value={`-${this.state.price}`}>
+                <Icon name='checkmark' />
+                  Yes
+              </Button>
+            </Modal.Actions>
+          </Modal>
+
+
       </div>
     )
   }

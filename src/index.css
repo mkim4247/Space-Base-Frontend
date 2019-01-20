@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", 'VT323', monospace,
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -30,6 +30,17 @@ code {
   height: 100vh;
   background-color: black;
   text-align: center;
+  /* font-family: 'VT323', monospace; */
+}
+
+.login-form {
+  background-color: black;
+  background-image: url('https://cdn.cnn.com/cnnnext/dam/assets/160309165344-exoplanets-artwork-tease-super-169.jpg');
+  background-size: cover;
+}
+
+.create-form{
+  background-color: black;
 }
 
 #nav {
@@ -66,9 +77,9 @@ code {
 
 #show-info {
   position: fixed;
-  border: 1px solid black;
-  margin: 5px;
-  padding: 5px;
+  border: 5px solid white;
+  margin: 0 auto;
+  width: 20%;
   background-color: white;
 }
 
@@ -129,6 +140,7 @@ code {
   position: fixed;
   background-color: white;
   border: 5px solid white;
+  width: 20%;
 }
 
 #space-travel {

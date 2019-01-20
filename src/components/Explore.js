@@ -13,16 +13,16 @@ class Explore extends React.Component {
     for(let i = 0; i<20; i++){
       board.push(new Array(30).fill('brown'))
     }
-    let ship = { height: 11, position: 2 };
-    board[ship.height][ship.position] = 'white'
+    let ship = { y: 11, x: 2 };
+    board[ship.y][ship.x] = 'white'
 
     let rocks = [];
-    for(let i = 0; i<30; i++){
-      let p = Math.floor(Math.random() * 22);
-      let h = Math.floor(Math.random() * 7);
+    for(let i = 0; i<20; i++){
+      let x = Math.floor(Math.random() * 25);
+      let y = Math.floor(Math.random() * 7);
       let u = Math.round(Math.random() * 1);
-      let l = Math.floor(Math.random() * 7)
-      rocks.push({ position: 7 + p, height: h, upright: u, length: l })
+      let l = Math.floor(Math.random() * 10)
+      rocks.push({ x: 10 + x, y: y, upright: u, length: l })
     }
 
     /* Create Game Environment */
@@ -48,48 +48,48 @@ class Explore extends React.Component {
 
       let rocksCopy = [...this.state.rocks];
       for(let i = 0; i < rocksCopy.length; i++){
-        rocksCopy[i].position--
-        if(rocksCopy[i].position < 0){
-          rocksCopy[i].position = 29
-          rocksCopy[i].height = Math.floor(Math.random() * 7) + 3
+        rocksCopy[i].x--
+        if(rocksCopy[i].x < 0){
+          rocksCopy[i].x = 29
+          rocksCopy[i].y = Math.floor(Math.random() * 7) + 3
           rocksCopy[i].upright = Math.round(Math.random() * 1)
           rocksCopy[i].length = Math.floor(Math.random() * 7)
         }
       }
 
       for(let i = 0; i < rocksCopy.length; i++){
-        for(let j = 0; j < rocksCopy[i].height; j++){
+        for(let j = 0; j < rocksCopy[i].y; j++){
           for(let k = 0; k < rocksCopy[i].length; k++){
             if(rocksCopy[i].upright){
-              boardCopy[19-j][rocksCopy[i].position] = 'black'
-              boardCopy[19-j][rocksCopy[i].position + k] = 'black'
+              boardCopy[19-j][rocksCopy[i].x] = 'black'
+              boardCopy[19-j][rocksCopy[i].x + k] = 'black'
             }
             else {
-              boardCopy[j][rocksCopy[i].position] = 'black'
-              boardCopy[j][rocksCopy[i].position + k] = 'black'
+              boardCopy[j][rocksCopy[i].x] = 'black'
+              boardCopy[j][rocksCopy[i].x + k] = 'black'
             }
           }
         }
       }
 
       let shipCopy = this.state.ship
-      shipCopy.height++
+      shipCopy.y++
 
       for(let i = 0; i < 20; i++){
-        if(boardCopy[i][2] === 'black' && shipCopy.height === i){
-          shipCopy.height = 10
+        if(boardCopy[i][2] === 'black' && shipCopy.y === i){
+          shipCopy.y = 10
           this.setState({ gameOver: true})
           clearInterval(this.scoreId)
         }
       }
-      if(shipCopy.height < 0 || shipCopy.height > 19){
-        shipCopy.height = 10
+      if(shipCopy.y < 0 || shipCopy.y > 19){
+        shipCopy.y = 10
         this.setState({ gameOver: true })
         clearInterval(this.scoreId)
 
       }
 
-      boardCopy[shipCopy.height][shipCopy.position] = 'white'
+      boardCopy[shipCopy.y][shipCopy.x] = 'white'
 
 
       this.setState({ board: boardCopy, ship: shipCopy, rocks: rocksCopy})
@@ -97,6 +97,9 @@ class Explore extends React.Component {
 
 
     this.scoreId = setInterval( () => {
+      if(this.state.gameOver){
+        return
+      }
       let scoreCopy = ++this.state.score
       this.setState({ score: scoreCopy })
     }, 1000)
@@ -108,7 +111,7 @@ class Explore extends React.Component {
     }
     //for clicking
     let shipCopy = this.state.ship
-    shipCopy.height-= 2
+    shipCopy.y-= 2
     this.setState({ ship: shipCopy })
 
     // console.log(event)
@@ -155,7 +158,10 @@ class Explore extends React.Component {
         <div id="space-travel" tabIndex="0" onClick={this.handleFlying}>
         <Board board={this.state.board}/>
         {this.state.gameOver ?
-          <Button onClick={this.switchBack}>Return to Bunker</Button> : null
+          <div>
+            <Button onClick={this.switchBack}>Return to Bunker</Button>
+          </div>
+          : null
         }
         </div>
       </Grid.Column>

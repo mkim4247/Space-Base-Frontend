@@ -82,7 +82,7 @@ const setFloorsReducer = (state=[], action) => {
   }
 }
 
-const currentShopReducer = (state={shop_type: "Empty"}, action) => {
+const currentShopReducer = (state=null, action) => {
   switch(action.type){
     case "CHANGE_MENU":
       return action.shop
@@ -100,7 +100,7 @@ const allUsersReducer = (state=[], action) => {
     case "SET_ALL_USERS":
       return action.users
     default:
-      return state 
+      return state
   }
 }
 

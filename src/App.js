@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { NavLink, Route, Switch, Redirect, withRouter } from 'react-router'
-import { checkingToken } from './redux/actions'
-
+import { checkingToken, settingAllUsers } from './redux/actions'
 import './App.css';
 import 'semantic-ui-css/semantic.min.css'
 import Login from './components/Login'
 import Home from './components/Home'
 import CreateAccount from './components/CreateAccount'
 import About from './components/About'
-
+import UserProfile from './components/UserProfile'
 
 class App extends Component {
 
@@ -18,6 +17,7 @@ class App extends Component {
 
     if(token){
       this.props.checkingToken(token)
+      this.props.settingAllUsers()
     }
   }
 
@@ -40,8 +40,10 @@ class App extends Component {
             <Route exact path='/about' render={ () => (
                 <About />
               )} />
+            <Route path='/users/:username' render={ routerProps => (
+                <UserProfile {...routerProps}/>
+              )} />
 
-            
           </Switch>
       </div>
     );
@@ -54,4 +56,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default withRouter(connect(mapStateToProps, {checkingToken})(App));
+export default withRouter(connect(mapStateToProps, { checkingToken, settingAllUsers })(App));

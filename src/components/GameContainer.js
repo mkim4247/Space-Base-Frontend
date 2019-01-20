@@ -26,9 +26,7 @@ class GameContainer extends React.Component {
               <TowerContainer />
             </Grid.Column>
             <Grid.Column width={4}>
-              {this.props.shop.shop_type === "Empty" ?
-                <BuildMenu /> : <ShowInfo />
-              }
+              {this.props.shop === null ? <BuildMenu /> : this.props.shop.shop_type === 'Empty' ? <BuildMenu /> : <ShowInfo />}
             </Grid.Column>
           </Grid.Row>
         </Grid>
