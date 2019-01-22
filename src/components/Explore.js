@@ -41,58 +41,58 @@ class Explore extends React.Component {
         return
       }
 
-      let boardCopy = [];
+      let newBoard = [];
       for(let i = 0; i<20; i++){
-        boardCopy.push(new Array(30).fill('brown'))
+        newBoard.push(new Array(30).fill('brown'))
       }
 
-      let rocksCopy = [...this.state.rocks];
-      for(let i = 0; i < rocksCopy.length; i++){
-        rocksCopy[i].x--
-        if(rocksCopy[i].x < 0){
-          rocksCopy[i].x = 29
-          rocksCopy[i].y = Math.floor(Math.random() * 7) + 3
-          rocksCopy[i].upright = Math.round(Math.random() * 1)
-          rocksCopy[i].length = Math.floor(Math.random() * 7)
+      let newRocks = [...this.state.rocks];
+      for(let i = 0; i < newRocks.length; i++){
+        newRocks[i].x--
+        if(newRocks[i].x < 0){
+          newRocks[i].x = 29
+          newRocks[i].y = Math.floor(Math.random() * 7) + 3
+          newRocks[i].upright = Math.round(Math.random() * 1)
+          newRocks[i].length = Math.floor(Math.random() * 7)
         }
       }
 
-      for(let i = 0; i < rocksCopy.length; i++){
-        for(let j = 0; j < rocksCopy[i].y; j++){
-          for(let k = 0; k < rocksCopy[i].length; k++){
-            if(rocksCopy[i].upright){
-              boardCopy[19-j][rocksCopy[i].x] = 'black'
-              boardCopy[19-j][rocksCopy[i].x + k] = 'black'
+      for(let i = 0; i < newRocks.length; i++){
+        for(let j = 0; j < newRocks[i].y; j++){
+          for(let k = 0; k < newRocks[i].length; k++){
+            if(newRocks[i].upright){
+              newBoard[19-j][newRocks[i].x] = 'black'
+              newBoard[19-j][newRocks[i].x + k] = 'black'
             }
             else {
-              boardCopy[j][rocksCopy[i].x] = 'black'
-              boardCopy[j][rocksCopy[i].x + k] = 'black'
+              newBoard[j][newRocks[i].x] = 'black'
+              newBoard[j][newRocks[i].x + k] = 'black'
             }
           }
         }
       }
 
-      let shipCopy = this.state.ship
-      shipCopy.y++
+      let newShip = this.state.ship
+      newShip.y++
 
       for(let i = 0; i < 20; i++){
-        if(boardCopy[i][2] === 'black' && shipCopy.y === i){
-          shipCopy.y = 10
+        if(newBoard[i][2] === 'black' && newShip.y === i){
+          newShip.y = 10
           this.setState({ gameOver: true})
           clearInterval(this.scoreId)
         }
       }
-      if(shipCopy.y < 0 || shipCopy.y > 19){
-        shipCopy.y = 10
+      if(newShip.y < 0 || newShip.y > 19){
+        newShip.y = 10
         this.setState({ gameOver: true })
         clearInterval(this.scoreId)
 
       }
 
-      boardCopy[shipCopy.y][shipCopy.x] = 'white'
+      newBoard[newShip.y][newShip.x] = 'white'
 
 
-      this.setState({ board: boardCopy, ship: shipCopy, rocks: rocksCopy})
+      this.setState({ board: newBoard, ship: newShip, rocks: newRocks})
     }, 200)
 
 
@@ -110,27 +110,27 @@ class Explore extends React.Component {
       return
     }
     //for clicking
-    let shipCopy = this.state.ship
-    shipCopy.y-= 2
-    this.setState({ ship: shipCopy })
+    let newShip = this.state.ship
+    newShip.y-= 2
+    this.setState({ ship: newShip })
 
     // console.log(event)
-    // let shipCopy = this.state.ship
+    // let newShip = this.state.ship
     // if(event.key == 'w'){
-    //   shipCopy.height-= 1
-    //   this.setState({ship: shipCopy})
+    //   newShip.height-= 1
+    //   this.setState({ship: newShip})
     // }
     // else if(event.key == 's'){
-    //   shipCopy.height+= 1
-    //   this.setState({ship: shipCopy})
+    //   newShip.height+= 1
+    //   this.setState({ship: newShip})
     // }
     // else if(event.key == 'd'){
-    //   shipCopy.position++
-    //   this.setState({ship: shipCopy})
+    //   newShip.position++
+    //   this.setState({ship: newShip})
     // }
     // else if(event.key == 'a'){
-    //   shipCopy.position--
-    //   this.setState({ship: shipCopy})
+    //   newShip.position--
+    //   this.setState({ship: newShip})
     // }
   }
 

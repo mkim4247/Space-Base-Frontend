@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { setCurrentUser } from '../redux/actions'
-import { Menu } from 'semantic-ui-react'
+import { Menu, Modal } from 'semantic-ui-react'
 
 class Nav extends React.Component {
 
@@ -14,7 +14,7 @@ class Nav extends React.Component {
   render() {
     return (
       <div id='nav'>
-        <Menu size='huge'>
+        <Menu size='huge' inverted>
           <Menu.Menu position='right'>
             <Menu.Item
                 name="Home"

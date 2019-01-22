@@ -90,10 +90,10 @@ export const updateTower = tower => {
 
 export const updatingTowerShops = shop => {
   return (dispatch, getStore) => {
-    let value = getStore().tower.resources + parseInt(shop.price)
+    let value = getStore().tower.resources - shop.price
     let defense;
     if (shop.shop_type === "Defense"){
-      defense = getStore().tower.defense - (parseInt(shop.price)/5)
+      defense = getStore().tower.defense + shop.defense
     }
     else {
       defense = getStore().tower.defense

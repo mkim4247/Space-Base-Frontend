@@ -15,7 +15,6 @@ class GameContainer extends React.Component {
       <div>
         {this.props.gameMode ?
           <div id='game-container'>
-            {this.props.tower.name}
             <Grid>
               <Grid.Row columns={3}>
             <Grid.Column width={4}>

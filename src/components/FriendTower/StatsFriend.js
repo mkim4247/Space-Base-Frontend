@@ -1,8 +1,7 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import { Segment, Header, Statistic, Progress } from 'semantic-ui-react'
 
-class Stats extends React.Component {
+class StatsFriend extends React.Component {
   render(){
     return(
       <div id="stats">
@@ -34,8 +33,5 @@ class Stats extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return { tower: state.tower }
-}
 
-export default connect(mapStateToProps)(Stats)
+export default StatsFriend

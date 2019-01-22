@@ -16,11 +16,18 @@ class BuildMenu extends React.Component {
   }
 
   buildShop = event => {
-    if(this.props.tower.resources < parseInt(-1 * event.target.value)){
+    event.persist()
+    console.log(event.currentTarget)
+    let price = parseInt(-1 * event.currentTarget.value)
+
+    if(this.props.tower.resources < price){
       alert("Insufficient resources!")
     }
     else {
-      let shop = {...this.props.shop, shop_type: event.target.name, price: event.target.value}
+      if (event.currentTarget.name === "Defense"){
+        this.props.shop.defense = 10
+      }
+      let shop = {...this.props.shop, shop_type: event.currentTarget.name, price: parseInt(-1 * event.currentTarget.value), defense: 10}
       this.props.addingShop(shop)
       this.props.updatingTowerShops(shop)
       this.setState({ showModal: false })
@@ -46,9 +53,9 @@ class BuildMenu extends React.Component {
     return(
       <div id="build-menu">
         <Segment inverted>
-          <Header size='huge'> Build Menu </Header>
+          <Header size='huge'> BUILD: </Header>
             <hr/>
-          <Grid columns='equal'>
+          <Grid columns='equal' celled='internally'>
             <Grid.Row>
               <Grid.Column>
                 <Button
@@ -58,7 +65,6 @@ class BuildMenu extends React.Component {
                   color='blue'>
                     Housing
                 </Button>
-                <hr/>
               </Grid.Column>
             </Grid.Row>
             <Grid.Row>
@@ -70,7 +76,6 @@ class BuildMenu extends React.Component {
                   color='green'>
                     Food
                 </Button>
-                <hr/>
               </Grid.Column>
             </Grid.Row>
             <Grid.Row>
@@ -82,7 +87,6 @@ class BuildMenu extends React.Component {
                   color='yellow'>
                     Service
                 </Button>
-                <hr/>
               </Grid.Column>
             </Grid.Row>
             <Grid.Row>
@@ -94,7 +98,6 @@ class BuildMenu extends React.Component {
                   color='red'>
                     Defense
                 </Button>
-                <hr/>
               </Grid.Column>
             </Grid.Row>
           </Grid>

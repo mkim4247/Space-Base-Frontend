@@ -9,6 +9,7 @@ import Home from './components/Home'
 import CreateAccount from './components/CreateAccount'
 import About from './components/About'
 import UserProfile from './components/UserProfile'
+import NotFound from './components/NotFound'
 
 class App extends Component {
 
@@ -43,7 +44,7 @@ class App extends Component {
             <Route path='/users/:username' render={ routerProps => (
                 <UserProfile {...routerProps}/>
               )} />
-
+            <Route component={NotFound}/>
           </Switch>
       </div>
     );
