@@ -17,9 +17,10 @@ class Home extends React.Component {
       <div>
         <Nav />
         <div id='home'>
-          <Header inverted size='huge' align='center'>
-            Space Base
-          </Header>
+          <div className='home-header'>
+            SPACE BASE
+          </div>
+
           <GameContainer />
         </div>
       </div>
@@ -29,7 +30,7 @@ class Home extends React.Component {
 
 
 const mapStateToProps = state => {
-  return { currentUser: state.currentUser}
+  return { currentUser: state.currentUser }
 }
 
 

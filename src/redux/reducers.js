@@ -95,6 +95,15 @@ const currentShopReducer = (state=null, action) => {
   }
 }
 
+const statsMenuReducer = (state=true, action) => {
+  switch(action.type){
+    case "CHANGE_STATS":
+      return !state
+    default:
+      return state
+  }
+}
+
 const allUsersReducer = (state=[], action) => {
   switch(action.type){
     case "SET_ALL_USERS":
@@ -119,10 +128,9 @@ const rootReducer = combineReducers({
   floors: setFloorsReducer,
   currentShop: currentShopReducer,
   allUsers: allUsersReducer,
-  gameMode: gameModeReducer
+  gameMode: gameModeReducer,
+  statsMenu: statsMenuReducer
 })
-
-
 
 
 

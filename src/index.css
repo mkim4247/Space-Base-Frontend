@@ -31,7 +31,14 @@ code {
   background-color: black;
   text-align: center;
   margin: 0 auto;
-  /* font-family: 'VT323', monospace; */
+}
+
+.home-header {
+  font-family: 'VT323', monospace;
+  font-size: 120px;
+  color: white;
+  position: relative;
+  height: 5vh;
 }
 
 .login-form {
@@ -40,8 +47,23 @@ code {
   background-size: cover;
 }
 
+#login-header {
+  font-family: "VT323", monospace;
+  font-size: 108px;
+  margin: 200px;
+  position: absolute;
+}
+
 .create-form{
   background-color: black;
+  background-image: url('http://www.unoosa.org/res/timeline/index_html/space-2.jpg');
+  background-size: cover;
+}
+
+.edit-form{
+  background-color: black;
+  background-image: url('http://www.unoosa.org/res/timeline/index_html/space-2.jpg');
+  background-size: cover;
 }
 
 #nav {
@@ -159,6 +181,17 @@ code {
 
 #game-panel {
   background-color: black;
+  margin: 0 auto;
+}
+
+#leaderboard {
+  background-color: black;
+}
+
+#users-page {
+  height: 100vh;
+  background-color: black;
+  text-align: center;
   margin: 0 auto;
 }
 

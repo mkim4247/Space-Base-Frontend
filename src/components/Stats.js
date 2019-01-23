@@ -1,8 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Segment, Header, Statistic, Progress } from 'semantic-ui-react'
+import { switchStatMenu } from '../redux/actions'
+import { Segment, Header, Statistic, Progress, Button } from 'semantic-ui-react'
 
 class Stats extends React.Component {
+
+  switchMenu = event => {
+    this.props.switchStatMenu()
+  }
+
   render(){
     return(
       <div id="stats">
@@ -28,6 +34,9 @@ class Stats extends React.Component {
             </Statistic>
           </Statistic.Group>
           <Progress percent={this.props.tower.happiness} inverted progress color={ this.props.tower.happiness > 85 ? 'green' : this.props.tower.happiness < 50 ? 'red' : 'yellow'}/>
+          <Button onClick={this.switchMenu}>
+            VIEW TOWER STATS
+          </Button>
         </Segment>
       </div>
     )
@@ -35,7 +44,9 @@ class Stats extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return { tower: state.tower }
+  return {
+    tower: state.tower
+  }
 }
 
-export default connect(mapStateToProps)(Stats)
+export default connect(mapStateToProps, { switchStatMenu })(Stats)

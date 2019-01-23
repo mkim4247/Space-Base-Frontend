@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { setCurrentUser } from '../redux/actions'
-import { Menu, Modal } from 'semantic-ui-react'
+import { Menu, Modal, Icon } from 'semantic-ui-react'
 
 class Nav extends React.Component {
 
@@ -15,19 +15,34 @@ class Nav extends React.Component {
     return (
       <div id='nav'>
         <Menu size='huge' inverted>
+          <Menu.Menu position='left'>
+            <Menu.Item
+              as={NavLink}
+              to='/users'>
+              <Icon name='rocket'/>
+            </Menu.Item>
+          </Menu.Menu>
           <Menu.Menu position='right'>
             <Menu.Item
-                name="Home"
                 as={NavLink}
-                to='/' />
+                to='/'>
+              <Icon name='home'/>
+            </Menu.Item>
             <Menu.Item
-                name="About"
                 as={NavLink}
-                to='/about' />
+                to='/about' >
+              <Icon name='question circle outline'/>
+            </Menu.Item>
+            <Menu.Item
+                as={NavLink}
+                to='/edit'>
+              <Icon name='edit'/>
+            </Menu.Item>
             {this.props.currentUser ?
               <Menu.Item
-                name="Logout"
-                onClick={this.logout}/>
+                onClick={this.logout}>
+                <Icon name='log out'/>
+              </Menu.Item>
               :
                 <Menu.Item
                   as={NavLink}

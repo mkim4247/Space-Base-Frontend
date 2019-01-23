@@ -6,6 +6,7 @@ import TowerContainer from './TowerContainer'
 import BuildMenu from './BuildMenu'
 import ShowInfo from './ShowInfo'
 import Stats from './Stats'
+import TowerStats from './TowerStats'
 import Explore from './Explore'
 import GamePanel from './GamePanel'
 
@@ -18,7 +19,9 @@ class GameContainer extends React.Component {
             <Grid>
               <Grid.Row columns={3}>
             <Grid.Column width={4}>
-              <Stats />
+              {this.props.statsMenu ?
+                <Stats /> : <TowerStats />
+              }
             </Grid.Column>
             <Grid.Column width={8}>
               <GamePanel />
@@ -42,7 +45,8 @@ const mapStateToProps = state => {
   return {
     tower: state.tower,
     shop: state.currentShop,
-    gameMode: state.gameMode
+    gameMode: state.gameMode,
+    statsMenu: state.statsMenu
    }
 }
 

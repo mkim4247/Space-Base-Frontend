@@ -64,6 +64,31 @@ export const checkingToken = token => {
   }
 }
 
+/* FINISH THIS LATER */
+
+export const editingCurrentUser = user => {
+  console.log(user)
+  return (dispatch, getStore) => {
+    fetch(`http://localhost:4247/api/v1/users/${getStore().currentUser.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-type": "application/json"
+      },
+      body: JSON.stringify( {user} )
+    })
+    .then( res => res.json())
+    .then( data => {
+      if(data.errors){
+        alert(data.errors)
+      }
+      else{
+        console.log(data)
+        dispatch(setCurrentUser(data))
+      }
+    })
+  }
+}
+
 //////////
 
 export const setUserTower = tower => {
@@ -219,6 +244,10 @@ export const destroyingShop = shop => {
 
 export const setCurrentShop = shop => {
   return { type: "CHANGE_MENU", shop }
+}
+
+export const switchStatMenu = () => {
+  return { type: "CHANGE_STATS" }
 }
 
 ////////////

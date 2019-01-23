@@ -8,7 +8,7 @@ import GCFriend from './FriendTower/GCFriend'
 class UserProfile extends React.Component {
 
   render(){
-    console.log(this.props.user)
+    console.log(this.props)
     return(
       <div>
 

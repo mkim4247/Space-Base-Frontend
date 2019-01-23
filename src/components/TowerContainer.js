@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { applyingRateTower } from '../redux/actions'
+import { Segment } from 'semantic-ui-react'
 import Tower from './Tower'
 
 class TowerContainer extends React.Component {
@@ -180,7 +181,21 @@ class TowerContainer extends React.Component {
 
         function crime() {
 
-        }
+        }.bind(this),
+
+        function disease() {
+
+        }.bind(this),
+
+        function outOfBusiness() {
+
+        }.bind(this),
+
+        function contestWinner() {
+
+        }.bind(this),
+
+
 
       ]
 
@@ -190,17 +205,6 @@ class TowerContainer extends React.Component {
           basicEvents[index]()
         }
 
-        /*
-
-              4) Shop out of business
-                  (1-3% chance)
-              6) Crime
-              7) Disease
-              8)
-              9)
-              10)
-
-            */
     }, 500000)
   }
 
@@ -212,7 +216,9 @@ class TowerContainer extends React.Component {
   render(){
     return(
       <div id='tower-container'>
+        <Segment raised>
         <Tower />
+        </Segment>
       </div>
     )
   }

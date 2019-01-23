@@ -28,13 +28,13 @@ class GamePanel extends React.Component {
     const { showModal } = this.state
 
     return(
-      <div>
+      <div id='game-panel'>
       <Segment inverted>
         <Button
           inverted
           size='large'
           onClick={this.openModal}>
-            Explore!
+            <Icon name='space shuttle' inverted /> Explore! 
         </Button>
       </Segment>
 

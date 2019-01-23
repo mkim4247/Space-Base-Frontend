@@ -11,7 +11,8 @@ class BuildMenu extends React.Component {
       showModal: false,
       type: '',
       price: 0,
-      color: ''
+      color: '',
+      icon: ''
     }
   }
 
@@ -34,12 +35,12 @@ class BuildMenu extends React.Component {
     }
   }
 
-  openModal = (event, type, price, color) => {
+  openModal = (event, type, price, color, icon) => {
     if(this.props.shop === null){
       alert("You must select an empty shop first")
     }
     else {
-      this.setState({ showModal: true, type: type, price: price, color: color })
+      this.setState({ showModal: true, type: type, price: price, color: color, icon: icon })
     }
   }
 
@@ -58,48 +59,67 @@ class BuildMenu extends React.Component {
           <Grid columns='equal' celled='internally'>
             <Grid.Row>
               <Grid.Column>
-                <Button
-                  onClick={(e) => this.openModal(e, "Housing", 25, 'blue')}
-                  size='large'
-                  inverted
-                  color='blue'>
-                    Housing
-                </Button>
+                <Popup content="Costs 25 Resources" trigger={ <Button
+                    onClick={(e) => this.openModal(e, "Housing", 25, 'blue', 'home')}
+                    size='large'
+                    inverted
+                    color='blue'>
+                     Housing
+                  </Button>
+                  }/>
               </Grid.Column>
             </Grid.Row>
             <Grid.Row>
               <Grid.Column>
-                <Button
-                  onClick={(e) => this.openModal(e, "Food", 25, 'green')}
-                  size='large'
-                  inverted
-                  color='green'>
-                    Food
-                </Button>
+                <Popup content="Costs 25 Resources" trigger={
+                  <Button
+                    onClick={(e) => this.openModal(e, "Food", 25, 'green', 'utensils')}
+                    size='large'
+                    inverted
+                    color='green'>
+                      Food
+                  </Button>
+                }/>
               </Grid.Column>
             </Grid.Row>
             <Grid.Row>
               <Grid.Column>
-                <Button
-                  onClick={(e) => this.openModal(e, "Service", 30, 'yellow')}
-                  size='large'
-                  inverted
-                  color='yellow'>
-                    Service
-                </Button>
+                <Popup content="Costs 30 Resources" trigger={
+                  <Button
+                    onClick={(e) => this.openModal(e, "Service", 30, 'yellow', 'dollar sign')}
+                    size='large'
+                    inverted
+                    color='yellow'>
+                      Service
+                  </Button>
+                }/>
               </Grid.Column>
             </Grid.Row>
             <Grid.Row>
               <Grid.Column>
-                <Button
-                  onClick={(e) => this.openModal(e, "Defense", 50, 'red')}
-                  size='large'
-                  inverted
-                  color='red'>
-                    Defense
-                </Button>
+                <Popup content="Costs 50 Resources" trigger={
+                  <Button
+                    onClick={(e) => this.openModal(e, "Defense", 50, 'red', 'shield')}
+                    size='large'
+                    inverted
+                    color='red'>
+                      Defense
+                  </Button>
+                }/>
               </Grid.Column>
             </Grid.Row>
+            {this.props.tower.population > 30 ?
+              <Grid.Row>
+                <Grid.Column>
+                  <Button>
+                    ADVANCED SHIT!
+                  </Button>
+                </Grid.Column>
+              </Grid.Row>
+
+              :
+              null
+            }
           </Grid>
         </Segment>
 
@@ -111,6 +131,7 @@ class BuildMenu extends React.Component {
             dimmer='blurring'
             >
             <Modal.Content>
+              <Icon name={this.state.icon} size='large' circular inverted/>
               <Header inverted content={`Build a ${this.state.type} unit`} size='large'/>
               <Header inverted size='large' content={`This will cost ${this.state.price} resources. Build?`}/>
             </Modal.Content>

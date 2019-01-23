@@ -39,11 +39,12 @@ class CreateAccount extends React.Component {
         <Nav />
           <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
             <Grid.Column style={{ maxWidth: 500 }}>
-              <Header id='login-header' color='black' textAlign='center' size='huge'>
+              <Segment inverted>
+                <Header inverted size='large'>
                   Create an Account
-              </Header>
-              <Form size='large' onSubmit={this.handleSubmit}>
-                <Segment stacked>
+                </Header>
+              <Form inverted size='large' onSubmit={this.handleSubmit}>
+                <Segment stacked inverted>
                   <Form.Group widths='equal'>
                     <Form.Input
                       fluid
@@ -85,6 +86,7 @@ class CreateAccount extends React.Component {
                 <Button fluid> Create Account </Button>
               </Segment>
             </Form>
+            </Segment>
           </Grid.Column>
         </Grid>
       </div>
