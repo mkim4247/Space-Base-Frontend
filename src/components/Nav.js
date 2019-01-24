@@ -24,9 +24,16 @@ class Nav extends React.Component {
               to='/users'>
               <Icon name='rocket'/>
             </Menu.Item>
+
+            {this.props.muted ?
             <Menu.Item onClick={this.muteMusic}>
-              <Icon name='music'/>
+              <Icon name='play circle outline'/>
             </Menu.Item>
+            :
+            <Menu.Item onClick={this.muteMusic}>
+              <Icon name='pause circle outline'/>
+            </Menu.Item>
+            }
           </Menu.Menu>
           <Menu.Menu position='right'>
             <Menu.Item
