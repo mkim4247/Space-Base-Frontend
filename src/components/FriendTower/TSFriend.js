@@ -5,7 +5,6 @@ class TSFriend extends React.Component {
 
   render(){
     let shops = this.props.tower.floors.map(floor => floor.shops)
-    let resourcesShops = shops.flat().filter( shop => shop.shop_type !== "Housing" && shop.shop_type !== "Defense")
     let housingShops = shops.flat().filter( shop => shop.shop_type === "Housing")
     let foodShops = shops.flat().filter( shop => shop.shop_type === "Food")
     let serviceShops = shops.flat().filter( shop => shop.shop_type === "Service")

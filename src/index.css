@@ -13,6 +13,26 @@ code {
     monospace;
 }
 
+.example-enter {
+  opacity: 0.01;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+@keyframes spagett {
+  0% {opacity: 0}
+  100% {opacity: 1}
+}
+
+#spagett {
+  animation-name: spagett;
+  animation-duration: 7s;
+  animation-timing-function: ease-in-out;
+}
+
 @keyframes housingMovement {
   0% {transform: translate3d(-50px, 0px, 0px)}
   25% { transform: translate3d(-25px, 0px, 0px) }
@@ -118,8 +138,8 @@ code {
 
 #login-header {
   font-family: "VT323", monospace;
-  font-size: 200px;
-  margin: 350px;
+  font-size: 300px;
+  margin: 400px 250px;
   position: absolute;
 }
 
@@ -195,17 +215,33 @@ code {
 }
 
 .shop-container {
-  background-color: yellow;
+  background-color: grey;
   height: 100%;
 }
 
+@keyframes filledShop {
+  0% {opacity: 0}
+  100% {opacity: 1}
+}
+
 .filled-shop {
+  animation-name: filledShop;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
   height: 100%;
   background-color: blue;
   color: white;
 }
 
+@keyframes emptyShop {
+  0% {opacity: 0}
+  100% {opacity: 1}
+}
+
 .empty-shop {
+  animation-name: emptyShop;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
   height: 100%;
   border: 5px solid white;
   background-image: url(https://i.imgur.com/wEaXflm.png);
@@ -220,10 +256,18 @@ code {
 
 #lobby {
   background-image: url('https://i.imgur.com/g1Hyino.png');
-  background-size: 300px 100px;
+  background-size: 375px 100px;
+}
+
+@keyframes constructionFloor {
+  0% {opacity: 0}
+  100% {opacity: 1}
 }
 
 #construction-floor {
+  animation-name: constructionFloor;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
   border: 5px solid black;
   background-image: url('https://i.imgur.com/lpVyCws.png');
   background-size: 300px 100px;
@@ -285,14 +329,14 @@ code {
   background-color: black;
   text-align: center;
   margin: 0 auto;
-  background-image: url('https://media.giphy.com/media/X05U0gOPkQ4G4/giphy.gif');
+  background-image: url('https://images.pexels.com/photos/684441/pexels-photo-684441.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
   background-size: cover;
 }
 
 #not-found-header {
   margin: 0 auto;
   font-size: 275px;
-  color: red;
+  color: white;
 }
 
 .ui.segment {
@@ -378,4 +422,12 @@ i.inverted.circular.icon {
 .ui.text.container {
   font-family: 'VT323', monospace !important;
   font-size: 60px !important;
+}
+
+.ui.celled.grid {
+  height: 85% !important;
+}
+
+.ui[class*="center aligned"].grid {
+  height: 90% !important;
 }

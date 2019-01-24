@@ -5,7 +5,7 @@ class Lobby extends React.Component {
 
   //////ADD SHOP INFO on CLICK HERE
   showTowerInfo = () => {
-    console.log("hi")
+    console.log()
   }
 
   render(){
@@ -15,7 +15,6 @@ class Lobby extends React.Component {
         className='floor-container'
         style={{backgroundColor: 'white'}}
         onClick={this.showTowerInfo}>
-
       </div>
     )
   }

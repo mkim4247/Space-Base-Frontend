@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { applyingRateTower } from '../redux/actions'
-import { Modal, Container } from 'semantic-ui-react'
+import { Modal, Container, Icon } from 'semantic-ui-react'
 import Tower from './Tower'
 
 class TowerContainer extends React.Component {
@@ -10,7 +10,10 @@ class TowerContainer extends React.Component {
 
     this.state = {
       showModal: false,
-      content: ''
+      randomEvent: '',
+      content: '',
+      outcome: '',
+      icon: ''
     }
     /*  Regular Game Interval  */
     this.buildRateID = setInterval(() => {
@@ -65,7 +68,7 @@ class TowerContainer extends React.Component {
         population: newPopulation
       }
       this.props.applyingRateTower(tower)
-    }, 1000000
+    }, 100000
   )
 
 /* SETTING UP RANDOM EVENTS */
@@ -94,8 +97,7 @@ class TowerContainer extends React.Component {
           }
           let tower = {...this.props.tower, resources: Math.ceil(this.props.tower.resources + addResources)}
           this.props.applyingRateTower(tower)
-          this.openModal(`One of our exploration parties found a cache of resources! Use them wisely! Resources Gained: ${Math.ceil(addResources)}`)
-          console.log(`One of our exploration parties found a cache of resources! Use them wisely! Resources Gained: ${Math.ceil(addResources)}`)
+          this.openModal('Gimme Da Loot', `An exploration party found a cache of resources!`, `Resources Gained: ${Math.ceil(addResources)}`, 'smile outline')
         }.bind(this),
 
         function baseRepairs(){
@@ -114,8 +116,7 @@ class TowerContainer extends React.Component {
 
           let tower = {...this.props.tower, resources: newResources}
           this.props.applyingRateTower(tower)
-          this.openModal(`Our base sustained damages during a recent space storm and will require repairs. Resources Lost: ${Math.ceil(negResources)}`)
-          console.log(`Our base sustained damages during a recent space storm and will require repairs. Resources Lost: ${Math.ceil(negResources)}` )
+          this.openModal('Piece of Junk', `Our base was damaged during a space storm and requires repairs.`, `Resources Lost: ${Math.ceil(negResources)}`, 'frown outline')
         }.bind(this),
 
         function happinessBoost(){
@@ -125,8 +126,7 @@ class TowerContainer extends React.Component {
           }
           let tower = {...this.props.tower, happiness: addHappiness}
           this.props.applyingRateTower(tower)
-          this.openModal(`Our colony has been running smoothly, we received perfect scores on our last survey! Well done! Happiness Gained: 5`)
-          console.log(`Our colony has been running smoothly, we received perfect scores on our last survey! Well done! Happiness Gained: 5`)
+          this.openModal('Perfect Scores', `You received stellar ratings on Mission Command's last survey of your base!`, `Happiness Gained: 5`, 'smile outline')
         }.bind(this),
 
         function happinessLost(){
@@ -136,8 +136,7 @@ class TowerContainer extends React.Component {
           }
           let tower = {...this.props.tower, happiness: negHappiness}
           this.props.applyingRateTower(tower)
-          this.openModal(`We received some terribly low scores on our last base survey... Happiness Lost: 5`)
-          console.log(`We received some terribly low scores on our last base survey... Happiness Lost: 5`)
+          this.openModal('Homesick Homies', `People have been getting pretty homesick and morale is dropping....`, `Happiness Lost: 5`, 'frown outline')
         }.bind(this),
 
         function popBoost(){
@@ -145,8 +144,7 @@ class TowerContainer extends React.Component {
           let newPop = this.props.tower.population + addPop
           let tower = {...this.props.tower, population: newPop}
           this.props.applyingRateTower(tower)
-          this.openModal(`News has spread our base has been doing well, new colonists have arrived! Population gained: ${Math.ceil(addPop)}` )
-          console.log(`News has spread our base has been doing well, new colonists have arrived! Population gained: ${Math.ceil(addPop)}` )
+          this.openModal('House Party', `Got some new people that want to check out what the big fuss is about your base!`, `Population gained: ${Math.ceil(addPop)}`, 'smile outline' )
         }.bind(this),
 
         function popLost(){
@@ -157,8 +155,7 @@ class TowerContainer extends React.Component {
           }
           let tower = {...this.props.tower, population: newPop}
           this.props.applyingRateTower(tower)
-          this.openModal(`Some colonists have become disgruntled and decided to leave our base. Population Lost: ${Math.ceil(negPop)}`)
-          console.log(`Some colonists have become disgruntled and decided to leave our base. Population Lost: ${Math.ceil(negPop)}` )
+          this.openModal('This Party Sucks', `Some people couldn't take the space life anymore and decided to head back home...`, `Population Lost: ${Math.ceil(negPop)}`, 'frown outline')
         }.bind(this)
       ]
 
@@ -190,38 +187,39 @@ class TowerContainer extends React.Component {
             console.log("Our forces thwarted a surprise attack and chased them back to their base successfully!")
             console.log(`Resources Gained: ${newResources}. Happiness Gained: ${newHappiness}. Population Gained: ${newPopulation}`)
           }
-        }.bind(this),
+        }.bind(this)
 
-        function crime() {
-
-        },
-
-        function disease() {
-
-        },
-
-        function outOfBusiness() {
-
-        },
-
-        function contestWinner() {
-
-        },
-
+        // function crime() {
+        //
+        // },
+        //
+        // function disease() {
+        //
+        // },
+        //
+        // function outOfBusiness() {
+        //
+        // },
 
       ]
 
         if(controller > 0.5){
           let index = Math.floor(Math.random() * 6)
-          console.log(index)
           basicEvents[index]()
+        //   if(this.props.tower.population < 50){
+        //     let index = Math.floor(Math.random() * 6)
+        //     basicEvents[index]()
+        //   } else {
+        //     let index = Math.floor(Math.random() * 1)
+        //     advancedEvents[index]()
+        //   }
         }
 
-    }, 500000)
+    }, 5000000)
   }
 
-  openModal = (content) => {
-    this.setState({ showModal: true, content: content })
+  openModal = (randomEvent, content, outcome, icon) => {
+    this.setState({ showModal: true, randomEvent: randomEvent, content: content, outcome: outcome, icon: icon })
   }
 
   closeModal = () => {
@@ -247,9 +245,12 @@ class TowerContainer extends React.Component {
           >
           <Modal.Content style={{backgroundColor: 'black', color: 'white', border: '3px solid white'}}>
             <Container text>
-              EVENT:
-              <br/>
+            <Icon name={this.state.icon} size='large' inverted/>
+            {this.state.randomEvent}
+            <br/>
             {this.state.content}
+            <br/>
+            {this.state.outcome}
             </Container>
           </Modal.Content>
         </Modal>

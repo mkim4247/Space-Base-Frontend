@@ -58,7 +58,7 @@ export const checkingToken = token => {
     })
     .then(res => res.json())
     .then(data => {
-      console.log(data.user)
+      console.log('Valid Token')
       dispatch(setCurrentUser(data.user))
     })
   }
@@ -69,7 +69,6 @@ export const editCurrentUser = user => {
 }
 
 export const editingCurrentUser = user => {
-  console.log(user)
   return (dispatch, getStore) => {
     fetch(`http://localhost:4247/api/v1/users/${getStore().currentUser.id}`, {
       method: "PATCH",
@@ -84,7 +83,7 @@ export const editingCurrentUser = user => {
         alert(data.errors)
       }
       else{
-        console.log(data)
+        console.log('Updated Successfully')
         dispatch(editCurrentUser(data))
       }
     })
@@ -102,7 +101,6 @@ export const settingUserTower = () => {
     fetch(`http://localhost:4247/api/v1/users/${getStore().currentUser.id}`)
     .then(res => res.json())
     .then(user => {
-      console.log(user.tower)
       dispatch(setUserTower(user.tower))
       dispatch(setTowerFloors(user.tower.floors))
     })
@@ -194,7 +192,7 @@ export const addingFloor = floor => {
     })
     .then(res => res.json())
     .then(floor => {
-      console.log(floor)
+      console.log('Floor Built')
       dispatch(addFloor(floor))
     })
   }
@@ -263,7 +261,6 @@ export const settingAllUsers = () => {
   fetch('http://localhost:4247/api/v1/users/')
     .then(res => res.json())
     .then(users => {
-      console.log(users)
       dispatch(setAllUsers(users))
     })
   }

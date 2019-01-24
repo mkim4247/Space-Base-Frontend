@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import { Header } from 'semantic-ui-react'
 import Nav from './Nav'
 import GCFriend from './FriendTower/GCFriend'
@@ -8,13 +8,10 @@ import GCFriend from './FriendTower/GCFriend'
 class UserProfile extends React.Component {
 
   render(){
-    console.log(this.props)
     return(
       <div>
 
         {this.props.user ?
-
-
             <div>
               <Nav />
               <div id='home'>
@@ -24,11 +21,8 @@ class UserProfile extends React.Component {
                 <GCFriend tower={this.props.user.tower}/>
               </div>
             </div>
-
            :
-           <div>
-             User not found
-           </div>
+           <Redirect to='/404'/>
          }
 
       </div>
@@ -41,4 +35,4 @@ const mapStateToProps = (state, routerProps) => {
   return { user: state.allUsers.find(user => user.username === routerProps.match.params.username) }
 }
 
-export default withRouter(connect(mapStateToProps)(UserProfile))
+export default connect(mapStateToProps)(UserProfile)

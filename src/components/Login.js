@@ -53,15 +53,15 @@ class Login extends React.Component {
             textAlign='center'
             style={{ height: '100%' }}
             verticalAlign='middle'>
-          <Grid.Column style={{ maxWidth: 300 }}>
-            <Button animated onClick={this.openModal} size='huge'>
-              <Button.Content visible>
+          <Grid.Column style={{ maxWidth: 400 }}>
+            <Button animated onClick={this.openModal}>
+              <Button.Content visible style={{fontSize: '60px', width:'90%'}}>
               START GAME
               </Button.Content>
               <Button.Content hidden>
-                <Icon name='angle double right' />
-                <Icon name='space shuttle'/>
-                <Icon name='angle double right' />
+                <Icon name='angle double right' size='large' />
+                <Icon name='space shuttle' size='large'/>
+                <Icon name='angle double right' size='large' />
               </Button.Content>
             </Button>
           </Grid.Column>
@@ -77,9 +77,9 @@ class Login extends React.Component {
         <Modal.Actions>
           <Grid
               textAlign='center'
-              style={{ height: '100%' }}
+              style={{ height: '100%', paddingTop: '300px' }}
               verticalAlign='middle'>
-            <Grid.Column style={{ maxWidth: 300 }}>
+            <Grid.Column style={{ maxWidth: 500 }}>
           <Form inverted size='large' onSubmit={this.handleLoginSubmit}>
             <Segment inverted stacked>
               <Form.Input
@@ -104,7 +104,7 @@ class Login extends React.Component {
             </Segment>
           </Form>
           <Segment inverted>
-          <Message inverted>
+          <Message>
             <Link to='/new'>
               CREATE ACCOUNT
             </Link>

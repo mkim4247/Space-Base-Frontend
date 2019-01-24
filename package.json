@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "react": "^16.7.0",
+    "react-addons-css-transition-group": "^15.6.2",
     "react-confirm": "^0.1.18",
     "react-dom": "^16.7.0",
     "react-redux": "^6.0.0",

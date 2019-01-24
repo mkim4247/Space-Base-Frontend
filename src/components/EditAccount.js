@@ -5,9 +5,6 @@ import { editingCurrentUser } from '../redux/actions'
 import { Form, Grid, Header, Segment, Button } from 'semantic-ui-react'
 import Nav from './Nav'
 
-/* FINISH THIS LATER */
-
-
 class EditAccount extends React.Component {
   constructor(props){
     super(props)

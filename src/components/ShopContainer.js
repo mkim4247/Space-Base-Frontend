@@ -8,6 +8,7 @@ class ShopContainer extends React.Component {
   render(){
     return(
       <div className='shop-container'>
+
         <Grid>
           <Grid.Row>
             {this.props.shopsArr.map( shop => (
@@ -16,10 +17,12 @@ class ShopContainer extends React.Component {
                     width={8}
                     key={shop.id}
                     style={{height: "100%", padding: "0px"}}>
+
                   <Shop
                     shopObj={shop}
                     key={shop.id}/>
                 </Grid.Column>
+
               :
                 <Grid.Column
                     width={8}

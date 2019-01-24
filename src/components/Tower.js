@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import FloorContainer from './FloorContainer'
 import ConstructionFloor from './ConstructionFloor'
 import Lobby from './Lobby'
+// import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class Tower extends React.Component {
   render(){

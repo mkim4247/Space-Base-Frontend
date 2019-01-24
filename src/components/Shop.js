@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { setCurrentShop } from '../redux/actions'
 import { Header } from 'semantic-ui-react'
+
 import blue1 from '../images/Alien_sprites/alienBlue_walk1.png'
 import blue2 from '../images/Alien_sprites/alienBlue_walk2.png'
 import blue3 from '../images/Alien_sprites/alienBlue_walk3.png'
@@ -43,15 +44,15 @@ class Shop extends React.Component {
     this.blueTurnID = setInterval(this.blueTurnImg, 3000)
 
     this.pink = [pink1, pink2, pink3, pink4]
-    this.pinkWalkingID = setInterval(this.pinkToggleImg, 300)
-    this.pinkTurnID = setInterval(this.pinkTurnImg, 3000)
+    this.pinkWalkingID = setInterval(this.pinkToggleImg, 50)
+    this.pinkTurnID = setInterval(this.pinkTurnImg, 2950)
 
     this.yellow = [yellow1, yellow2, yellow3, yellow4]
     this.yellowWalkingID = setInterval(this.yellowToggleImg, 300)
-    this.yellowTurnID = setInterval(this.yellowTurnImg, 2800)
+    this.yellowTurnID = setInterval(this.yellowTurnImg, 3000)
 
     this.green = [green1, green2, green3, green4]
-    this.greenWalkingID = setInterval(this.greenToggleImg, 300)
+    this.greenWalkingID = setInterval(this.greenToggleImg, 150)
     this.greenTurnID = setInterval(this.greenTurnImg, 3000)
   }
 
@@ -67,7 +68,6 @@ class Shop extends React.Component {
 
   blueToggleImg = () => {
     let current = this.state.blueImg
-    let bool = this.state.blueTurn
     if(current === blue1){
       current = blue2
     } else if(current === blue2){
@@ -92,7 +92,6 @@ class Shop extends React.Component {
 
   pinkToggleImg = () => {
     let current = this.state.pinkImg
-    let bool = this.state.pinkTurn
     if(current === pink1){
       current = pink2
     } else if(current === pink2){
@@ -117,7 +116,6 @@ class Shop extends React.Component {
 
   yellowToggleImg = () => {
     let current = this.state.yellowImg
-    let bool = this.state.yellowTurn
     if(current === yellow1){
       current = yellow2
     } else if(current === yellow2){
@@ -142,7 +140,6 @@ class Shop extends React.Component {
 
   greenToggleImg = () => {
     let current = this.state.greenImg
-    let bool = this.state.greenTurn
     if(current === green1){
       current = green2
     } else if(current === green2){
@@ -171,7 +168,7 @@ class Shop extends React.Component {
       case "Service":
         return this.state.yellowImg
       default:
-        return this.blue[0]
+        return this.state.blueImg
     }
   }
 
@@ -180,22 +177,22 @@ class Shop extends React.Component {
       case "Housing":
        return {
          backgroundImage: 'url(https://i.imgur.com/z3ao9Dg.png)',
-         backgroundSize: '235px 90px',
+         backgroundSize: '300px 90px',
          border: '5px solid blue'}
       case "Defense":
         return {
           backgroundImage: 'url(https://i.imgur.com/nAMGg3m.png)',
-          backgroundSize: '235px 90px',
+          backgroundSize: '300px 90px',
           border: '5px solid red'}
       case "Food":
         return {
           backgroundImage: 'url(https://i.imgur.com/8BRc717.png)',
-          backgroundSize: '235px 90px',
+          backgroundSize: '300px 90px',
           border: '5px solid green'}
       case "Service":
         return {
           backgroundImage: 'url(https://i.imgur.com/A3gjjc3.png)',
-          backgroundSize: '235px 90px',
+          backgroundSize: '300px 90px',
           border: '5px solid yellow'}
         default:
           return {
@@ -204,73 +201,40 @@ class Shop extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    clearInterval(this.blueWalkingID)
+    clearInterval(this.blueTurnID)
+
+    clearInterval(this.pinkWalkingID)
+    clearInterval(this.pinkTurnID)
+
+    clearInterval(this.yellowWalkingID)
+    clearInterval(this.yellowTurnID)
+
+    clearInterval(this.greenWalkingID)
+    clearInterval(this.greenTurnID)
+  }
 
   render(){
 
     return(
+
+
       <div
-        onDragOver={ e => this.onDragOver(e)}
         onClick={this.showInfo}
         className="filled-shop"
         style={this.setBackground()}>
           <Header size='medium'> {this.props.shopObj.shop_type.toUpperCase()} </Header>
-            <img draggable onClick={()=>console.log("OUCH")} src={this.setAlien()} className={this.props.shopObj.shop_type} />
+            <img onClick={()=>console.log("OUCH")} src={this.setAlien()}
+            alt={this.props.shopObj.shop_type}
+            className={this.props.shopObj.shop_type} />
       </div>
     )
   }
 }
 
+
+
+
+
 export default connect(null, { setCurrentShop })(Shop)
-
-
-
-//
-// class Animal extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       animationName: ''
-//     };
-//   }
-//
-//   clickHdl() {
-//     let styleSheet = document.styleSheets[0];
-//
-//     let animationName = `animation${Math.round(Math.random() * 100)}`;
-//
-//     let keyframes =
-//     `@-webkit-keyframes ${animationName} {
-//         10% {-webkit-transform:translate(${Math.random() * 300}px, ${Math.random() * 300}px)}
-//         90% {-webkit-transform:translate(${Math.random() * 300}px, ${Math.random() * 300}px)}
-//         100% {-webkit-transform:translate(${Math.random() * 300}px, ${Math.random() * 300}px)}
-//     }`;
-//
-//     styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
-//
-//     this.setState({
-//       animationName: animationName
-//     });
-//   }
-//
-//   render () {
-//     let style = {
-//       animationName: this.state.animationName,
-//       animationTimingFunction: 'ease-in-out',
-//       animationDuration: '0.6s',
-//       animationDelay: '0.0s',
-//       animationIterationCount: 1,
-//       animationDirection: 'normal',
-//       animationFillMode: 'forwards'
-//     };
-//
-//     return (
-//       <div>
-//         <button type="button" onClick={this.clickHdl.bind(this)}>Animation!</button>
-//         <div className="box" style={style}></div>
-//       </div>
-//
-//     );
-//   }
-// }
-//
-// React.render(<Animal/>, document.body);

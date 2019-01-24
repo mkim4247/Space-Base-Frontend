@@ -59,7 +59,7 @@ class BuildMenu extends React.Component {
           <Grid columns='equal' celled='internally'>
             <Grid.Row>
               <Grid.Column>
-                <Popup content="Costs 25 Resources" trigger={ <Button
+                <Popup content="COSTS 25 RESOURCES" trigger={ <Button
                     onClick={(e) => this.openModal(e, "Housing", 25, 'blue', 'bed')}
                     size='large'
                     inverted
@@ -71,7 +71,7 @@ class BuildMenu extends React.Component {
             </Grid.Row>
             <Grid.Row>
               <Grid.Column>
-                <Popup content="Costs 25 Resources" trigger={
+                <Popup content="COSTS 25 RESOURCES" trigger={
                   <Button
                     onClick={(e) => this.openModal(e, "Food", 25, 'green', 'utensils')}
                     size='large'
@@ -84,7 +84,7 @@ class BuildMenu extends React.Component {
             </Grid.Row>
             <Grid.Row>
               <Grid.Column>
-                <Popup content="Costs 30 Resources" trigger={
+                <Popup content="COSTS 30 RESOURCES" trigger={
                   <Button
                     onClick={(e) => this.openModal(e, "Service", 30, 'yellow', 'dollar sign')}
                     size='large'
@@ -97,7 +97,7 @@ class BuildMenu extends React.Component {
             </Grid.Row>
             <Grid.Row>
               <Grid.Column>
-                <Popup content="Costs 50 Resources" trigger={
+                <Popup content="COSTS 50 RESOURCES" trigger={
                   <Button
                     onClick={(e) => this.openModal(e, "Defense", 50, 'red', 'shield')}
                     size='large'

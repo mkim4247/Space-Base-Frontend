@@ -52,6 +52,9 @@ class App extends Component {
               <Route path='/users/:username' render={ routerProps => (
                   <UserProfile {...routerProps}/>
                 )} />
+              <Route path='/404' render={ () => (
+                  <NotFound />
+                )} />
             <Route component={NotFound}/>
           </Switch>
       </div>
