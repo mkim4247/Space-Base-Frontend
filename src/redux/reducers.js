@@ -125,6 +125,15 @@ const gameModeReducer = (state=true, action) => {
   }
 }
 
+const muteMusicReducer = (state=false, action) => {
+  switch(action.type){
+    case "MUTE_MUSIC":
+      return !state
+    default:
+      return state
+  }
+}
+
 const rootReducer = combineReducers({
   currentUser: setUserReducer,
   tower: setTowerReducer,
@@ -132,7 +141,8 @@ const rootReducer = combineReducers({
   currentShop: currentShopReducer,
   allUsers: allUsersReducer,
   gameMode: gameModeReducer,
-  statsMenu: statsMenuReducer
+  statsMenu: statsMenuReducer,
+  muted: muteMusicReducer
 })
 
 

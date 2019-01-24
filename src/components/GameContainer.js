@@ -9,11 +9,21 @@ import Stats from './Stats'
 import TowerStats from './TowerStats'
 import Explore from './Explore'
 import GamePanel from './GamePanel'
+import ReactAudioPlayer from 'react-audio-player';
+import sound from '../audio/WheresmySpaceship.mp3'
 
 class GameContainer extends React.Component {
+
   render(){
     return(
       <div>
+        <ReactAudioPlayer
+          src={sound}
+          autoPlay={true}
+          loop={true}
+          muted={this.props.muted}
+          />
+
         {this.props.gameMode ?
           <div id='game-container'>
             <Grid>
@@ -46,7 +56,8 @@ const mapStateToProps = state => {
     tower: state.tower,
     shop: state.currentShop,
     gameMode: state.gameMode,
-    statsMenu: state.statsMenu
+    statsMenu: state.statsMenu,
+    muted: state.muted
    }
 }
 

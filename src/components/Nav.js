@@ -1,13 +1,17 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import { setCurrentUser } from '../redux/actions'
+import { setCurrentUser, muteMusic } from '../redux/actions'
 import { Menu, Icon } from 'semantic-ui-react'
 
 class Nav extends React.Component {
   logout = () => {
     this.props.setCurrentUser(null)
     localStorage.clear()
+  }
+
+  muteMusic = () => {
+    this.props.muteMusic()
   }
 
   render() {
@@ -19,6 +23,9 @@ class Nav extends React.Component {
               as={NavLink}
               to='/users'>
               <Icon name='rocket'/>
+            </Menu.Item>
+            <Menu.Item onClick={this.muteMusic}>
+              <Icon name='music'/>
             </Menu.Item>
           </Menu.Menu>
           <Menu.Menu position='right'>
@@ -57,7 +64,7 @@ class Nav extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return { currentUser: state.currentUser }
+  return { currentUser: state.currentUser, muted: state.muted }
 }
 
-export default connect(mapStateToProps, { setCurrentUser })(Nav)
+export default connect(mapStateToProps, { setCurrentUser, muteMusic })(Nav)

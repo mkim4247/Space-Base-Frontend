@@ -271,3 +271,9 @@ export const settingAllUsers = () => {
 export const switchGameMode = () => {
   return { type: "SWITCH_MODE" }
 }
+
+/////////////////
+
+export const muteMusic = () => {
+  return { type: "MUTE_MUSIC" }
+}

@@ -2,8 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { switchGameMode, applyingRateTower } from '../redux/actions'
 import { Header, Button, Grid } from 'semantic-ui-react'
+import ReactAudioPlayer from 'react-audio-player';
+import sound from '../audio/Pixel adventures.mp3'
 
-///////////// CHECK IF EDGES END GAME
 class Explore extends React.Component {
   constructor(props){
     super(props)
@@ -141,6 +142,13 @@ class Explore extends React.Component {
 
   render(){
     return (
+      <div>
+        <ReactAudioPlayer
+          src={sound}
+          autoPlay={true}
+          loop={true}
+          />
+
       <Grid>
         <Grid.Row columns={2}>
         <Grid.Column width={4}>
@@ -165,6 +173,7 @@ class Explore extends React.Component {
     </Grid.Row>
   </Grid>
 
+  </div>
     )
   }
 }
