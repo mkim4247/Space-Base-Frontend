@@ -21,7 +21,7 @@ class GameContainer extends React.Component {
           src={sound}
           autoPlay={true}
           loop={true}
-          muted={this.props.muted}
+          muted={this.props.muted ? this.props.muted : false}
           />
 
         {this.props.gameMode ?

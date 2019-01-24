@@ -55,10 +55,10 @@ class Login extends React.Component {
             verticalAlign='middle'>
           <Grid.Column style={{ maxWidth: 400 }}>
             <Button animated onClick={this.openModal}>
-              <Button.Content visible style={{fontSize: '60px', width:'90%'}}>
+              <Button.Content visible style={{fontSize: '60px', width:'90%', color: 'rgb(193, 144, 212)'}}>
               START GAME
               </Button.Content>
-              <Button.Content hidden>
+              <Button.Content hidden style={{color: 'rgb(193, 144, 212)'}}>
                 <Icon name='angle double right' size='large' />
                 <Icon name='space shuttle' size='large'/>
                 <Icon name='angle double right' size='large' />
@@ -100,12 +100,12 @@ class Login extends React.Component {
                 name='password'
                 onChange={this.handleChange}
                 placeholder="password"/>
-              <Button> LOGIN </Button>
+              <Button style={{color: 'rgb(193, 144, 212)'}}> LOGIN </Button>
             </Segment>
           </Form>
           <Segment inverted>
-          <Message>
-            <Link to='/new'>
+          <Message >
+            <Link to='/new' style={{color: 'rgb(193, 144, 212)', fontWeight: 'bold'}}>
               CREATE ACCOUNT
             </Link>
           </Message>

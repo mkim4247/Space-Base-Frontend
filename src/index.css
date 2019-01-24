@@ -139,6 +139,8 @@ code {
 #login-header {
   font-family: "VT323", monospace;
   font-size: 300px;
+  color: rgb(193, 144, 212);
+  font-style: oblique;
   margin: 400px 250px;
   position: absolute;
 }
