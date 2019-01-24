@@ -1,17 +1,18 @@
 import React from 'react'
+import Nav from './Nav'
 
 class NotFound extends React.Component {
-  constructor(props){
-    super(props)
-  }
 
   render(){
     return(
       <div>
-      <h1> This Page Does Not Exist </h1>
-    <img src="https://media.giphy.com/media/X05U0gOPkQ4G4/giphy.gif" />
-    </div>
-  )
-}
+        <Nav />
+        <div id='not-found'>
+          <h1 id='not-found-header' style={{fontFamily: 'VT323, monospace'}}> Page Not Found </h1>
+        </div>
+      </div>
+
+    )
+  }
 }
 export default NotFound

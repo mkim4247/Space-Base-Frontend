@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { settingCurrentUser } from '../redux/actions'
-import { Button, Form, Grid, Header, Segment, Message, Modal } from 'semantic-ui-react'
+import { Button, Form, Grid, Segment, Message, Modal, Icon } from 'semantic-ui-react'
 
 class Login extends React.Component {
   constructor(){
@@ -48,14 +48,21 @@ class Login extends React.Component {
         <div id='login-header'>
           SPACE BASE
         </div>
-        
+
         <Grid
             textAlign='center'
             style={{ height: '100%' }}
             verticalAlign='middle'>
           <Grid.Column style={{ maxWidth: 300 }}>
-            <Button onClick={this.openModal}>
+            <Button animated onClick={this.openModal} size='huge'>
+              <Button.Content visible>
               START GAME
+              </Button.Content>
+              <Button.Content hidden>
+                <Icon name='angle double right' />
+                <Icon name='space shuttle'/>
+                <Icon name='angle double right' />
+              </Button.Content>
             </Button>
           </Grid.Column>
         </Grid>
@@ -93,13 +100,13 @@ class Login extends React.Component {
                 name='password'
                 onChange={this.handleChange}
                 placeholder="password"/>
-              <Button> Login </Button>
+              <Button> LOGIN </Button>
             </Segment>
           </Form>
           <Segment inverted>
-          <Message>
+          <Message inverted>
             <Link to='/new'>
-              CREATE AN ACCOUNT
+              CREATE ACCOUNT
             </Link>
           </Message>
           </Segment>

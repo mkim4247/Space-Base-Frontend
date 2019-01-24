@@ -15,7 +15,7 @@ class Stats extends React.Component {
         <Segment inverted align='center'>
           <Header size='huge'>BASE STATS:</Header>
             <hr/>
-          <Statistic.Group horizontal size='small'>
+          <Statistic.Group horizontal>
             <Statistic inverted>
               <Statistic.Value>  {this.props.tower.resources}  </Statistic.Value>
               <Statistic.Label> Resources </Statistic.Label>

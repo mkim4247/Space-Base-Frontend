@@ -2,10 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { setCurrentUser } from '../redux/actions'
-import { Menu, Modal, Icon } from 'semantic-ui-react'
+import { Menu, Icon } from 'semantic-ui-react'
 
 class Nav extends React.Component {
-
   logout = () => {
     this.props.setCurrentUser(null)
     localStorage.clear()

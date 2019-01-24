@@ -44,8 +44,10 @@ class ConstructionFloor extends React.Component {
         id='construction-floor'
         className='floor-container'
         onClick={this.openModal}>
-        <h3> BUILD NEW FLOOR </h3>
-        <h3> 500 RESOURCES </h3>
+        <br/>
+        BUILD NEW FLOOR
+        <br/>
+        500 RESOURCES
       </div>
 
       <Modal

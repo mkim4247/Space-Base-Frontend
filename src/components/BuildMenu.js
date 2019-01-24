@@ -54,17 +54,17 @@ class BuildMenu extends React.Component {
     return(
       <div id="build-menu">
         <Segment inverted>
-          <Header size='huge'> BUILD: </Header>
+          <Header size='huge'> BUILD UNIT: </Header>
             <hr/>
           <Grid columns='equal' celled='internally'>
             <Grid.Row>
               <Grid.Column>
                 <Popup content="Costs 25 Resources" trigger={ <Button
-                    onClick={(e) => this.openModal(e, "Housing", 25, 'blue', 'home')}
+                    onClick={(e) => this.openModal(e, "Housing", 25, 'blue', 'bed')}
                     size='large'
                     inverted
                     color='blue'>
-                     Housing
+                     HOUSING
                   </Button>
                   }/>
               </Grid.Column>
@@ -77,7 +77,7 @@ class BuildMenu extends React.Component {
                     size='large'
                     inverted
                     color='green'>
-                      Food
+                      FOOD
                   </Button>
                 }/>
               </Grid.Column>
@@ -90,7 +90,7 @@ class BuildMenu extends React.Component {
                     size='large'
                     inverted
                     color='yellow'>
-                      Service
+                      SERVICE
                   </Button>
                 }/>
               </Grid.Column>
@@ -103,23 +103,11 @@ class BuildMenu extends React.Component {
                     size='large'
                     inverted
                     color='red'>
-                      Defense
+                      DEFENSE
                   </Button>
                 }/>
               </Grid.Column>
             </Grid.Row>
-            {this.props.tower.population > 30 ?
-              <Grid.Row>
-                <Grid.Column>
-                  <Button>
-                    ADVANCED SHIT!
-                  </Button>
-                </Grid.Column>
-              </Grid.Row>
-
-              :
-              null
-            }
           </Grid>
         </Segment>
 
@@ -180,3 +168,61 @@ const mapStateToProps = state => {
 
 
 export default connect(mapStateToProps, { setCurrentShop, addingShop, updatingTowerShops })(BuildMenu)
+
+
+/*
+            {this.props.tower.population > 30 ?
+              <div>
+                <Segment inverted align='center'>
+                  <hr/>
+                  <Header size='huge'> ADVANCED UNITS: </Header>
+                    <hr/>
+                  <Grid columns='equal' celled='internally'>
+              <Grid.Row>
+                <Grid.Column>
+                  <Popup content="Costs 100 Resources" trigger={
+                    <Button
+                      onClick={(e) => this.openModal(e, "Science", 100, 'purple', 'lightbulb outline')}
+                      size='large'
+                      inverted
+                      color='purple'>
+                        SCIENCE
+                    </Button>
+                  }/>
+                </Grid.Column>
+              </Grid.Row>
+
+              <Grid.Row>
+                <Grid.Column>
+                  <Popup content="Costs 100 Resources" trigger={
+                    <Button
+                      onClick={(e) => this.openModal(e, "Science", 100, 'purple', 'lightbulb outline')}
+                      size='large'
+                      inverted
+                      color='purple'>
+                        SCIENCE
+                    </Button>
+                  }/>
+                </Grid.Column>
+              </Grid.Row>
+
+              <Grid.Row>
+                <Grid.Column>
+                  <Popup content="Costs 100 Resources" trigger={
+                    <Button
+                      onClick={(e) => this.openModal(e, "Science", 100, 'purple', 'lightbulb outline')}
+                      size='large'
+                      inverted
+                      color='purple'>
+                        SCIENCE
+                    </Button>
+                  }/>
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+          </Segment>
+        </div>
+              :
+              null
+            }
+*/

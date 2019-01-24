@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { NavLink, Route, Switch, Redirect, withRouter } from 'react-router'
+import { Route, Switch, Redirect, withRouter } from 'react-router'
 import { checkingToken, settingAllUsers } from './redux/actions'
 import './App.css';
 import 'semantic-ui-css/semantic.min.css'
@@ -61,7 +61,8 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    currentUser: state.currentUser
+    currentUser: state.currentUser,
+    tower: state.tower
   }
 }
 

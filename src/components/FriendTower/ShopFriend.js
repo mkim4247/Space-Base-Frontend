@@ -25,6 +25,10 @@ class ShopFriend extends React.Component {
           backgroundImage: 'url(https://i.imgur.com/A3gjjc3.png)',
           backgroundSize: '235px 90px',
           border: '5px solid yellow'}
+        default:
+          return {
+            backgroundColor: 'black'
+          }
     }
   }
 

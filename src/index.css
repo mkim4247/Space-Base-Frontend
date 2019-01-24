@@ -13,32 +13,101 @@ code {
     monospace;
 }
 
-/* @keyframes aliens {
-  0% {transform: translateX(-100px)}
-  100% {transform: translateX(100px)}
+@keyframes housingMovement {
+  0% {transform: translate3d(-50px, 0px, 0px)}
+  25% { transform: translate3d(-25px, 0px, 0px) }
+  50% {transform: translate3d(0px, 0px, 0px);}
+  75% { transform: translate3d(-25px, 0px, 0px) }
+  100% {transform: translate3d(-50px, 0px, 0px)}
 }
 
-.aliens {
-  animation-name: aliens;
-  animation-duration: 3s;
-  animation-timing-function: ease-in-out;
+.Housing {
+  animation-name: housingMovement;
+  animation-duration: 6s;
+  animation-timing-function: steps(12, end);
   animation-iteration-count: infinite;
-  animation-direction: alternate;
-} */
+  /* animation-direction: alternate; */
+  height: 50px;
+  padding-bottom: 15px;
+}
+
+@keyframes defenseMovement {
+  0% {transform: translate3d(-100px, 0px, 0px)}
+  25% { transform: translate3d(0px, 0px, 0px) }
+  50% {transform: translate3d(100px, 0px, 0px);}
+  75% { transform: translate3d(0px, 0px, 0px) }
+  100% {transform: translate3d(-100px, 0px, 0px)}
+}
+
+.Defense {
+  animation-name: defenseMovement;
+  animation-duration: 6s;
+  animation-timing-function: steps(12, end);
+  animation-iteration-count: infinite;
+  /* animation-direction: alternate; */
+  height: 50px;
+  padding-bottom: 15px;
+}
+
+@keyframes foodMovement {
+  0% {transform: translate3d(100px, 0px, 0px)}
+  25% { transform: translate3d(50px, 0px, 0px) }
+  50% {transform: translate3d(0px, 0px, 0px);}
+  75% { transform: translate3d(50px, 0px, 0px) }
+  100% {transform: translate3d(100px, 0px, 0px)}
+}
+
+.Food {
+  animation-name: foodMovement;
+  animation-duration: 6s;
+  animation-timing-function: steps(12, end);
+  animation-iteration-count: infinite;
+  /* animation-direction: alternate; */
+  height: 50px;
+  padding-bottom: 15px;
+}
+
+@keyframes serviceMovement {
+  0% {transform: translate3d(70px, 0px, 0px)}
+  25% { transform: translate3d(35px, 0px, 0px) }
+  50% {transform: translate3d(-0px, 0px, 0px);}
+  75% { transform: translate3d(35px, 0px, 0px) }
+  100% {transform: translate3d(70px, 0px, 0px)}
+}
+
+.Service {
+  animation-name: serviceMovement;
+  animation-duration: 6s;
+  animation-timing-function: steps(12, end);
+  animation-iteration-count: infinite;
+  /* animation-direction: alternate; */
+  height: 50px;
+  padding-bottom: 15px;
+}
 
 #home {
   height: 100vh;
   background-color: black;
   text-align: center;
   margin: 0 auto;
+  color: white;
 }
 
 .home-header {
   font-family: 'VT323', monospace;
-  font-size: 120px;
+  font-size: 150px;
   color: white;
   position: relative;
   height: 5vh;
+  text-decoration: underline;
+}
+
+#about {
+  height: 100vh;
+  background-color: black;
+  text-align: center;
+  margin: 0 auto;
+  color: white;
 }
 
 .login-form {
@@ -49,21 +118,21 @@ code {
 
 #login-header {
   font-family: "VT323", monospace;
-  font-size: 108px;
-  margin: 200px;
+  font-size: 200px;
+  margin: 350px;
   position: absolute;
 }
 
 .create-form{
-  background-color: black;
-  background-image: url('http://www.unoosa.org/res/timeline/index_html/space-2.jpg');
+  background-image: url('https://cdn.cnn.com/cnnnext/dam/assets/160309165344-exoplanets-artwork-tease-super-169.jpg');
   background-size: cover;
+  height: 100%
 }
 
 .edit-form{
-  background-color: black;
-  background-image: url('http://www.unoosa.org/res/timeline/index_html/space-2.jpg');
+  background-image: url('https://cdn.cnn.com/cnnnext/dam/assets/160309165344-exoplanets-artwork-tease-super-169.jpg');
   background-size: cover;
+  height: 100vh;
 }
 
 #nav {
@@ -85,7 +154,7 @@ code {
   background-color: black;
   background-image: url('https://i.pinimg.com/474x/9d/76/49/9d7649649e8b7abb44d0d1629c2f20bf--pixel-art-videogames.jpg');
   background-position: fixed;
-  background-size: 1500px 500px;
+  background-size: 2100px 750px;
   background-repeat: no-repeat;
 }
 
@@ -105,8 +174,9 @@ code {
 }
 
 #tower-container {
-  margin: 275px auto 50px auto;
+  margin: 515px auto 50px auto;
   /* padding: 3px; */
+  border: 20px solid grey;
   width: 70%;
 }
 
@@ -116,7 +186,7 @@ code {
 }
 
 .floor-container {
-  border: 5px solid black;
+  border: 3px solid black;
   height: 100px;
 }
 
@@ -143,6 +213,9 @@ code {
   color: white;
   min-width: 100%;
   width: 100%;
+  font-family: 'VT323', monospace;
+  font-size: 40px;
+  color: red;
 }
 
 #lobby {
@@ -154,6 +227,9 @@ code {
   border: 5px solid black;
   background-image: url('https://i.imgur.com/lpVyCws.png');
   background-size: 300px 100px;
+  font-family: 'VT323', monospace;
+  font-size: 40px;
+  color: black;
 }
 
 #stats {
@@ -182,6 +258,8 @@ code {
 #game-panel {
   background-color: black;
   margin: 0 auto;
+  width: 30%;
+  border: 5px solid white;
 }
 
 #leaderboard {
@@ -195,6 +273,56 @@ code {
   margin: 0 auto;
 }
 
+#holder {
+  display:block;
+  margin: 20px auto 0 auto;
+  width:800px;
+  height:600px;
+}
+
+#not-found {
+  height: 100vh;
+  background-color: black;
+  text-align: center;
+  margin: 0 auto;
+  background-image: url('https://media.giphy.com/media/X05U0gOPkQ4G4/giphy.gif');
+  background-size: cover;
+}
+
+#not-found-header {
+  margin: 0 auto;
+  font-size: 275px;
+  color: red;
+}
+
+.ui.segment {
+  font-family: 'VT323', monospace !important;
+}
+
+.ui.medium.header {
+  font-family: 'VT323', monospace !important;
+  font-size: 40px !important;
+}
+
+.ui.button {
+  font-family: 'VT323', monospace !important;
+  font-size: 20px !important;
+}
+
+.ui.inverted.segment>.ui.header {
+  font-family: 'VT323', monospace !important;
+  font-size: 50px !important;
+}
+.ui.horizontal.statistics .statistic>.value {
+  font-family: 'VT323', monospace !important;
+  font-size: 80px !important;
+}
+
+.ui.horizontal.statistics .statistic>.label {
+  font-family: 'VT323', monospace !important;
+  font-size: 35px !important
+}
+
 .ui.grid {
   margin: 0px !important;
   height: 100% !important;
@@ -203,4 +331,51 @@ code {
 .ui.grid>.row {
   padding: 0px !important;
   height: 100% !important;
+}
+
+.ui.divider:not(.vertical):not(.horizontal) {
+  font-family: 'VT323', monospace !important;
+  font-size: 40px !important
+}
+
+.ui.form .inverted.segment label {
+  font-family: 'VT323', monospace !important;
+  font-size: 22px !important
+}
+
+.ui.form .field .ui.input input, .ui.form .fields .field .ui.input input {
+  font-family: 'VT323', monospace !important;
+  font-size: 22px !important
+}
+
+.ui.message:last-child{
+  font-family: 'VT323', monospace !important;
+  font-size: 20px !important
+}
+
+.ui.inverted.header {
+  font-family: 'VT323', monospace !important;
+  font-size: 60px !important
+}
+
+i.inverted.circular.icon {
+  font-size: 50px !important
+}
+
+.ui.green.inverted.progress .bar {
+  font-size: 20px !important
+}
+
+.ui.grid>.column.row>[class=*="eight wide"].column,.ui.grid>.row>[class*="eight wide"].column, {
+  font-size: 30px;
+}
+
+.ui.modal>.icon:first-child+* {
+  font-family: 'VT323', monospace !important;
+  font-size: 60px !important
+}
+
+.ui.text.container {
+  font-family: 'VT323', monospace !important;
+  font-size: 60px !important;
 }

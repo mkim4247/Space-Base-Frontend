@@ -1,7 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router'
 import { editingCurrentUser } from '../redux/actions'
-import { Form, Grid, Header, Segment, Button, Message } from 'semantic-ui-react'
+import { Form, Grid, Header, Segment, Button } from 'semantic-ui-react'
 import Nav from './Nav'
 
 /* FINISH THIS LATER */
@@ -13,7 +14,8 @@ class EditAccount extends React.Component {
     this.state = {
       name: props.currentUser.name,
       username: props.currentUser.username,
-      email: props.currentUser.email
+      email: props.currentUser.email,
+      submitted: false
     }
   }
 
@@ -25,10 +27,15 @@ class EditAccount extends React.Component {
 
   handleSubmit = (event) => {
     this.props.editingCurrentUser(this.state)
+    this.setState({ submitted: true })
   };
 
   render(){
     return(
+
+      this.state.submitted ?
+        <Redirect to='/' /> :
+
     <div className='edit-form'>
       <style>{`
           body > div,
@@ -79,13 +86,14 @@ class EditAccount extends React.Component {
                     onChange={this.handleChange}/>
                 </Form.Group>
 
-              <Button fluid> Edit Account </Button>
+              <Button fluid> Submit </Button>
             </Segment>
           </Form>
           </Segment>
         </Grid.Column>
       </Grid>
     </div>
+
     )
   }
 }

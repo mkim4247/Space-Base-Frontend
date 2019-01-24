@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Header } from 'semantic-ui-react'
 import FloorContainer from './FloorContainer'
 import ConstructionFloor from './ConstructionFloor'
 import Lobby from './Lobby'

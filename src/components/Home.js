@@ -1,9 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Route, Switch, Redirect, withRouter } from 'react-router'
-import { Link } from 'react-router-dom'
 import { settingUserTower, settingAllUsers } from '../redux/actions'
-import { Header } from 'semantic-ui-react'
 import Nav from './Nav'
 import GameContainer from './GameContainer'
 

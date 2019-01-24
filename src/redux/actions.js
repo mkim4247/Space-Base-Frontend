@@ -64,7 +64,9 @@ export const checkingToken = token => {
   }
 }
 
-/* FINISH THIS LATER */
+export const editCurrentUser = user => {
+  return { type: "EDIT_CURRENT_USER", user}
+}
 
 export const editingCurrentUser = user => {
   console.log(user)
@@ -83,7 +85,7 @@ export const editingCurrentUser = user => {
       }
       else{
         console.log(data)
-        dispatch(setCurrentUser(data))
+        dispatch(editCurrentUser(data))
       }
     })
   }

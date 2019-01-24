@@ -28,19 +28,15 @@ class ShowInfo extends React.Component {
   assignInfo = () => {
     if(this.props.shop.shop_type === "Food"){
       this.props.shop.price = -20
-      this.props.shop.info = "5 Meals"
+      this.props.shop.info = "5 Meals & Inc Res Rate"
     }
     else if(this.props.shop.shop_type === "Housing"){
       this.props.shop.price = -20
       this.props.shop.info = "5 Rooms"
     }
-    // else if(this.props.shop.shop_type === "Recreation"){
-    //   this.props.shop.price = 30
-    //   this.props.shop.info = "5 Rec Provided"
-    // }
     else if(this.props.shop.shop_type === "Service"){
       this.props.shop.price = -25
-      // this.props.shop.info = "5 Services Provided"
+      this.props.shop.info = "1.5x Resource Rate"
     }
     else if(this.props.shop.shop_type === "Defense"){
       this.props.shop.price = -30
@@ -58,7 +54,7 @@ class ShowInfo extends React.Component {
         <Segment inverted align='center'>
           <Header size="huge"> SHOP INFO: </Header>
           <hr/>
-          <Statistic.Group horizontal size='small' align='center'>
+          <Statistic.Group horizontal align='center'>
             <Statistic inverted>
               <Statistic.Value>
                 {this.props.shop.shop_type}

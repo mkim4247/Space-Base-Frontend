@@ -1,10 +1,7 @@
 import React from 'react'
-import { Segment, Header, Statistic, Button } from 'semantic-ui-react'
+import { Segment, Header, Statistic } from 'semantic-ui-react'
 
 class TSFriend extends React.Component {
-  constructor(props){
-    super(props)
-  }
 
   render(){
     let shops = this.props.tower.floors.map(floor => floor.shops)
@@ -46,7 +43,7 @@ class TSFriend extends React.Component {
               <Statistic.Value> {serviceShops.length} </Statistic.Value>
               <Statistic.Label> # of Service Units </Statistic.Label>
             </Statistic>
-            <Statistic inverted color={ emptyShops.length > 0 ? 'yellow' : 'white' }>
+            <Statistic inverted color={ emptyShops.length > 0 ? 'yellow' : null }>
               <Statistic.Value> {emptyShops.length} </Statistic.Value>
               <Statistic.Label> # of Empty Units </Statistic.Label>
             </Statistic>

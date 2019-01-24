@@ -1,23 +1,29 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { applyingRateTower } from '../redux/actions'
-import { Segment } from 'semantic-ui-react'
+import { Modal, Container } from 'semantic-ui-react'
 import Tower from './Tower'
 
 class TowerContainer extends React.Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
+
+    this.state = {
+      showModal: false,
+      content: ''
+    }
     /*  Regular Game Interval  */
     this.buildRateID = setInterval(() => {
       let shops = this.props.floors.map(floor => floor.shops)
       let resourcesShops = shops.flat().filter( shop => shop.shop_type !== "Housing" && shop.shop_type !== "Defense")
       let housingShops = shops.flat().filter( shop => shop.shop_type === "Housing")
       let foodShops = shops.flat().filter( shop => shop.shop_type === "Food")
+      let serviceShops = shops.flat().filter( shop => shop.shop_type === "Service")
 
     /* resources ROI:
         # of food/service * 10 + pop size */
-      let resourcesGained = 10 * resourcesShops.length
-      let newResources = this.props.tower.resources + resourcesGained + this.props.tower.population
+      let resourcesGained = 10 * ((serviceShops.length * 1.5) + foodShops.length)
+      let newResources = this.props.tower.resources + resourcesGained
     /* Happiness ROI:
         # req = pop size/5
           req vs # food/housing =>
@@ -88,6 +94,7 @@ class TowerContainer extends React.Component {
           }
           let tower = {...this.props.tower, resources: Math.ceil(this.props.tower.resources + addResources)}
           this.props.applyingRateTower(tower)
+          this.openModal(`One of our exploration parties found a cache of resources! Use them wisely! Resources Gained: ${Math.ceil(addResources)}`)
           console.log(`One of our exploration parties found a cache of resources! Use them wisely! Resources Gained: ${Math.ceil(addResources)}`)
         }.bind(this),
 
@@ -107,6 +114,7 @@ class TowerContainer extends React.Component {
 
           let tower = {...this.props.tower, resources: newResources}
           this.props.applyingRateTower(tower)
+          this.openModal(`Our base sustained damages during a recent space storm and will require repairs. Resources Lost: ${Math.ceil(negResources)}`)
           console.log(`Our base sustained damages during a recent space storm and will require repairs. Resources Lost: ${Math.ceil(negResources)}` )
         }.bind(this),
 
@@ -117,6 +125,7 @@ class TowerContainer extends React.Component {
           }
           let tower = {...this.props.tower, happiness: addHappiness}
           this.props.applyingRateTower(tower)
+          this.openModal(`Our colony has been running smoothly, we received perfect scores on our last survey! Well done! Happiness Gained: 5`)
           console.log(`Our colony has been running smoothly, we received perfect scores on our last survey! Well done! Happiness Gained: 5`)
         }.bind(this),
 
@@ -127,6 +136,7 @@ class TowerContainer extends React.Component {
           }
           let tower = {...this.props.tower, happiness: negHappiness}
           this.props.applyingRateTower(tower)
+          this.openModal(`We received some terribly low scores on our last base survey... Happiness Lost: 5`)
           console.log(`We received some terribly low scores on our last base survey... Happiness Lost: 5`)
         }.bind(this),
 
@@ -135,6 +145,7 @@ class TowerContainer extends React.Component {
           let newPop = this.props.tower.population + addPop
           let tower = {...this.props.tower, population: newPop}
           this.props.applyingRateTower(tower)
+          this.openModal(`News has spread our base has been doing well, new colonists have arrived! Population gained: ${Math.ceil(addPop)}` )
           console.log(`News has spread our base has been doing well, new colonists have arrived! Population gained: ${Math.ceil(addPop)}` )
         }.bind(this),
 
@@ -146,6 +157,7 @@ class TowerContainer extends React.Component {
           }
           let tower = {...this.props.tower, population: newPop}
           this.props.applyingRateTower(tower)
+          this.openModal(`Some colonists have become disgruntled and decided to leave our base. Population Lost: ${Math.ceil(negPop)}`)
           console.log(`Some colonists have become disgruntled and decided to leave our base. Population Lost: ${Math.ceil(negPop)}` )
         }.bind(this)
       ]
@@ -174,6 +186,7 @@ class TowerContainer extends React.Component {
             let tower = {...this.props.tower, resources: this.props.tower.resources + newResources, happiness: this.props.tower.happiness + newHappiness, population: this.props.tower.population + newPopulation}
 
             this.props.applyingRateTower(tower)
+
             console.log("Our forces thwarted a surprise attack and chased them back to their base successfully!")
             console.log(`Resources Gained: ${newResources}. Happiness Gained: ${newHappiness}. Population Gained: ${newPopulation}`)
           }
@@ -181,20 +194,19 @@ class TowerContainer extends React.Component {
 
         function crime() {
 
-        }.bind(this),
+        },
 
         function disease() {
 
-        }.bind(this),
+        },
 
         function outOfBusiness() {
 
-        }.bind(this),
+        },
 
         function contestWinner() {
 
-        }.bind(this),
-
+        },
 
 
       ]
@@ -208,17 +220,39 @@ class TowerContainer extends React.Component {
     }, 500000)
   }
 
+  openModal = (content) => {
+    this.setState({ showModal: true, content: content })
+  }
+
+  closeModal = () => {
+    this.setState({ showModal: false })
+  }
+
   componentWillUnmount(){
     clearInterval(this.eventID)
     clearInterval(this.buildRateID)
   }
 
   render(){
+    const { showModal } = this.state
     return(
       <div id='tower-container'>
-        <Segment raised>
         <Tower />
-        </Segment>
+
+        <Modal
+          closeIcon
+          onClose={this.closeModal}
+          open={showModal}
+          dimmer='blurring'
+          >
+          <Modal.Content style={{backgroundColor: 'black', color: 'white', border: '3px solid white'}}>
+            <Container text>
+              EVENT:
+              <br/>
+            {this.state.content}
+            </Container>
+          </Modal.Content>
+        </Modal>
       </div>
     )
   }

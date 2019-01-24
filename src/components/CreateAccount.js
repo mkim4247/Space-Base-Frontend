@@ -1,7 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { creatingNewUser } from '../redux/actions'
-import { Form, Grid, Header, Segment, Button, Message } from 'semantic-ui-react'
+import { Redirect } from 'react-router'
+import { Form, Grid, Header, Segment, Button } from 'semantic-ui-react'
 import Nav from './Nav'
 
 class CreateAccount extends React.Component {
@@ -11,7 +12,8 @@ class CreateAccount extends React.Component {
       name: "",
       username: "",
       email: "",
-      password: ""
+      password: "",
+      submitted: false
     }
   }
 
@@ -23,10 +25,14 @@ class CreateAccount extends React.Component {
 
   handleSubmit = (event) => {
     this.props.creatingNewUser(this.state)
+    this.setState({ submitted: true })
   };
 
   render(){
     return(
+      this.state.submitted ?
+      <Redirect to='/about'/> :
+
       <div className='create-form'>
         <style>{`
             body > div,
@@ -83,7 +89,7 @@ class CreateAccount extends React.Component {
                       type='password'
                       onChange={this.handleChange}/>
                   </Form.Group>
-                <Button fluid> Create Account </Button>
+                <Button fluid> Submit </Button>
               </Segment>
             </Form>
             </Segment>

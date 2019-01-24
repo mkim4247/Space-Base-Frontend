@@ -5,6 +5,9 @@ const setUserReducer = (state=null, action) => {
   switch(action.type){
     case "SET_CURRENT_USER":
       return action.user
+    case "EDIT_CURRENT_USER":
+      let user = {...action.user}
+      return user
     default:
       return state
   }

@@ -17,12 +17,12 @@ class Explore extends React.Component {
     board[ship.y][ship.x] = 'white'
 
     let rocks = [];
-    for(let i = 0; i<20; i++){
-      let x = Math.floor(Math.random() * 25);
+    for(let i = 0; i<30; i++){
+      let x = 10 + i;
       let y = Math.floor(Math.random() * 7);
       let u = Math.round(Math.random() * 1);
-      let l = Math.floor(Math.random() * 10)
-      rocks.push({ x: 10 + x, y: y, upright: u, length: l })
+      let l = Math.floor(Math.random() * (10 - 5) + 5)
+      rocks.push({ x: x, y: y, upright: u, length: l })
     }
 
     /* Create Game Environment */
@@ -51,23 +51,20 @@ class Explore extends React.Component {
         newRocks[i].x--
         if(newRocks[i].x < 0){
           newRocks[i].x = 29
-          newRocks[i].y = Math.floor(Math.random() * 7) + 3
+          newRocks[i].y = Math.floor(Math.random() * (10 - 7) + 7)
           newRocks[i].upright = Math.round(Math.random() * 1)
-          newRocks[i].length = Math.floor(Math.random() * 7)
         }
       }
 
       for(let i = 0; i < newRocks.length; i++){
         for(let j = 0; j < newRocks[i].y; j++){
-          for(let k = 0; k < newRocks[i].length; k++){
             if(newRocks[i].upright){
               newBoard[19-j][newRocks[i].x] = 'black'
-              newBoard[19-j][newRocks[i].x + k] = 'black'
+              newBoard[19-j][newRocks[i].x] = 'black'
             }
             else {
               newBoard[j][newRocks[i].x] = 'black'
-              newBoard[j][newRocks[i].x + k] = 'black'
-            }
+              newBoard[j][newRocks[i].x] = 'black'
           }
         }
       }
@@ -136,7 +133,7 @@ class Explore extends React.Component {
 
   switchBack = () => {
     // this.setState({gameOver: false}
-    let winnings = this.state.score * 5
+    let winnings = this.state.score * 2
     let tower = {...this.props.tower, resources: this.props.tower.resources + winnings}
     this.props.applyingRateTower(tower)
     this.props.switchGameMode()
@@ -151,7 +148,7 @@ class Explore extends React.Component {
           Time Alive: {this.state.score}
         </Header>
         <Header inverted size='huge'>
-          Resources Collected: {this.state.score * 5}
+          Resources Collected: {this.state.score * 2}
         </Header>
       </Grid.Column>
       <Grid.Column width={8}>
