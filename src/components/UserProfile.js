@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { Header } from 'semantic-ui-react'
 import Nav from './Nav'
-import GCFriend from './FriendTower/GCFriend'
+import PresGameContainer from './FriendTowerComponents/PresGameContainer'
 
 class UserProfile extends React.Component {
 
@@ -18,7 +18,7 @@ class UserProfile extends React.Component {
                 <Header inverted size='huge' align='center'>
                   Space Base
                 </Header>
-                <GCFriend tower={this.props.user.tower}/>
+                <PresGameContainer tower={this.props.user.tower}/>
               </div>
             </div>
            :

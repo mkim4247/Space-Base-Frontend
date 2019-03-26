@@ -1,8 +1,7 @@
 import React from 'react'
 import { Header } from 'semantic-ui-react'
 
-class ShopFriend extends React.Component {
-
+class PresShop extends React.Component {
   setBackground = () => {
     switch(this.props.shopObj.shop_type){
       case "Housing":
@@ -25,10 +24,10 @@ class ShopFriend extends React.Component {
           backgroundImage: 'url(https://i.imgur.com/A3gjjc3.png)',
           backgroundSize: '235px 90px',
           border: '5px solid yellow'}
-        default:
-          return {
-            backgroundColor: 'black'
-          }
+      default:
+        return {
+          backgroundColor: 'black'
+        }
     }
   }
 
@@ -37,10 +36,12 @@ class ShopFriend extends React.Component {
       <div
         className="filled-shop"
         style={this.setBackground()}>
-          <Header size='medium'> {this.props.shopObj.shop_type.toUpperCase()} </Header>
+          <Header size='medium'>
+            {this.props.shopObj.shop_type.toUpperCase()}
+          </Header>
       </div>
     )
   }
 }
 
-export default ShopFriend
+export default PresShop
