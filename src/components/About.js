@@ -1,7 +1,9 @@
 import React from 'react'
 import Nav from './Nav'
+import { connect } from 'react-redux'
 import { Container, Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+import { readRules } from '../redux/actions'
 
 class About extends React.Component {
 
@@ -34,7 +36,7 @@ class About extends React.Component {
                 <p>  - Lastly, be prepared for anything, you never know what random events will occur </p>
 
                 <Link to='/'>
-                  <Button inverted color='purple'>
+                  <Button inverted color='purple' onClick={this.props.readRules}>
                       GOOD LUCK!
                   </Button>
                 </Link>
@@ -45,4 +47,4 @@ class About extends React.Component {
   }
 }
 
-export default About
+export default connect(null, { readRules })(About)

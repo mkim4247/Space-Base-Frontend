@@ -68,7 +68,7 @@ class TowerContainer extends React.Component {
         population: newPopulation
       }
       this.props.applyingRateTower(tower)
-    }, 100000
+    }, 3000
   )
 
 /* SETTING UP RANDOM EVENTS */
@@ -215,7 +215,7 @@ class TowerContainer extends React.Component {
         //   }
         }
 
-    }, 5000000)
+    }, 10000)
   }
 
   openModal = (randomEvent, content, outcome, icon) => {

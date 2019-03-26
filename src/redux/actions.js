@@ -43,6 +43,7 @@ export const creatingNewUser = user => {
         console.log(data)
         dispatch(setCurrentUser(data.user))
         localStorage.setItem('token', data.token)
+        dispatch(startNewGame())
       }
     })
   }
@@ -276,4 +277,12 @@ export const switchGameMode = () => {
 
 export const muteMusic = () => {
   return { type: "MUTE_MUSIC" }
+}
+
+export const startNewGame = () => {
+  return { type: "NEW_GAME" }
+}
+
+export const readRules = () => {
+  return { type: "OLD_GAME" }
 }

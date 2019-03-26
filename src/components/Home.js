@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { settingUserTower, settingAllUsers } from '../redux/actions'
 import Nav from './Nav'
 import GameContainer from './GameContainer'
+import { Redirect } from 'react-router'
 
 class Home extends React.Component {
   componentDidMount(){
@@ -11,6 +12,9 @@ class Home extends React.Component {
 
   render(){
     return(
+      this.props.newGame ?
+      <Redirect to='/about'/>
+      :
       <div>
         <Nav />
         <div id='home'>
@@ -27,7 +31,10 @@ class Home extends React.Component {
 
 
 const mapStateToProps = state => {
-  return { currentUser: state.currentUser }
+  return {
+    currentUser: state.currentUser,
+    newGame: state.newGame
+  }
 }
 
 

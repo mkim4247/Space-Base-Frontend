@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { creatingNewUser } from '../redux/actions'
-import { Redirect } from 'react-router'
 import { Form, Grid, Header, Segment, Button } from 'semantic-ui-react'
 import Nav from './Nav'
 
@@ -12,8 +11,7 @@ class CreateAccount extends React.Component {
       name: "",
       username: "",
       email: "",
-      password: "",
-      submitted: false
+      password: ""
     }
   }
 
@@ -25,13 +23,10 @@ class CreateAccount extends React.Component {
 
   handleSubmit = (event) => {
     this.props.creatingNewUser(this.state)
-    this.setState({ submitted: true })
   };
 
   render(){
     return(
-      this.state.submitted ?
-      <Redirect to='/about'/> :
 
       <div className='create-form'>
         <style>{`

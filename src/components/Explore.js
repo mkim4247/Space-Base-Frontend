@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { switchGameMode, applyingRateTower } from '../redux/actions'
+import { switchGameMode, applyingRateTower, muteMusic } from '../redux/actions'
 import { Header, Button, Grid } from 'semantic-ui-react'
 import ReactAudioPlayer from 'react-audio-player';
 import sound from '../audio/Pixel adventures.mp3'
@@ -137,6 +137,7 @@ class Explore extends React.Component {
     let winnings = this.state.score * 2
     let tower = {...this.props.tower, resources: this.props.tower.resources + winnings}
     this.props.applyingRateTower(tower)
+    this.props.muteMusic()
     this.props.switchGameMode()
   }
 
@@ -181,11 +182,12 @@ class Explore extends React.Component {
 const mapStateToProps = state => {
   return {
     gameMode: state.gameMode,
-    tower: state.tower
+    tower: state.tower,
+    muted: state.muted
   }
 }
 
-export default connect(mapStateToProps, { switchGameMode, applyingRateTower })(Explore)
+export default connect(mapStateToProps, { switchGameMode, applyingRateTower, muteMusic })(Explore)
 
 
 ///////////////////////////
