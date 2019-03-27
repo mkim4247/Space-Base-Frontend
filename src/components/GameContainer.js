@@ -13,7 +13,6 @@ import ReactAudioPlayer from 'react-audio-player';
 import sound from '../audio/WheresmySpaceship.mp3'
 
 class GameContainer extends React.Component {
-
   render(){
     return(
       <div>
@@ -21,31 +20,38 @@ class GameContainer extends React.Component {
           src={sound}
           autoPlay={true}
           loop={true}
-          muted={this.props.muted ? this.props.muted : false}
-          />
+          muted={this.props.muted ? this.props.muted : false}/>
 
         {this.props.gameMode ?
           <div id='game-container'>
             <Grid>
               <Grid.Row columns={3}>
-            <Grid.Column width={4}>
-              {this.props.statsMenu ?
-                <Stats /> : <TowerStats />
-              }
-            </Grid.Column>
-            <Grid.Column width={8}>
-              <GamePanel />
-              <TowerContainer />
-            </Grid.Column>
-            <Grid.Column width={4}>
-              {this.props.shop === null ? <BuildMenu /> : this.props.shop.shop_type === 'Empty' ? <BuildMenu /> : <ShowInfo />}
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-
-
-      </div> :
-      <Explore />}
+                <Grid.Column width={4}>
+                  {this.props.statsMenu ?
+                    <Stats />
+                    :
+                    <TowerStats />
+                  }
+                </Grid.Column>
+                <Grid.Column width={8}>
+                  <GamePanel />
+                  <TowerContainer />
+                </Grid.Column>
+                <Grid.Column width={4}>
+                  {this.props.shop === null ?
+                    <BuildMenu />
+                    :
+                    this.props.shop.shop_type === 'Empty' ?
+                      <BuildMenu />
+                      :
+                      <ShowInfo />}
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+          </div>
+          :
+          <Explore />
+        }
       </div>
     )
   }

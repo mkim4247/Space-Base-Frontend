@@ -1,13 +1,11 @@
 import { combineReducers } from 'redux'
 
-
 const setUserReducer = (state=null, action) => {
   switch(action.type){
     case "SET_CURRENT_USER":
       return action.user
     case "EDIT_CURRENT_USER":
-      let user = {...action.user}
-      return user
+      return action.user
     default:
       return state
   }
@@ -33,7 +31,6 @@ const setFloorsReducer = (state=[], action) => {
         return floor.shops.sort( (a,b) => a.id - b.id)
       })
       return floors
-
     case "ADD_FLOOR":
       return [...state, action.floor]
     case "ADD_SHOP":
@@ -54,32 +51,32 @@ const setFloorsReducer = (state=[], action) => {
           return f
         }
       })
-        floors.forEach( floor => {
+      floors.forEach( floor => {
         return floor.shops.sort( (a,b) => a.id - b.id)
       })
       return floors
     case "DESTROY_SHOP":
       floors = state.map( f => {
-      if(f.id === action.shop.floor_id){
-        let shops = f.shops.map( s => {
-          if(s.id === action.shop.id){
-            return action.shop
-          }
-          else {
-            return s
-          }
-        })
-        f.shops = shops
-        return f
-      }
-      else {
-        return f
-      }
-    })
-    floors.forEach( floor => {
-      return floor.shops.sort( (a,b) => a.id - b.id)
-    })
-    return floors
+        if(f.id === action.shop.floor_id){
+          let shops = f.shops.map( s => {
+            if(s.id === action.shop.id){
+              return action.shop
+            }
+            else {
+              return s
+            }
+          })
+          f.shops = shops
+          return f
+        }
+        else {
+          return f
+        }
+      })
+      floors.forEach( floor => {
+        return floor.shops.sort( (a,b) => a.id - b.id)
+      })
+      return floors
     default:
       return state
   }
@@ -139,7 +136,7 @@ const newGameReducer = (state=false, action) => {
     case "NEW_GAME":
       return true
     case "OLD_GAME":
-      return false 
+      return false
     default:
       return false
   }
@@ -156,7 +153,5 @@ const rootReducer = combineReducers({
   muted: muteMusicReducer,
   newGame: newGameReducer
 })
-
-
 
 export default rootReducer

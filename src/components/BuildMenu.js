@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { setCurrentShop, addingShop, updatingTowerShops } from '../redux/actions'
-
 import { Header, Segment, Grid, Button, Modal, Icon, Popup } from 'semantic-ui-react'
 
 class BuildMenu extends React.Component {
@@ -17,8 +16,6 @@ class BuildMenu extends React.Component {
   }
 
   buildShop = event => {
-    event.persist()
-    console.log(event.currentTarget)
     let price = parseInt(-1 * event.currentTarget.value)
 
     if(this.props.tower.resources < price){
@@ -28,7 +25,12 @@ class BuildMenu extends React.Component {
       if (event.currentTarget.name === "Defense"){
         this.props.shop.defense = 10
       }
-      let shop = {...this.props.shop, shop_type: event.currentTarget.name, price: parseInt(-1 * event.currentTarget.value), defense: 10}
+      let shop = {
+        ...this.props.shop,
+        shop_type: event.currentTarget.name,
+        price: parseInt(-1 * event.currentTarget.value),
+        defense: 10
+      }
       this.props.addingShop(shop)
       this.props.updatingTowerShops(shop)
       this.setState({ showModal: false })
@@ -40,7 +42,13 @@ class BuildMenu extends React.Component {
       alert("You must select an empty shop first")
     }
     else {
-      this.setState({ showModal: true, type: type, price: price, color: color, icon: icon })
+      this.setState({
+        showModal: true,
+        type: type,
+        price: price,
+        color: color,
+        icon: icon
+      })
     }
   }
 
@@ -54,58 +62,73 @@ class BuildMenu extends React.Component {
     return(
       <div id="build-menu">
         <Segment inverted>
-          <Header size='huge'> BUILD UNIT: </Header>
-            <hr/>
+          <Header size='huge'>
+            BUILD UNIT:
+          </Header>
+          <hr/>
           <Grid columns='equal' celled='internally'>
             <Grid.Row>
               <Grid.Column>
-                <Popup content="COSTS 25 RESOURCES" trigger={ <Button
-                    onClick={(e) => this.openModal(e, "Housing", 25, 'blue', 'bed')}
-                    size='large'
-                    inverted
-                    color='blue'>
-                     HOUSING
-                  </Button>
-                  }/>
+                <Popup
+                  content="COSTS 25 RESOURCES"
+                  trigger={
+                    <Button
+                      onClick={(e) => this.openModal(e, "Housing", 25, 'blue', 'bed')}
+                      size='large'
+                      inverted
+                      color='blue'>
+                        HOUSING
+                    </Button>
+                  }
+                />
               </Grid.Column>
             </Grid.Row>
             <Grid.Row>
               <Grid.Column>
-                <Popup content="COSTS 25 RESOURCES" trigger={
-                  <Button
-                    onClick={(e) => this.openModal(e, "Food", 25, 'green', 'utensils')}
-                    size='large'
-                    inverted
-                    color='green'>
-                      FOOD
-                  </Button>
-                }/>
+                <Popup
+                  content="COSTS 25 RESOURCES"
+                  trigger={
+                    <Button
+                      onClick={(e) => this.openModal(e, "Food", 25, 'green', 'utensils')}
+                      size='large'
+                      inverted
+                      color='green'>
+                        FOOD
+                    </Button>
+                  }
+                />
               </Grid.Column>
             </Grid.Row>
             <Grid.Row>
               <Grid.Column>
-                <Popup content="COSTS 30 RESOURCES" trigger={
-                  <Button
-                    onClick={(e) => this.openModal(e, "Service", 30, 'yellow', 'dollar sign')}
-                    size='large'
-                    inverted
-                    color='yellow'>
-                      SERVICE
-                  </Button>
-                }/>
+                <Popup
+                  content="COSTS 30 RESOURCES"
+                  trigger={
+                    <Button
+                      onClick={(e) => this.openModal(e, "Service", 30, 'yellow', 'dollar sign')}
+                      size='large'
+                      inverted
+                      color='yellow'>
+                        SERVICE
+                    </Button>
+                  }
+                />
               </Grid.Column>
             </Grid.Row>
             <Grid.Row>
               <Grid.Column>
-                <Popup content="COSTS 50 RESOURCES" trigger={
-                  <Button
-                    onClick={(e) => this.openModal(e, "Defense", 50, 'red', 'shield')}
-                    size='large'
-                    inverted
-                    color='red'>
-                      DEFENSE
-                  </Button>
-                }/>
+                <Popup
+                  content="COSTS 50 RESOURCES"
+                  trigger={
+                    <Button
+                      onClick={(e) => this.openModal(e, "Defense", 50, 'red', 'shield')}
+                      size='large'
+                      inverted
+                      color='red'>
+                        DEFENSE
+                    </Button>
+                  }
+                />
               </Grid.Column>
             </Grid.Row>
           </Grid>
@@ -116,39 +139,45 @@ class BuildMenu extends React.Component {
             size='large'
             onClose={this.closeModal}
             open={showModal}
-            dimmer='blurring'
-            >
-            <Modal.Content>
-              <Icon name={this.state.icon} size='large' circular inverted/>
-              <Header inverted content={`Build a ${this.state.type} unit`} size='large'/>
-              <Header inverted size='large' content={`This will cost ${this.state.price} resources. Build?`}/>
-            </Modal.Content>
-
-            <Modal.Actions>
-              <Button
-                basic
-                size='large'
-                inverted
-                onClick={this.closeModal}
-                color='red'>
-                <Icon name='remove' />
-                  No
-              </Button>
-              <Button
-                basic
-                size='large'
-                inverted
-                color='green'
-                onClick={this.buildShop}
-                name={this.state.type}
-                value={`-${this.state.price}`}>
-                <Icon name='checkmark' />
-                  Yes
-              </Button>
-            </Modal.Actions>
-          </Modal>
-
-
+            dimmer='blurring'>
+          <Modal.Content>
+            <Icon
+              name={this.state.icon}
+              size='large'
+              circular
+              inverted/>
+            <Header
+              inverted
+              size='large'
+              content={`Build a ${this.state.type} unit`}/>
+            <Header
+              inverted
+              size='large'
+              content={`This will cost ${this.state.price} resources. Build?`}/>
+          </Modal.Content>
+          <Modal.Actions>
+            <Button
+              basic
+              size='large'
+              inverted
+              onClick={this.closeModal}
+              color='red'>
+              <Icon name='remove' />
+                No
+            </Button>
+            <Button
+              basic
+              size='large'
+              inverted
+              color='green'
+              onClick={this.buildShop}
+              name={this.state.type}
+              value={`-${this.state.price}`}>
+              <Icon name='checkmark' />
+                Yes
+            </Button>
+          </Modal.Actions>
+        </Modal>
       </div>
     )
   }

@@ -13,18 +13,17 @@ class Home extends React.Component {
   render(){
     return(
       this.props.newGame ?
-      <Redirect to='/about'/>
-      :
-      <div>
-        <Nav />
-        <div id='home'>
-          <div className='home-header'>
-            SPACE BASE
+        <Redirect to='/about'/>
+        :
+        <div>
+          <Nav />
+          <div id='home'>
+            <div className='home-header'>
+              SPACE BASE
+            </div>
+            <GameContainer />
           </div>
-
-          <GameContainer />
         </div>
-      </div>
     )
   }
 }

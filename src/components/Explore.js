@@ -11,19 +11,24 @@ class Explore extends React.Component {
 
     /* Setting up Board Pieces */
     let board = [];
-    for(let i = 0; i<20; i++){
+    for(let i = 0; i < 20; i++){
       board.push(new Array(30).fill('brown'))
     }
     let ship = { y: 11, x: 2 };
     board[ship.y][ship.x] = 'white'
 
     let rocks = [];
-    for(let i = 0; i<30; i++){
+    for(let i = 0; i < 30; i++){
       let x = 10 + i;
       let y = Math.floor(Math.random() * 7);
       let u = Math.round(Math.random() * 1);
       let l = Math.floor(Math.random() * (10 - 5) + 5)
-      rocks.push({ x: x, y: y, upright: u, length: l })
+      rocks.push({
+        x: x,
+        y: y,
+        upright: u,
+        length: l
+      })
     }
 
     /* Create Game Environment */
@@ -36,14 +41,13 @@ class Explore extends React.Component {
     }
 
     /* Initialize Game */
-
-    this.travelId = setInterval(() => {
+    this.travelId = setInterval( () => {
       if(this.state.gameOver){
         return
       }
 
       let newBoard = [];
-      for(let i = 0; i<20; i++){
+      for(let i = 0; i < 20; i++){
         newBoard.push(new Array(30).fill('brown'))
       }
 
@@ -59,13 +63,13 @@ class Explore extends React.Component {
 
       for(let i = 0; i < newRocks.length; i++){
         for(let j = 0; j < newRocks[i].y; j++){
-            if(newRocks[i].upright){
-              newBoard[19-j][newRocks[i].x] = 'black'
-              newBoard[19-j][newRocks[i].x] = 'black'
-            }
-            else {
-              newBoard[j][newRocks[i].x] = 'black'
-              newBoard[j][newRocks[i].x] = 'black'
+          if(newRocks[i].upright){
+            newBoard[19-j][newRocks[i].x] = 'black'
+            newBoard[19-j][newRocks[i].x] = 'black'
+          }
+          else {
+            newBoard[j][newRocks[i].x] = 'black'
+            newBoard[j][newRocks[i].x] = 'black'
           }
         }
       }
@@ -84,15 +88,16 @@ class Explore extends React.Component {
         newShip.y = 10
         this.setState({ gameOver: true })
         clearInterval(this.scoreId)
-
       }
 
       newBoard[newShip.y][newShip.x] = 'white'
 
-
-      this.setState({ board: newBoard, ship: newShip, rocks: newRocks})
-    }, 200)
-
+      this.setState({
+        board: newBoard,
+        ship: newShip,
+        rocks: newRocks
+      })
+    }, 200 )
 
     this.scoreId = setInterval( () => {
       if(this.state.gameOver){
@@ -100,7 +105,7 @@ class Explore extends React.Component {
       }
       let scoreCopy = ++this.state.score
       this.setState({ score: scoreCopy })
-    }, 1000)
+    }, 1000 )
   }
 
   handleFlying = event => {
@@ -135,7 +140,10 @@ class Explore extends React.Component {
   switchBack = () => {
     // this.setState({gameOver: false}
     let winnings = this.state.score * 2
-    let tower = {...this.props.tower, resources: this.props.tower.resources + winnings}
+    let tower = {
+      ...this.props.tower,
+      resources: this.props.tower.resources + winnings
+    }
     this.props.applyingRateTower(tower)
     this.props.muteMusic()
     this.props.switchGameMode()
@@ -147,34 +155,36 @@ class Explore extends React.Component {
         <ReactAudioPlayer
           src={sound}
           autoPlay={true}
-          loop={true}
-          />
-
-      <Grid>
-        <Grid.Row columns={2}>
-        <Grid.Column width={4}>
-        <Header inverted size='huge'>
-          Time Alive: {this.state.score}
-        </Header>
-        <Header inverted size='huge'>
-          Resources Collected: {this.state.score * 2}
-        </Header>
-      </Grid.Column>
-      <Grid.Column width={8}>
-        <div id="space-travel" tabIndex="0" onClick={this.handleFlying}>
-        <Board board={this.state.board}/>
-        {this.state.gameOver ?
-          <div>
-            <Button onClick={this.switchBack}>Return to Bunker</Button>
-          </div>
-          : null
-        }
-        </div>
-      </Grid.Column>
-    </Grid.Row>
-  </Grid>
-
-  </div>
+          loop={true}/>
+        <Grid>
+          <Grid.Row columns={2}>
+            <Grid.Column width={4}>
+              <Header inverted size='huge'>
+                Time Alive: {this.state.score}
+              </Header>
+              <Header inverted size='huge'>
+                Resources Collected: {this.state.score * 2}
+              </Header>
+            </Grid.Column>
+            <Grid.Column width={8}>
+              <div
+                id="space-travel"
+                tabIndex="0"
+                onClick={this.handleFlying}>
+                <Board board={this.state.board}/>
+                {this.state.gameOver ?
+                  <div>
+                    <Button onClick={this.switchBack}>
+                      Return to Bunker
+                    </Button>
+                  </div>
+                  : null
+                }
+              </div>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </div>
     )
   }
 }
@@ -202,7 +212,7 @@ const BoardCell = props => {
       backgroundColor: props.cell === "white" ? "brown" : props.cell,
       backgroundSize: '30px 30px',
       backgroundImage: props.cell === "white" ? 'url(https://i.imgur.com/5fLOrIr.png)' : null}}>
-      </div>
+    </div>
   )
 }
 

@@ -5,8 +5,8 @@ import { Form, Grid, Header, Segment, Button } from 'semantic-ui-react'
 import Nav from './Nav'
 
 class CreateAccount extends React.Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
     this.state = {
       name: "",
       username: "",
@@ -27,7 +27,6 @@ class CreateAccount extends React.Component {
 
   render(){
     return(
-
       <div className='create-form'>
         <style>{`
             body > div,
@@ -35,16 +34,22 @@ class CreateAccount extends React.Component {
             body > div > div > div.create-form {
             height: 100%;
             }`}
-          </style>
+        </style>
 
         <Nav />
-          <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
-            <Grid.Column style={{ maxWidth: 500 }}>
-              <Segment inverted>
-                <Header inverted size='large'>
-                  Create an Account
-                </Header>
-              <Form inverted size='large' onSubmit={this.handleSubmit}>
+        <Grid
+          textAlign='center'
+          style={{ height: '100%' }}
+          verticalAlign='middle'>
+          <Grid.Column style={{ maxWidth: 500 }}>
+            <Segment inverted>
+              <Header inverted size='large'>
+                Create an Account
+              </Header>
+              <Form
+                inverted
+                size='large'
+                onSubmit={this.handleSubmit}>
                 <Segment stacked inverted>
                   <Form.Group widths='equal'>
                     <Form.Input
@@ -84,9 +89,9 @@ class CreateAccount extends React.Component {
                       type='password'
                       onChange={this.handleChange}/>
                   </Form.Group>
-                <Button fluid> Submit </Button>
-              </Segment>
-            </Form>
+                  <Button fluid> Submit </Button>
+                </Segment>
+              </Form>
             </Segment>
           </Grid.Column>
         </Grid>

@@ -52,7 +52,9 @@ class ShowInfo extends React.Component {
       <div id='show-info'>
         {this.assignInfo()}
         <Segment inverted align='center'>
-          <Header size="huge"> SHOP INFO: </Header>
+          <Header size="huge">
+            SHOP INFO:
+          </Header>
           <hr/>
           <Statistic.Group horizontal align='center'>
             <Statistic inverted>
@@ -96,8 +98,14 @@ class ShowInfo extends React.Component {
           open={showModal}
           dimmer='blurring'>
           <Modal.Content>
-            <Header inverted size='large' content={`Sell selected shop?`}/>
-            <Header inverted size='large' content={`You will receive ${this.props.shop.price * -1} resources back. Sell?`}/>
+            <Header
+              inverted
+              size='large'
+              content={`Sell selected shop?`}/>
+            <Header
+              inverted
+              size='large'
+              content={`You will receive ${this.props.shop.price * -1} resources back. Sell?`}/>
           </Modal.Content>
           <Modal.Actions>
             <Button
@@ -107,7 +115,7 @@ class ShowInfo extends React.Component {
               onClick={this.closeModal}
               color='red'>
               <Icon name='remove' />
-              No
+                No
             </Button>
             <Button
               basic
@@ -116,14 +124,13 @@ class ShowInfo extends React.Component {
               color='green'
               onClick={this.destroyShop}>
               <Icon name='checkmark'/>
-              Yes
+                Yes
             </Button>
           </Modal.Actions>
         </Modal>
       </div>
     )
   }
-
 }
 
 const mapStateToProps = state => {

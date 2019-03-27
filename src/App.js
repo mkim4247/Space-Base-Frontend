@@ -14,7 +14,6 @@ import NotFound from './components/NotFound'
 import UsersPage from './components/UsersPage'
 
 class App extends Component {
-
   componentDidMount(){
     let token = localStorage.getItem('token')
 
@@ -26,39 +25,47 @@ class App extends Component {
   render() {
     return (
       <div>
-          <Switch>
-            <Route exact path='/' render={ () => (
-                this.props.currentUser ?
-                <Home /> : <Redirect to='/login' />
-              )} />
-            <Route exact path='/login' render={ () => (
-              this.props.currentUser ?
-              <Redirect to="/" /> : <Login />
-              )} />
-            <Route exact path='/new' render={ () => (
-                this.props.currentUser ?
-                <Redirect to='/' /> : <CreateAccount />
-              )} />
-            <Route exact path='/edit' render={ () => (
-                  this.props.currentUser ?
-                  <EditAccount /> : <Redirect to='/login' />
-                )} />
-            <Route exact path='/about' render={ () => (
-                <About />
-              )} />
-            <Route exact path='/users' render={ routerProps => (
-                <UsersPage {...routerProps}/>
-              )} />
-              <Route path='/users/:username' render={ routerProps => (
-                  <UserProfile {...routerProps}/>
-                )} />
-              <Route path='/404' render={ () => (
-                  <NotFound />
-                )} />
-            <Route component={NotFound}/>
-          </Switch>
+        <Switch>
+          <Route exact path='/' render={ () => (
+            this.props.currentUser ?
+              <Home />
+              :
+              <Redirect to='/login' />
+          )}/>
+          <Route exact path='/login' render={ () => (
+            this.props.currentUser ?
+              <Redirect to="/" />
+              :
+              <Login />
+          )}/>
+          <Route exact path='/new' render={ () => (
+            this.props.currentUser ?
+              <Redirect to='/' />
+              :
+              <CreateAccount />
+          )}/>
+          <Route exact path='/edit' render={ () => (
+            this.props.currentUser ?
+              <EditAccount />
+              :
+              <Redirect to='/login' />
+          )}/>
+          <Route exact path='/about' render={ () => (
+            <About />
+          )}/>
+          <Route exact path='/users' render={ routerProps => (
+            <UsersPage {...routerProps}/>
+          )}/>
+          <Route path='/users/:username' render={ routerProps => (
+            <UserProfile {...routerProps}/>
+          )}/>
+          <Route path='/404' render={ () => (
+            <NotFound />
+          )}/>
+          <Route component={NotFound}/>
+        </Switch>
       </div>
-    );
+    )
   }
 }
 

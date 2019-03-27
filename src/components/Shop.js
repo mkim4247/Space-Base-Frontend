@@ -152,7 +152,6 @@ class Shop extends React.Component {
     this.setState({ greenImg: current})
   }
 
-
   showInfo = () => {
     this.props.setCurrentShop(this.props.shopObj)
   }
@@ -216,16 +215,17 @@ class Shop extends React.Component {
   }
 
   render(){
-
     return(
-
-
       <div
         onClick={this.showInfo}
         className="filled-shop"
         style={this.setBackground()}>
-          <Header size='medium'> {this.props.shopObj.shop_type.toUpperCase()} </Header>
-            <img onClick={()=>console.log("OUCH")} src={this.setAlien()}
+          <Header size='medium'>
+            {this.props.shopObj.shop_type.toUpperCase()}
+          </Header>
+          <img
+            onClick={()=>console.log("OUCH")}
+            src={this.setAlien()}
             alt={this.props.shopObj.shop_type}
             className={this.props.shopObj.shop_type} />
       </div>

@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { setCurrentShop } from '../redux/actions'
 
 class EmptyShop extends React.Component {
-
   buildShop = () => {
     this.props.setCurrentShop(this.props.shopObj)
   }

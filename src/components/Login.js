@@ -48,11 +48,10 @@ class Login extends React.Component {
         <div id='login-header'>
           SPACE BASE
         </div>
-
         <Grid
-            textAlign='center'
-            style={{ height: '100%' }}
-            verticalAlign='middle'>
+          textAlign='center'
+          style={{ height: '100%' }}
+          verticalAlign='middle'>
           <Grid.Column style={{ maxWidth: 400 }}>
             <Button animated onClick={this.openModal}>
               <Button.Content visible style={{fontSize: '60px', width:'90%', color: 'rgb(193, 144, 212)'}}>
@@ -74,52 +73,51 @@ class Login extends React.Component {
           open={showModal}
           dimmer='blurring'
           closeIcon>
-        <Modal.Actions>
-          <Grid
+          <Modal.Actions>
+            <Grid
               textAlign='center'
               style={{ height: '100%', paddingTop: '300px' }}
               verticalAlign='middle'>
-            <Grid.Column style={{ maxWidth: 500 }}>
-          <Form inverted size='large' onSubmit={this.handleLoginSubmit}>
-            <Segment inverted stacked>
-              <Form.Input
-                fluid
-                icon='user'
-                iconPosition='left'
-                label='Enter Username:'
-                type='text'
-                name='username'
-                onChange={this.handleChange}
-                placeholder="username"/>
-              <Form.Input
-                fluid
-                icon='lock'
-                iconPosition='left'
-                label='Password:'
-                type='password'
-                name='password'
-                onChange={this.handleChange}
-                placeholder="password"/>
-              <Button style={{color: 'rgb(193, 144, 212)'}}> LOGIN </Button>
-            </Segment>
-          </Form>
-          <Segment inverted>
-          <Message >
-            <Link to='/new' style={{color: 'rgb(193, 144, 212)', fontWeight: 'bold'}}>
-              CREATE ACCOUNT
-            </Link>
-          </Message>
-          </Segment>
-        </Grid.Column>
-      </Grid>
-        </Modal.Actions>
-
+              <Grid.Column style={{ maxWidth: 500 }}>
+                <Form inverted size='large' onSubmit={this.handleLoginSubmit}>
+                  <Segment inverted stacked>
+                    <Form.Input
+                      fluid
+                      icon='user'
+                      iconPosition='left'
+                      label='Enter Username:'
+                      type='text'
+                      name='username'
+                      onChange={this.handleChange}
+                      placeholder="username"/>
+                    <Form.Input
+                      fluid
+                      icon='lock'
+                      iconPosition='left'
+                      label='Password:'
+                      type='password'
+                      name='password'
+                      onChange={this.handleChange}
+                      placeholder="password"/>
+                    <Button style={{color: 'rgb(193, 144, 212)'}}>
+                      LOGIN
+                    </Button>
+                  </Segment>
+                </Form>
+                <Segment inverted>
+                  <Message >
+                    <Link to='/new' style={{color: 'rgb(193, 144, 212)', fontWeight: 'bold'}}>
+                      CREATE ACCOUNT
+                    </Link>
+                  </Message>
+                </Segment>
+              </Grid.Column>
+            </Grid>
+          </Modal.Actions>
         </Modal>
       </div>
     )
   }
-
 }
-
 
 export default connect(null, { settingCurrentUser })(Login)

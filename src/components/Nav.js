@@ -26,13 +26,13 @@ class Nav extends React.Component {
             </Menu.Item>
 
             {this.props.muted ?
-            <Menu.Item onClick={this.muteMusic}>
-              <Icon name='play circle outline'/>
-            </Menu.Item>
-            :
-            <Menu.Item onClick={this.muteMusic}>
-              <Icon name='pause circle outline'/>
-            </Menu.Item>
+              <Menu.Item onClick={this.muteMusic}>
+                <Icon name='play circle outline'/>
+              </Menu.Item>
+              :
+              <Menu.Item onClick={this.muteMusic}>
+                <Icon name='pause circle outline'/>
+              </Menu.Item>
             }
           </Menu.Menu>
           <Menu.Menu position='right'>
@@ -57,17 +57,16 @@ class Nav extends React.Component {
                 <Icon name='log out'/>
               </Menu.Item>
               :
-                <Menu.Item
-                  as={NavLink}
-                  name="Login"
-                  to='/login' />
+              <Menu.Item
+                as={NavLink}
+                name="Login"
+                to='/login' />
             }
           </Menu.Menu>
         </Menu>
       </div>
     )
   }
-
 }
 
 const mapStateToProps = state => {

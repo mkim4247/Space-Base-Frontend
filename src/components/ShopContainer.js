@@ -4,33 +4,29 @@ import Shop from './Shop'
 import EmptyShop from './EmptyShop'
 
 class ShopContainer extends React.Component {
-
   render(){
     return(
       <div className='shop-container'>
-
         <Grid>
           <Grid.Row>
             {this.props.shopsArr.map( shop => (
               shop.shop_type !== "Empty" ?
                 <Grid.Column
-                    width={8}
-                    key={shop.id}
-                    style={{height: "100%", padding: "0px"}}>
-
+                  width={8}
+                  key={shop.id}
+                  style={{height: "100%", padding: "0px"}}>
                   <Shop
                     shopObj={shop}
                     key={shop.id}/>
                 </Grid.Column>
-
-              :
+                :
                 <Grid.Column
-                    width={8}
-                    key={shop.id}
-                    style={{height: "100%", padding: "0px"}}>
+                  width={8}
+                  key={shop.id}
+                  style={{height: "100%", padding: "0px"}}>
                   <EmptyShop
-                    shopObj={shop}
-                    key={shop.id} />
+                  shopObj={shop}
+                  key={shop.id} />
               </Grid.Column>
             ))}
           </Grid.Row>
@@ -39,8 +35,5 @@ class ShopContainer extends React.Component {
     )
   }
 }
-
-
-
 
 export default ShopContainer

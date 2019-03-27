@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom'
 import { readRules } from '../redux/actions'
 
 class About extends React.Component {
-
   render(){
     return(
       <div>

@@ -30,47 +30,49 @@ class GamePanel extends React.Component {
 
     return(
       <div id='game-panel'>
-      <Segment inverted>
-        <Button
-          inverted
-          size='large'
-          color='blue'
-          onClick={this.openModal}>
-            <Icon name='space shuttle' inverted /> EXPLORE!
-        </Button>
-      </Segment>
+        <Segment inverted>
+          <Button
+            inverted
+            size='large'
+            color='blue'
+            onClick={this.openModal}>
+              <Icon name='space shuttle' inverted /> EXPLORE!
+          </Button>
+        </Segment>
 
-      <Modal
-        basic
-        size='large'
-        onClose={this.closeModal}
-        open={showModal}
-        dimmer='blurring'
-        >
-        <Modal.Content>
-          <Header inverted size='large' content={'Scout the local area for resources?'} />
-        </Modal.Content>
-        <Modal.Actions>
-          <Button
-            basic
-            size='large'
-            inverted
-            onClick={this.closeModal}
-            color='red'>
-            <Icon name='remove' />
-            No
-          </Button>
-          <Button
-            basic
-            size='large'
-            inverted
-            onClick={this.switchModes}
-            color='green'>
-            <Icon name='checkmark' />
-            Yes
-          </Button>
-        </Modal.Actions>
-      </Modal>
+        <Modal
+          basic
+          size='large'
+          onClose={this.closeModal}
+          open={showModal}
+          dimmer='blurring'>
+          <Modal.Content>
+            <Header
+              inverted
+              size='large'
+              content={'Scout the local area for resources?'} />
+          </Modal.Content>
+          <Modal.Actions>
+            <Button
+              basic
+              size='large'
+              inverted
+              onClick={this.closeModal}
+              color='red'>
+              <Icon name='remove' />
+                No
+            </Button>
+            <Button
+              basic
+              size='large'
+              inverted
+              onClick={this.switchModes}
+              color='green'>
+              <Icon name='checkmark' />
+                Yes
+            </Button>
+          </Modal.Actions>
+        </Modal>
       </div>
     )
   }

@@ -5,7 +5,6 @@ import { Image } from 'semantic-ui-react'
 
 
 class NotFound extends React.Component {
-
   render(){
     return(
       <div>
@@ -15,8 +14,8 @@ class NotFound extends React.Component {
           <Image size='large' circular src={spagett} id='spagett' style={{height: '800px', width: '800px', marginTop: '100px', marginLeft: '600px' }}/>
         </div>
       </div>
-
     )
   }
 }
+
 export default NotFound

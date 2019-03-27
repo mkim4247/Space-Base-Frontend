@@ -25,14 +25,14 @@ class ConstructionFloor extends React.Component {
   }
 
   addFloorClick = () => {
-      let floor = {
-        level: this.props.level,
-        tower_id: this.props.tower.id
-      }
-      floor.price = 500
-      this.props.addingFloor(floor)
-      this.props.updatingTowerFloors(floor)
-      this.setState({ showModal: false })
+    let floor = {
+      level: this.props.level,
+      tower_id: this.props.tower.id
+    }
+    floor.price = 500
+    this.props.addingFloor(floor)
+    this.props.updatingTowerFloors(floor)
+    this.setState({ showModal: false })
   }
 
   render(){
@@ -40,51 +40,54 @@ class ConstructionFloor extends React.Component {
 
     return(
       <div>
-      <div
-        id='construction-floor'
-        className='floor-container'
-        onClick={this.openModal}>
+        <div
+          id='construction-floor'
+          className='floor-container'
+          onClick={this.openModal}>
         <br/>
         BUILD NEW FLOOR
         <br/>
         500 RESOURCES
+        </div>
+
+        <Modal
+          basic
+          size='large'
+          onClose={this.closeModal}
+          open={showModal}
+          dimmer='blurring'>
+          <Modal.Content>
+            <Header
+              inverted
+              content='Build a New Floor'
+              size='large'/>
+            <Header
+              inverted
+              size='large'
+              content='This will cost 500 Resouces. Build?' />
+          </Modal.Content>
+          <Modal.Actions>
+            <Button
+              basic
+              size='large'
+              inverted
+              onClick={this.closeModal}
+              color='red'>
+              <Icon name='remove' />
+                No
+            </Button>
+            <Button
+              basic
+              size='large'
+              inverted
+              color='green'
+              onClick={this.addFloorClick}>
+              <Icon name='checkmark' />
+                Yes
+            </Button>
+          </Modal.Actions>
+        </Modal>
       </div>
-
-      <Modal
-        basic
-        size='large'
-        onClose={this.closeModal}
-        open={showModal}
-        dimmer='blurring'
-        >
-        <Modal.Content>
-          <Header inverted content='Build a New Floor' size='large'/>
-          <Header inverted size='large' content='This will cost 500 Resouces. Build?' />
-        </Modal.Content>
-
-        <Modal.Actions>
-          <Button
-            basic
-            size='large'
-            inverted
-            onClick={this.closeModal}
-            color='red'>
-            <Icon name='remove' />
-              No
-          </Button>
-          <Button
-            basic
-            size='large'
-            inverted
-            color='green'
-            onClick={this.addFloorClick}>
-            <Icon name='checkmark' />
-              Yes
-          </Button>
-        </Modal.Actions>
-      </Modal>
-    </div>
-
     )
   }
 }

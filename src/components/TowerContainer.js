@@ -7,7 +7,6 @@ import Tower from './Tower'
 class TowerContainer extends React.Component {
   constructor(props){
     super(props)
-
     this.state = {
       showModal: false,
       randomEvent: '',
@@ -15,6 +14,7 @@ class TowerContainer extends React.Component {
       outcome: '',
       icon: ''
     }
+    
     /*  Regular Game Interval  */
     this.buildRateID = setInterval(() => {
       let shops = this.props.floors.map(floor => floor.shops)
