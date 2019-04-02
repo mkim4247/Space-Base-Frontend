@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { settingCurrentUser } from '../redux/actions'
-import { Button, Form, Grid, Segment, Message, Modal, Icon } from 'semantic-ui-react'
+import { Header, Button, Form, Grid, Segment, Message, Modal, Icon } from 'semantic-ui-react'
 
 class Login extends React.Component {
   constructor(){
@@ -45,16 +45,16 @@ class Login extends React.Component {
             }`}
         </style>
 
-        <div id='login-header'>
+        <Header id='login-header' size='medium'>
           SPACE BASE
-        </div>
+        </Header>
         <Grid
           textAlign='center'
           style={{ height: '100%' }}
           verticalAlign='middle'>
-          <Grid.Column style={{ maxWidth: 400 }}>
-            <Button animated onClick={this.openModal}>
-              <Button.Content visible style={{fontSize: '60px', width:'90%', color: 'rgb(193, 144, 212)'}}>
+          <Grid.Column style={{ maxWidth: 300 }}>
+            <Button animated onClick={this.openModal} style={{boxShadow: '2px 2px 2px black'}}>
+              <Button.Content visible style={{fontSize: '5vh', width:'90%', color: 'rgb(193, 144, 212)'}}>
               START GAME
               </Button.Content>
               <Button.Content hidden style={{color: 'rgb(193, 144, 212)'}}>
@@ -76,7 +76,7 @@ class Login extends React.Component {
           <Modal.Actions>
             <Grid
               textAlign='center'
-              style={{ height: '100%', paddingTop: '300px' }}
+              style={{ height: '100%', paddingTop: '50px' }}
               verticalAlign='middle'>
               <Grid.Column style={{ maxWidth: 500 }}>
                 <Form inverted size='large' onSubmit={this.handleLoginSubmit}>

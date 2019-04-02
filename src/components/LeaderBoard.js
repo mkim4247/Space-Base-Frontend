@@ -36,27 +36,31 @@ class LeaderBoard extends React.Component {
     return(
       <div id='leaderboard' >
         <Nav/>
-        <div className='home-header'>
-          SPACE BASE
-        </div>
         <Segment
           inverted
           size='huge'
           align='center'
           style={{
             backgroundImage: 'url(https://images.pexels.com/photos/41952/neil-armstrong-armstrong-astronaut-space-suit-41952.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)',
-            backgroundSize: '2200px 2000px',
-            height: '100vh'}}>
+            backgroundSize: '80vw 100vh',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            height: '100vh',
+            overflow: 'scroll',
+            backgroundColor: 'black'
+          }}>
           <h1
             style={{
               fontFamily: 'VT323, monospace',
-              fontSize: '100px',
-              textDecoration: 'underline'}}>
+              fontSize: '10vh',
+              textDecoration: 'underline',
+              textShadow: '2px 2px 2px black'
+            }}>
             LEADERBOARD
           </h1>
           <br/>
           <br/>
-          <Grid celled>
+          <Grid>
             <Grid.Row columns={3}>
               <Grid.Column>
                 <h2
@@ -64,10 +68,12 @@ class LeaderBoard extends React.Component {
                     textDecoration: 'underline',
                     color: 'white',
                     fontFamily: 'VT323, monospace',
-                    fontSize: '80px'}}>
+                    fontSize: '4vh',
+                    textShadow: '2px 2px 2px black'
+                  }}>
                   MOST RESOURCES
                 </h2>
-                <List size='medium'>
+                <List size='small'>
                   {resources.map( (user, index) => (
                     <List.Item
                       key={user.id}
@@ -77,14 +83,18 @@ class LeaderBoard extends React.Component {
                         style={{
                           color: 'rgb(64, 197, 222)',
                           fontFamily: 'VT323, monospace',
-                          fontSize: '60px'}}>
+                          fontSize: '4vh',
+                          textShadow: '2px 2px 2px black'
+                        }}>
                         {index + 1}. {user.username.toUpperCase()}
                       </h3>
                       <p
                         style={{
                           color: 'rgb(64, 197, 222)',
                           fontFamily: 'VT323, monospace',
-                          fontSize: '50px'}}>
+                          fontSize: '4vh',
+                          textShadow: '2px 2px 2px black'
+                        }}>
                         Resources: {user.tower.resources}
                       </p>
                     </List.Item>
@@ -97,7 +107,9 @@ class LeaderBoard extends React.Component {
                     textDecoration: 'underline',
                     color: 'white',
                     fontFamily: 'VT323, monospace',
-                    fontSize: '80px'}}>
+                    fontSize: '4vh',
+                    textShadow: '2px 2px 2px black'
+                  }}>
                   LARGEST POPULATION
                 </h2>
                 <List size='medium'>
@@ -110,14 +122,18 @@ class LeaderBoard extends React.Component {
                         style={{
                           color: 'rgb(64, 197, 222)',
                           fontFamily: 'VT323, monospace',
-                          fontSize: '60px'}}>
+                          fontSize: '4vh',
+                          textShadow: '2px 2px 2px black'
+                        }}>
                         {index + 1}. {user.username.toUpperCase()}
                       </h3>
                       <p
                         style={{
                           color: 'rgb(64, 197, 222)',
                           fontFamily: 'VT323, monospace',
-                          fontSize: '50px'}}>
+                          fontSize: '4vh',
+                          textShadow: '2px 2px 2px black'
+                        }}>
                         Population: {user.tower.population}
                       </p>
                     </List.Item>
@@ -130,7 +146,9 @@ class LeaderBoard extends React.Component {
                     textDecoration: 'underline',
                     color: 'white',
                     fontFamily: 'VT323, monospace',
-                    fontSize: '80px'}}>
+                    fontSize: '4vh',
+                    textShadow: '2px 2px 2px black'
+                  }}>
                   BIGGEST BASE
                 </h2>
                 <List size='small'>
@@ -143,14 +161,18 @@ class LeaderBoard extends React.Component {
                         style={{
                           color: 'rgb(64, 197, 222)',
                           fontFamily: 'VT323, monospace',
-                          fontSize: '60px'}}>
+                          fontSize: '4vh',
+                          textShadow: '2px 2px 2px black'
+                        }}>
                         {index + 1}. {user.username.toUpperCase()}
                       </h3>
                       <p
                         style={{
                           color: 'rgb(64, 197, 222)',
                           fontFamily: 'VT323, monospace',
-                          fontSize: '50px'}}>
+                          fontSize: '4vh',
+                          textShadow: '2px 2px 2px black'
+                        }}>
                         Floors: {user.tower.floors.length}
                       </p>
                     </List.Item>

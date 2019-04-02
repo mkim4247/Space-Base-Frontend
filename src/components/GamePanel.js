@@ -33,7 +33,7 @@ class GamePanel extends React.Component {
         <Segment inverted>
           <Button
             inverted
-            size='large'
+            size='medium'
             color='blue'
             onClick={this.openModal}>
               <Icon name='space shuttle' inverted /> EXPLORE!

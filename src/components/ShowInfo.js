@@ -52,7 +52,7 @@ class ShowInfo extends React.Component {
       <div id='show-info'>
         {this.assignInfo()}
         <Segment inverted align='center'>
-          <Header size="huge">
+          <Header size="medium">
             SHOP INFO:
           </Header>
           <hr/>

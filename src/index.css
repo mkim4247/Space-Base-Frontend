@@ -22,7 +22,7 @@ code {
   transition: opacity 500ms ease-in;
 }
 
-@keyframes spagett {
+/* @keyframes spagett {
   0% {opacity: 0}
   100% {opacity: 1}
 }
@@ -31,7 +31,7 @@ code {
   animation-name: spagett;
   animation-duration: 7s;
   animation-timing-function: ease-in-out;
-}
+} */
 
 @keyframes housingMovement {
   0% {transform: translate3d(-50px, 0px, 0px)}
@@ -115,7 +115,7 @@ code {
 
 .home-header {
   font-family: 'VT323', monospace;
-  font-size: 150px;
+  font-size: 10vh;
   color: white;
   position: relative;
   height: 5vh;
@@ -124,9 +124,11 @@ code {
 
 #about {
   height: 100vh;
+  overflow: scroll;
   background-color: black;
   text-align: center;
   margin: 0 auto;
+  padding: 5vh;
   color: white;
 }
 
@@ -138,11 +140,12 @@ code {
 
 #login-header {
   font-family: "VT323", monospace;
-  font-size: 300px;
+  font-size: 25vh;
   color: rgb(193, 144, 212);
   font-style: oblique;
-  margin: 400px 250px;
+  margin: 10vh 10vw;
   position: absolute;
+  text-shadow: 5px 5px 5px black
 }
 
 .create-form{
@@ -163,20 +166,17 @@ code {
 
 #game-container{
   display: inline-block;
-  border: 5px solid black;
   padding: 10px;
   margin: 0 auto;
-  /* height: 800px; */
-  /* width: 1200px; */
   height: 70vh;
   width: 90%;
   min-height: 400px;
-  min-width: 900px;
+  min-width: 750px;
   overflow: scroll;
   background-color: black;
   background-image: url('https://i.pinimg.com/474x/9d/76/49/9d7649649e8b7abb44d0d1629c2f20bf--pixel-art-videogames.jpg');
-  background-position: fixed;
-  background-size: 2100px 750px;
+  background-position: center;
+  background-size: 80vw 80vh;
   background-repeat: no-repeat;
 }
 
@@ -185,6 +185,7 @@ code {
   margin: 0 auto;
   width: 20%;
   border: 5px solid white;
+  box-shadow: 2px 2px 2px white;
 }
 
 #show-info {
@@ -193,22 +194,21 @@ code {
   margin: 0 auto;
   width: 20%;
   background-color: white;
+  box-shadow: 2px 2px 2px white;
 }
 
 #tower-container {
-  margin: 515px auto 50px auto;
-  /* padding: 3px; */
-  border: 20px solid grey;
+  margin: 20vh auto 0px auto;
+  border: 0.5vh solid grey;
+  outline: 0.75vh solid black;
   width: 70%;
 }
 
 #tower {
-  /* margin: 3px; */
-  /* padding: 3px; */
 }
 
 .floor-container {
-  border: 3px solid black;
+  border: 2px solid black;
   height: 100px;
 }
 
@@ -247,18 +247,20 @@ code {
   height: 100%;
   border: 5px solid white;
   background-image: url(https://i.imgur.com/wEaXflm.png);
-  background-size: 235px 90px;
+  background-size: 175px 90px;
   color: white;
   min-width: 100%;
   width: 100%;
   font-family: 'VT323', monospace;
-  font-size: 40px;
+  font-size: 5vh;
   color: red;
+  text-shadow: 2px 2px 2px black;
 }
+
 
 #lobby {
   background-image: url('https://i.imgur.com/g1Hyino.png');
-  background-size: 375px 100px;
+  background-size: 25vw 100px;
 }
 
 @keyframes constructionFloor {
@@ -274,16 +276,19 @@ code {
   background-image: url('https://i.imgur.com/lpVyCws.png');
   background-size: 300px 100px;
   font-family: 'VT323', monospace;
-  font-size: 40px;
-  color: black;
+  font-size: 5vh;
+  color: white;
+  text-shadow: 2px 2px 2px black;
 }
 
 #stats {
   margin: 0 auto;
   position: fixed;
-  background-color: white;
+  background-color: black;
   border: 5px solid white;
   width: 20%;
+  overflow: scroll;
+  height: 65vh;
 }
 
 #space-travel {
@@ -304,7 +309,7 @@ code {
 #game-panel {
   background-color: black;
   margin: 0 auto;
-  width: 30%;
+  width: 75%;
   border: 5px solid white;
 }
 
@@ -337,7 +342,7 @@ code {
 
 #not-found-header {
   margin: 0 auto;
-  font-size: 275px;
+  font-size: 500%;
   color: white;
 }
 
@@ -347,26 +352,28 @@ code {
 
 .ui.medium.header {
   font-family: 'VT323', monospace !important;
-  font-size: 40px !important;
+  /* font-size: 40px !important; */
 }
 
 .ui.button {
   font-family: 'VT323', monospace !important;
-  font-size: 20px !important;
+  /* font-size: 20px !important; */
 }
 
 .ui.inverted.segment>.ui.header {
   font-family: 'VT323', monospace !important;
-  font-size: 50px !important;
+  /* font-size: 50px !important; */
 }
+.ui.horizontal.statistics .statistic {
+  font-family: 'VT323', monospace !important;
+}
+
 .ui.horizontal.statistics .statistic>.value {
   font-family: 'VT323', monospace !important;
-  font-size: 80px !important;
 }
 
 .ui.horizontal.statistics .statistic>.label {
   font-family: 'VT323', monospace !important;
-  font-size: 35px !important
 }
 
 .ui.grid {
@@ -381,49 +388,44 @@ code {
 
 .ui.divider:not(.vertical):not(.horizontal) {
   font-family: 'VT323', monospace !important;
-  font-size: 40px !important
 }
 
 .ui.form .inverted.segment label {
   font-family: 'VT323', monospace !important;
-  font-size: 22px !important
 }
 
 .ui.form .field .ui.input input, .ui.form .fields .field .ui.input input {
   font-family: 'VT323', monospace !important;
-  font-size: 22px !important
 }
 
 .ui.message:last-child{
   font-family: 'VT323', monospace !important;
-  font-size: 20px !important
 }
 
 .ui.inverted.header {
   font-family: 'VT323', monospace !important;
-  font-size: 60px !important
 }
 
 i.inverted.circular.icon {
-  font-size: 50px !important
+  /* font-size: 50px !important */
 }
 
 .ui.green.inverted.progress .bar {
-  font-size: 20px !important
+  /* font-size: 20px !important */
 }
 
 .ui.grid>.column.row>[class=*="eight wide"].column,.ui.grid>.row>[class*="eight wide"].column, {
-  font-size: 30px;
+  /* font-size: 30px; */
 }
 
 .ui.modal>.icon:first-child+* {
   font-family: 'VT323', monospace !important;
-  font-size: 60px !important
+  /* font-size: 60px !important */
 }
 
 .ui.text.container {
   font-family: 'VT323', monospace !important;
-  font-size: 60px !important;
+  /* font-size: 60px !important; */
 }
 
 .ui.celled.grid {

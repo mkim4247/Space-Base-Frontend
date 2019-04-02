@@ -12,11 +12,11 @@ class Stats extends React.Component {
     return(
       <div id="stats">
         <Segment inverted align='center'>
-          <Header size='huge'>
+          <Header size='medium'>
             BASE STATS:
           </Header>
           <hr/>
-          <Statistic.Group horizontal>
+          <Statistic.Group horizontal size={'small'}>
             <Statistic inverted>
               <Statistic.Value>
                 {this.props.tower.resources}
@@ -41,20 +41,14 @@ class Stats extends React.Component {
                 Defense
                </Statistic.Label>
             </Statistic>
-            <Statistic inverted>
-              <Statistic.Value>
-                {this.props.tower.happiness}
-              </Statistic.Value>
-              <Statistic.Label>
-                Happiness
-              </Statistic.Label>
-            </Statistic>
           </Statistic.Group>
           <Progress
             percent={this.props.tower.happiness}
             inverted
             progress
-            color={ this.props.tower.happiness > 85 ? 'green' : this.props.tower.happiness < 50 ? 'red' : 'yellow'}/>
+            color={ this.props.tower.happiness > 85 ? 'green' : this.props.tower.happiness < 50 ? 'red' : 'yellow'}>
+            HAPPINESS
+          </Progress>
           <Button onClick={this.switchMenu}>
             VIEW TOWER STATS
           </Button>

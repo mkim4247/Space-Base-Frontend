@@ -14,7 +14,7 @@ class TowerContainer extends React.Component {
       outcome: '',
       icon: ''
     }
-    
+
     /*  Regular Game Interval  */
     this.buildRateID = setInterval(() => {
       let shops = this.props.floors.map(floor => floor.shops)
@@ -68,7 +68,7 @@ class TowerContainer extends React.Component {
         population: newPopulation
       }
       this.props.applyingRateTower(tower)
-    }, 3000
+    }, 100000000
   )
 
 /* SETTING UP RANDOM EVENTS */
@@ -215,7 +215,7 @@ class TowerContainer extends React.Component {
         //   }
         }
 
-    }, 10000)
+    }, 10000000)
   }
 
   openModal = (randomEvent, content, outcome, icon) => {

@@ -62,7 +62,7 @@ class BuildMenu extends React.Component {
     return(
       <div id="build-menu">
         <Segment inverted>
-          <Header size='huge'>
+          <Header size='medium'>
             BUILD UNIT:
           </Header>
           <hr/>

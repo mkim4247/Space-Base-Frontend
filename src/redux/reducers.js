@@ -122,7 +122,7 @@ const gameModeReducer = (state=true, action) => {
   }
 }
 
-const muteMusicReducer = (state=false, action) => {
+const muteMusicReducer = (state=true, action) => {
   switch(action.type){
     case "MUTE_MUSIC":
       return !state

@@ -14,7 +14,7 @@ class UserProfile extends React.Component {
             <Nav />
             <div id='home'>
               <Header inverted size='huge' align='center'>
-                Space Base
+                {this.props.user.username.toUpperCase()}
               </Header>
               <PresGameContainer tower={this.props.user.tower}/>
             </div>
@@ -29,7 +29,7 @@ class UserProfile extends React.Component {
 
 const mapStateToProps = (state, routerProps) => {
   return {
-    user: state.allUsers.find(user => user.username === routerProps.match.params.username) 
+    user: state.allUsers.find(user => user.username === routerProps.match.params.username)
   }
 }
 

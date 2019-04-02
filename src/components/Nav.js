@@ -17,7 +17,7 @@ class Nav extends React.Component {
   render() {
     return (
       <div id='nav'>
-        <Menu size='huge' inverted>
+        <Menu size='small' inverted>
           <Menu.Menu position='left'>
             <Menu.Item
               as={NavLink}
@@ -38,16 +38,19 @@ class Nav extends React.Component {
           <Menu.Menu position='right'>
             <Menu.Item
                 as={NavLink}
+                exact
                 to='/'>
               <Icon name='home'/>
             </Menu.Item>
             <Menu.Item
                 as={NavLink}
+                exact
                 to='/about' >
               <Icon name='question circle outline'/>
             </Menu.Item>
             <Menu.Item
                 as={NavLink}
+                exact
                 to='/edit'>
               <Icon name='edit'/>
             </Menu.Item>
@@ -59,6 +62,7 @@ class Nav extends React.Component {
               :
               <Menu.Item
                 as={NavLink}
+                exact
                 name="Login"
                 to='/login' />
             }

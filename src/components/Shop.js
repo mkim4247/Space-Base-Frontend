@@ -176,22 +176,22 @@ class Shop extends React.Component {
       case "Housing":
        return {
          backgroundImage: 'url(https://i.imgur.com/z3ao9Dg.png)',
-         backgroundSize: '300px 90px',
+         backgroundSize: '200px 90px',
          border: '5px solid blue'}
       case "Defense":
         return {
           backgroundImage: 'url(https://i.imgur.com/nAMGg3m.png)',
-          backgroundSize: '300px 90px',
+          backgroundSize: '200px 90px',
           border: '5px solid red'}
       case "Food":
         return {
           backgroundImage: 'url(https://i.imgur.com/8BRc717.png)',
-          backgroundSize: '300px 90px',
+          backgroundSize: '200px 90px',
           border: '5px solid green'}
       case "Service":
         return {
           backgroundImage: 'url(https://i.imgur.com/A3gjjc3.png)',
-          backgroundSize: '300px 90px',
+          backgroundSize: '200px 90px',
           border: '5px solid yellow'}
         default:
           return {

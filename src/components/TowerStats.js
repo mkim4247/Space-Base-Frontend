@@ -20,11 +20,11 @@ class TowerStats extends React.Component {
     return(
       <div id="stats">
         <Segment inverted align='center'>
-          <Header size='huge'>
+          <Header size='medium'>
             TOWER STATS:
           </Header>
           <hr/>
-          <Statistic.Group horizontal>
+          <Statistic.Group horizontal size={'small'}>
             <Statistic inverted>
               <Statistic.Value>
                 {this.props.floors.length}
