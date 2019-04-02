@@ -1,9 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { switchGameMode, applyingRateTower, muteMusic } from '../redux/actions'
+import { switchGameMode, applyingRateTower } from '../redux/actions'
 import { Header, Button, Grid } from 'semantic-ui-react'
-import ReactAudioPlayer from 'react-audio-player';
-import sound from '../audio/Pixel adventures.mp3'
+// import sound from '../audio/Pixel adventures.mp3'
 
 class Explore extends React.Component {
   constructor(props){
@@ -37,7 +36,7 @@ class Explore extends React.Component {
       ship: ship,
       rocks: rocks,
       score: 0,
-      gameOver: false
+      gameOver: true
     }
 
     /* Initialize Game */
@@ -145,17 +144,15 @@ class Explore extends React.Component {
       resources: this.props.tower.resources + winnings
     }
     this.props.applyingRateTower(tower)
-    this.props.muteMusic()
     this.props.switchGameMode()
+  }
+
+  startGame = () => {
+    this.setState({ gameOver: false })
   }
 
   render(){
     return (
-      <div>
-        <ReactAudioPlayer
-          src={sound}
-          autoPlay={true}
-          loop={true}/>
         <Grid>
           <Grid.Row columns={2}>
             <Grid.Column width={4}>
@@ -174,17 +171,28 @@ class Explore extends React.Component {
                 <Board board={this.state.board}/>
                 {this.state.gameOver ?
                   <div>
-                    <Button onClick={this.switchBack}>
-                      Return to Bunker
-                    </Button>
+                    {
+                      this.state.score > 0 ?
+                      <Button onClick={this.switchBack}>
+                        Return to Bunker
+                      </Button>
+                      :
+                      <Button onClick={this.startGame}>
+                        Start
+                      </Button>
+                    }
                   </div>
                   : null
                 }
               </div>
             </Grid.Column>
+            <Grid.Column width={4}>
+              <Header inverted size='huge'>
+                DIRECTIONS: <br/> CLICK THE COLORED BOARD IN THE MIDDLE OF THE SCREEN TO FLY UP! <br/> THE LONGER YOU FLY, THE MORE RESOURCES YOU GET!
+              </Header>
+            </Grid.Column>
           </Grid.Row>
         </Grid>
-      </div>
     )
   }
 }
@@ -192,12 +200,11 @@ class Explore extends React.Component {
 const mapStateToProps = state => {
   return {
     gameMode: state.gameMode,
-    tower: state.tower,
-    muted: state.muted
+    tower: state.tower
   }
 }
 
-export default connect(mapStateToProps, { switchGameMode, applyingRateTower, muteMusic })(Explore)
+export default connect(mapStateToProps, { switchGameMode, applyingRateTower })(Explore)
 
 
 ///////////////////////////
@@ -207,10 +214,10 @@ export default connect(mapStateToProps, { switchGameMode, applyingRateTower, mut
 const BoardCell = props => {
   return (
     <div style={{
-      width: 30,
-      height: 30,
+      width: '20px',
+      height: '20px',
       backgroundColor: props.cell === "white" ? "brown" : props.cell,
-      backgroundSize: '30px 30px',
+      backgroundSize: '20px 20px',
       backgroundImage: props.cell === "white" ? 'url(https://i.imgur.com/5fLOrIr.png)' : null}}>
     </div>
   )

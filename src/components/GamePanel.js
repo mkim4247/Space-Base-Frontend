@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Header, Segment, Button, Modal, Icon } from 'semantic-ui-react'
-import { switchGameMode, muteMusic } from '../redux/actions'
+import { switchGameMode } from '../redux/actions'
 
 class GamePanel extends React.Component {
   constructor(props){
@@ -21,7 +21,6 @@ class GamePanel extends React.Component {
 
   switchModes = event => {
     this.props.switchGameMode()
-    this.props.muteMusic()
     this.setState({ showModal: false })
   }
 
@@ -78,8 +77,4 @@ class GamePanel extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return { muted: state.muted }
-}
-
-export default connect(mapStateToProps, { switchGameMode, muteMusic })(GamePanel)
+export default connect(null, { switchGameMode })(GamePanel)

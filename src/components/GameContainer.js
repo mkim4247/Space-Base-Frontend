@@ -20,7 +20,7 @@ class GameContainer extends React.Component {
           src={sound}
           autoPlay={true}
           loop={true}
-          muted={this.props.muted ? this.props.muted : false}/>
+          muted={this.props.muted}/>
 
         {this.props.gameMode ?
           <div id='game-container'>
