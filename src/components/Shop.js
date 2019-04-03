@@ -40,12 +40,12 @@ class Shop extends React.Component {
       greenTurn: false,
     }
     this.blue = [blue1, blue2, blue3, blue4]
-    this.blueWalkingID = setInterval(this.blueToggleImg, 300)
-    this.blueTurnID = setInterval(this.blueTurnImg, 3000)
+    this.blueWalkingID = setInterval(this.blueToggleImg, 10)
+    this.blueTurnID = setInterval(this.blueTurnImg, 2500)
 
     this.pink = [pink1, pink2, pink3, pink4]
-    this.pinkWalkingID = setInterval(this.pinkToggleImg, 50)
-    this.pinkTurnID = setInterval(this.pinkTurnImg, 2950)
+    this.pinkWalkingID = setInterval(this.pinkToggleImg, 1)
+    this.pinkTurnID = setInterval(this.pinkTurnImg, 3000)
 
     this.yellow = [yellow1, yellow2, yellow3, yellow4]
     this.yellowWalkingID = setInterval(this.yellowToggleImg, 300)
@@ -220,7 +220,7 @@ class Shop extends React.Component {
         onClick={this.showInfo}
         className="filled-shop"
         style={this.setBackground()}>
-          <Header size='medium'>
+          <Header size='medium' style={{textShadow: '3px 3px 3px white'}}>
             {this.props.shopObj.shop_type.toUpperCase()}
           </Header>
           <img
