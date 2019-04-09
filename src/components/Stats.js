@@ -50,7 +50,7 @@ class Stats extends React.Component {
             HAPPINESS
           </Progress>
           <Button onClick={this.switchMenu}>
-            VIEW TOWER STATS
+            VIEW ADV. STATS
           </Button>
         </Segment>
       </div>

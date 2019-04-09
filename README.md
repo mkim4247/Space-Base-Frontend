@@ -9,3 +9,4 @@ The backend repo can be found here:
 https://github.com/mkim4247/Space-Base-Backend
 
 Below is a demo of the app:
+https://www.youtube.com/watch?v=NDAQZnKKTzg

@@ -40,7 +40,7 @@ class Shop extends React.Component {
       greenTurn: false,
     }
     this.blue = [blue1, blue2, blue3, blue4]
-    this.blueWalkingID = setInterval(this.blueToggleImg, 10)
+    this.blueWalkingID = setInterval(this.blueToggleImg, 1000)
     this.blueTurnID = setInterval(this.blueTurnImg, 2500)
 
     this.pink = [pink1, pink2, pink3, pink4]
