@@ -158,36 +158,36 @@ class TowerContainer extends React.Component {
           this.openModal('This Party Sucks', `Some people couldn't take the space life anymore and decided to head back home...`, `Population Lost: ${Math.ceil(negPop)}`, 'frown outline')
         }.bind(this)
       ]
-
-      let advancedEvents = [
-        function alienAttack(){
-          if(this.props.tower.defense < defenseNeeded) {
-            let newResources = this.props.tower.resources * ((Math.random() * (20 - 10) + 10)/100)
-            let newHappiness = ((Math.random() * (20 - 10) + 10))
-            let newPopulation =  this.props.tower.population * ((Math.random() * (20 - 10) + 10)/100)
-
-            let tower = {...this.props.tower, resources: this.props.tower.resources - newResources, happiness: this.props.tower.happiness - newHappiness, population: this.props.tower.population - newPopulation}
-
-            this.props.applyingRateTower(tower)
-            console.log("Our base was attacked by an unknown enemy in the middle of the night. We've sustained numerous damages")
-            console.log(`Resources Lost: ${newResources}. Happiness Lost: ${newHappiness}. Population Lost: ${newPopulation}`)
-          }
-        }.bind(this),
-
-        function raidParty(){
-          if(this.props.tower.defense - defenseNeeded > 50){
-            let newResources = this.props.tower.resources * ((Math.random() * (20 - 10) + 10)/100)
-            let newHappiness = ((Math.random() * (20 - 10) + 10))
-            let newPopulation =  this.props.tower.population * ((Math.random() * (20 - 10) + 10)/100)
-
-            let tower = {...this.props.tower, resources: this.props.tower.resources + newResources, happiness: this.props.tower.happiness + newHappiness, population: this.props.tower.population + newPopulation}
-
-            this.props.applyingRateTower(tower)
-
-            console.log("Our forces thwarted a surprise attack and chased them back to their base successfully!")
-            console.log(`Resources Gained: ${newResources}. Happiness Gained: ${newHappiness}. Population Gained: ${newPopulation}`)
-          }
-        }.bind(this)
+      //
+      // let advancedEvents = [
+      //   function alienAttack(){
+      //     if(this.props.tower.defense < defenseNeeded) {
+      //       let newResources = this.props.tower.resources * ((Math.random() * (20 - 10) + 10)/100)
+      //       let newHappiness = ((Math.random() * (20 - 10) + 10))
+      //       let newPopulation =  this.props.tower.population * ((Math.random() * (20 - 10) + 10)/100)
+      //
+      //       let tower = {...this.props.tower, resources: this.props.tower.resources - newResources, happiness: this.props.tower.happiness - newHappiness, population: this.props.tower.population - newPopulation}
+      //
+      //       this.props.applyingRateTower(tower)
+      //       console.log("Our base was attacked by an unknown enemy in the middle of the night. We've sustained numerous damages")
+      //       console.log(`Resources Lost: ${newResources}. Happiness Lost: ${newHappiness}. Population Lost: ${newPopulation}`)
+      //     }
+      //   }.bind(this),
+      //
+      //   function raidParty(){
+      //     if(this.props.tower.defense - defenseNeeded > 50){
+      //       let newResources = this.props.tower.resources * ((Math.random() * (20 - 10) + 10)/100)
+      //       let newHappiness = ((Math.random() * (20 - 10) + 10))
+      //       let newPopulation =  this.props.tower.population * ((Math.random() * (20 - 10) + 10)/100)
+      //
+      //       let tower = {...this.props.tower, resources: this.props.tower.resources + newResources, happiness: this.props.tower.happiness + newHappiness, population: this.props.tower.population + newPopulation}
+      //
+      //       this.props.applyingRateTower(tower)
+      //
+      //       console.log("Our forces thwarted a surprise attack and chased them back to their base successfully!")
+      //       console.log(`Resources Gained: ${newResources}. Happiness Gained: ${newHappiness}. Population Gained: ${newPopulation}`)
+      //     }
+      //   }.bind(this)
 
         // function crime() {
         //
@@ -201,7 +201,7 @@ class TowerContainer extends React.Component {
         //
         // },
 
-      ]
+      // ]
 
         if(controller > 0.5){
           let index = Math.floor(Math.random() * 6)
@@ -245,12 +245,12 @@ class TowerContainer extends React.Component {
           >
           <Modal.Content style={{backgroundColor: 'black', color: 'white', border: '3px solid white'}}>
             <Container text>
-            <Icon name={this.state.icon} size='large' inverted/>
-            {this.state.randomEvent}
-            <br/>
-            {this.state.content}
-            <br/>
-            {this.state.outcome}
+              <Icon name={this.state.icon} size='large' inverted/>
+              {this.state.randomEvent}
+              <br/>
+              {this.state.content}
+              <br/>
+              {this.state.outcome}
             </Container>
           </Modal.Content>
         </Modal>

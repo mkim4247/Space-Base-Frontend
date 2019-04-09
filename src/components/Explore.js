@@ -188,7 +188,11 @@ class Explore extends React.Component {
             </Grid.Column>
             <Grid.Column width={4}>
               <Header inverted size='huge'>
-                DIRECTIONS: <br/> CLICK THE COLORED BOARD IN THE MIDDLE OF THE SCREEN TO FLY UP! AVOID THE BLACK ROCKS! <br/> THE LONGER YOU FLY, THE MORE RESOURCES YOU GET!
+                DIRECTIONS:
+                <br/>
+                CLICK THE COLORED BOARD IN THE MIDDLE OF THE SCREEN TO FLY UP AND AVOID THE BLACK ROCKS!
+                <br/>
+                THE LONGER YOU FLY, THE MORE RESOURCES YOU GET!
               </Header>
             </Grid.Column>
           </Grid.Row>

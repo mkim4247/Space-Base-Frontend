@@ -25,22 +25,6 @@ class TowerStats extends React.Component {
           </Header>
           <hr/>
           <Statistic.Group horizontal size={'small'}>
-            <Statistic inverted>
-              <Statistic.Value>
-                {this.props.floors.length}
-              </Statistic.Value>
-              <Statistic.Label>
-                # of Floors
-              </Statistic.Label>
-            </Statistic>
-            <Statistic inverted>
-              <Statistic.Value>
-                {shops.flat().length}
-              </Statistic.Value>
-              <Statistic.Label>
-                # of Shops
-              </Statistic.Label>
-            </Statistic>
             <Statistic inverted color={housingAndFoodNeeded > housingShops.length ? 'red' : 'green'}>
               <Statistic.Value>
                 {housingShops.length}/{housingAndFoodNeeded}
@@ -63,6 +47,22 @@ class TowerStats extends React.Component {
               </Statistic.Value>
               <Statistic.Label>
                 Defense Needed
+              </Statistic.Label>
+            </Statistic>
+            <Statistic inverted>
+              <Statistic.Value>
+                {this.props.floors.length}
+              </Statistic.Value>
+              <Statistic.Label>
+                # of Floors
+              </Statistic.Label>
+            </Statistic>
+            <Statistic inverted>
+              <Statistic.Value>
+                {shops.flat().length}
+              </Statistic.Value>
+              <Statistic.Label>
+                # of Shops
               </Statistic.Label>
             </Statistic>
             <Statistic inverted>

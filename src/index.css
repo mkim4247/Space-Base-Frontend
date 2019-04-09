@@ -281,11 +281,11 @@ code {
 #stats {
   margin: 0 auto;
   position: fixed;
-  background-color: black;
+  background-color: RGB(27, 28, 28);
   border: 5px solid white;
   width: 20%;
   overflow: scroll;
-  height: 65vh;
+  height: 60%;
 }
 
 #space-travel {
@@ -323,9 +323,9 @@ code {
   height: 100vh;
   background-color: black;
   text-align: center;
-  margin: 0 auto;
   background-image: url('https://images.pexels.com/photos/684441/pexels-photo-684441.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
-  background-size: cover;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
 
 #not-found-header {

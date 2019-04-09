@@ -1,10 +1,12 @@
+const RAILS_API = 'http://localhost:4247/api/v1/'
+
 export const setCurrentUser = user => {
-  return { type: "SET_CURRENT_USER", user}
+  return { type: "SET_CURRENT_USER", user }
 }
 
 export const settingCurrentUser = user => {
   return dispatch => {
-    fetch(`http://localhost:4247/api/v1/login`, {
+    fetch(RAILS_API + `login`, {
       method: "POST",
       headers: {
         "Content-Type" : "application/json",
@@ -27,8 +29,8 @@ export const settingCurrentUser = user => {
 
 export const creatingNewUser = user => {
   return dispatch => {
-    fetch(`http://localhost:4247/api/v1/users`, {
-      method:"POST",
+    fetch(RAILS_API + `users`, {
+      method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
@@ -40,7 +42,7 @@ export const creatingNewUser = user => {
         alert(data.error)
       }
       else {
-        console.log(data)
+        console.log("Account Created")
         dispatch(setCurrentUser(data.user))
         localStorage.setItem('token', data.token)
         dispatch(startNewGame())
@@ -51,7 +53,7 @@ export const creatingNewUser = user => {
 
 export const checkingToken = token => {
     return dispatch => {
-    fetch(`http://localhost:4247/api/v1/profile`, {
+    fetch(RAILS_API + `profile`, {
     method: "GET",
     headers: {
       "Authentication": `Bearer ${token}`
@@ -66,7 +68,7 @@ export const checkingToken = token => {
 }
 
 export const editCurrentUser = user => {
-  return { type: "EDIT_CURRENT_USER", user}
+  return { type: "EDIT_CURRENT_USER", user }
 }
 
 export const editingCurrentUser = user => {
@@ -76,10 +78,10 @@ export const editingCurrentUser = user => {
       headers: {
         "Content-type": "application/json"
       },
-      body: JSON.stringify( {user} )
+      body: JSON.stringify({ user })
     })
-    .then( res => res.json())
-    .then( data => {
+    .then(res => res.json())
+    .then(data => {
       if(data.errors){
         alert(data.errors)
       }
@@ -94,12 +96,12 @@ export const editingCurrentUser = user => {
 //////////
 
 export const setUserTower = tower => {
-  return { type: "SET_USER_TOWER", tower}
+  return { type: "SET_USER_TOWER", tower }
 }
 
 export const settingUserTower = () => {
   return (dispatch, getStore) => {
-    fetch(`http://localhost:4247/api/v1/users/${getStore().currentUser.id}`)
+    fetch(RAILS_API + `users/${getStore().currentUser.id}`)
     .then(res => res.json())
     .then(user => {
       dispatch(setUserTower(user.tower))
@@ -111,7 +113,7 @@ export const settingUserTower = () => {
 /////////////
 
 export const updateTower = tower => {
-  return { type: "UPDATE_TOWER", tower}
+  return { type: "UPDATE_TOWER", tower }
 }
 
 export const updatingTowerShops = shop => {
@@ -125,7 +127,7 @@ export const updatingTowerShops = shop => {
       defense = getStore().tower.defense
     }
 
-    fetch(`http://localhost:4247/api/v1/towers/${getStore().tower.id}`, {
+    fetch(RAILS_API + `towers/${getStore().tower.id}`, {
       method: "PATCH",
       headers: {
         "Content-type": "application/json"
@@ -142,7 +144,7 @@ export const updatingTowerShops = shop => {
 export const updatingTowerFloors = floor => {
   return (dispatch, getStore) => {
     let value = getStore().tower.resources - parseInt(floor.price)
-    fetch(`http://localhost:4247/api/v1/towers/${getStore().tower.id}`, {
+    fetch(RAILS_API + `towers/${getStore().tower.id}`, {
       method: "PATCH",
       headers: {
         "Content-type": "application/json"
@@ -158,7 +160,7 @@ export const updatingTowerFloors = floor => {
 
 export const applyingRateTower = tower => {
   return (dispatch, getStore) => {
-    fetch(`http://localhost:4247/api/v1/towers/${getStore().tower.id}`, {
+    fetch(RAILS_API + `towers/${getStore().tower.id}`, {
       method: "PATCH",
       headers: {
         "Content-type": "application/json"
@@ -175,16 +177,16 @@ export const applyingRateTower = tower => {
 ///////////
 
 export const setTowerFloors = floors => {
-  return { type: "SET_TOWER_FLOORS", floors}
+  return { type: "SET_TOWER_FLOORS", floors }
 }
 
 export const addFloor = floor => {
-  return { type: "ADD_FLOOR", floor}
+  return { type: "ADD_FLOOR", floor }
 }
 
 export const addingFloor = floor => {
   return (dispatch, getStore) => {
-    fetch(`http://localhost:4247/api/v1/floors/`, {
+    fetch(RAILS_API + `floors/`, {
       method: "POST",
       headers: {
         "Content-type": "application/json"
@@ -207,7 +209,7 @@ export const addShop = shop => {
 
 export const addingShop = shop => {
   return (dispatch, getStore) => {
-    fetch(`http://localhost:4247/api/v1/shops/${shop.id}`, {
+    fetch(RAILS_API + `shops/${shop.id}`, {
       method: "PATCH",
       headers: {
         "Content-type": "application/json"
@@ -227,7 +229,7 @@ export const destroyShop = shop => {
 
 export const destroyingShop = shop => {
   return (dispatch, getStore) => {
-    fetch(`http://localhost:4247/api/v1/shops/${shop.id}`, {
+    fetch(RAILS_API + `shops/${shop.id}`, {
       method: "PATCH",
       headers: {
         "Content-type": "application/json"
@@ -254,16 +256,16 @@ export const switchStatMenu = () => {
 ////////////
 
 export const setAllUsers = users => {
-  return { type: "SET_ALL_USERS", users}
+  return { type: "SET_ALL_USERS", users }
 }
 
 export const settingAllUsers = () => {
   return dispatch => {
-  fetch('http://localhost:4247/api/v1/users/')
-    .then(res => res.json())
-    .then(users => {
-      dispatch(setAllUsers(users))
-    })
+    fetch(RAILS_API + 'users/')
+      .then(res => res.json())
+      .then(users => {
+        dispatch(setAllUsers(users))
+      })
   }
 }
 
@@ -272,8 +274,6 @@ export const settingAllUsers = () => {
 export const switchGameMode = () => {
   return { type: "SWITCH_MODE" }
 }
-
-/////////////////
 
 export const muteMusic = () => {
   return { type: "MUTE_MUSIC" }

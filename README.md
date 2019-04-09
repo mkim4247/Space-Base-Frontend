@@ -1,69 +1,11 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# README
+Space Base is a casual sim game where players collect and spend resources to expand their base. Resources are accrued passively over time, but players may also play an "Explore" game mode to gain more resources. This game mode is similar to "Flappy Bird," where the player must click the screen to keep their space ship flying; the longer they fly, the more resources they gain. The amount of resources gained passively is determined by how well the player meets the demands of their base: at least one "Food" and one "Housing" Unit in their base per five population. The overall satisfaction level of the player's base determines their happiness score, which, if high enough, will lead to the base's population to increase.
 
-## Available Scripts
+Currently, in addition to "Food" and "Housing," there are also "Defense" and "Service" Units as well, which provide their own benefits. The Defense level of the base must match the population, while "Service" Units provide extra resources over time. If the above requirements are not met, players will be penalized and their happiness and population will decrease. Furthermore, there are certain events that may occur at random that either benefit the player's base or hurt them in some way. There is no true ending for the game in its current version, but players with the best stats are listed on the Leaderboard page.
 
-In the project directory, you can run:
+The frontend was developed on React 16.7.0 and Redux 4.0.1, and also utilizes React-DOM, React-Router-DOM, and Redux-Thunk. React-Audio-Player was used to handle the background music of the game, which player's can mute if they choose. Semantic-UI-React was also used heavily throughout to create uniformly styled components for the game. Special thanks to OpenGameArt for providing the free music and alien sprites used here as well.
 
-### `npm start`
+The backend repo can be found here:
+https://github.com/mkim4247/Space-Base-Backend
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-# flat-tower-frontend
+Below is a demo of the app:

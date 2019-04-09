@@ -1,7 +1,7 @@
 import React from 'react'
 import Nav from './Nav'
-import spagett from '../images/spagettsideeye.png'
-import { Image } from 'semantic-ui-react'
+// import spagett from '../images/spagettsideeye.png'
+// import { Image } from 'semantic-ui-react'
 
 
 class NotFound extends React.Component {
