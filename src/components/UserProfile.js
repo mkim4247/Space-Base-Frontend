@@ -5,26 +5,27 @@ import { Header } from 'semantic-ui-react'
 import Nav from './Nav'
 import PresGameContainer from './FriendTowerComponents/PresGameContainer'
 
-class UserProfile extends React.Component {
-  render(){
-    return(
-      <div>
-        {this.props.user ?
-          <div>
-            <Nav />
-            <div id='home'>
-              <Header inverted size='huge' align='center'>
-                {this.props.user.username.toUpperCase()}
-              </Header>
-              <PresGameContainer tower={this.props.user.tower}/>
-            </div>
+const UserProfile = props => {
+  return(
+    <div>
+      {props.user ?
+        <div>
+          <Nav />
+          <div id='home'>
+            <Header
+              inverted
+              size='huge'
+              align='center'>
+              {props.user.username.toUpperCase()}
+            </Header>
+            <PresGameContainer tower={props.user.tower}/>
           </div>
-          :
-          <Redirect to='/404'/>
-        }
-      </div>
-    )
-  }
+        </div>
+        :
+        <Redirect to='/404'/>
+      }
+    </div>
+  )
 }
 
 const mapStateToProps = (state, routerProps) => {

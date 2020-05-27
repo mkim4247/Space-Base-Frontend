@@ -5,21 +5,19 @@ import ConstructionFloor from './ConstructionFloor'
 import Lobby from './Lobby'
 // import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-class Tower extends React.Component {
-  render(){
-    return(
-      <div id='tower'>
-        <Lobby />
-          {this.props.floors.map( floor => (
-            <FloorContainer
-              key={floor.id}
-              floor={floor}/>
-          ))}
-        <ConstructionFloor
-          level={this.props.floors.length + 1}/>
-      </div>
-    )
-  }
+const Tower = props => {
+  return(
+    <div id='tower'>
+      <Lobby />
+        {props.floors.map( floor => (
+          <FloorContainer
+            key={floor.id}
+            floor={floor}/>
+        ))}
+      <ConstructionFloor
+        level={props.floors.length + 1}/>
+    </div>
+  )
 }
 
 const mapStateToProps = state => {

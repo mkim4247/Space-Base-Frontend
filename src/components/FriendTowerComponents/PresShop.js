@@ -1,9 +1,9 @@
 import React from 'react'
 import { Header } from 'semantic-ui-react'
 
-class PresShop extends React.Component {
-  setBackground = () => {
-    switch(this.props.shopObj.shop_type){
+const PresShop = props => {
+  const setBackground = () => {
+    switch(props.shopObj.shop_type){
       case "Housing":
        return {
          backgroundImage: 'url(https://i.imgur.com/z3ao9Dg.png)',
@@ -31,17 +31,15 @@ class PresShop extends React.Component {
     }
   }
 
-  render(){
-    return(
-      <div
-        className="filled-shop"
-        style={this.setBackground()}>
-          <Header size='medium'>
-            {this.props.shopObj.shop_type.toUpperCase()}
-          </Header>
-      </div>
-    )
-  }
+  return(
+    <div
+      className="filled-shop"
+      style={this.setBackground()}>
+      <Header size='medium'>
+        {props.shopObj.shop_type.toUpperCase()}
+      </Header>
+    </div>
+  )
 }
 
 export default PresShop
