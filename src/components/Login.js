@@ -5,8 +5,8 @@ import { settingCurrentUser } from '../redux/actions'
 import { Header, Button, Form, Grid, Segment, Message, Modal, Icon } from 'semantic-ui-react'
 
 class Login extends React.Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
     this.state = {
       username: "",
       password: "",
