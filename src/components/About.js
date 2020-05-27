@@ -10,8 +10,20 @@ class About extends React.Component {
     <div>
       <Nav />
         <div id='about'>
-            <Container style={{fontFamily: 'VT323, monospace', fontSize: '30px', padding: '1vh', border: '5px rgb(193, 144, 212) solid'}}>
-            <h1 style={{fontFamily: 'VT323, monospace', fontSize: '10vh', padding: '30px', color: 'rgb(193, 144, 212)'}}>Welcome to Space Base!</h1>
+            <Container
+              style={{
+                fontFamily: 'VT323, monospace',
+                fontSize: '30px',
+                padding: '1vh',
+                border: '5px rgb(193, 144, 212) solid'}}>
+            <h1
+              style={{
+                fontFamily: 'VT323, monospace',
+                fontSize: '10vh',
+                padding: '30px',
+                color: 'rgb(193, 144, 212)'}}>
+              Welcome to Space Base!
+            </h1>
             <p>
               You've been placed in charge of overseeing the construction of our new Space Base. Mission Command will be closely monitoring your performance.
             </p>
@@ -23,7 +35,9 @@ class About extends React.Component {
               If you need resources asap, you can scout the area as well. The only ship you have is manually powered though, so you'll need to maintain its flight by clicking your mouse.
             </p>
 
-            <p style={{textDecoration: 'underline', color: 'rgb(193, 144, 212)'}}>
+            <p style={{
+                textDecoration: 'underline',
+                color: 'rgb(193, 144, 212)'}}>
               Some things to keep in mind:
             </p>
 
@@ -41,7 +55,10 @@ class About extends React.Component {
             </p>
 
             <Link to='/'>
-              <Button inverted color='purple' onClick={this.props.readRules}>
+              <Button
+                inverted
+                color='purple'
+                onClick={this.props.readRules}>
                 GOOD LUCK!
               </Button>
             </Link>
